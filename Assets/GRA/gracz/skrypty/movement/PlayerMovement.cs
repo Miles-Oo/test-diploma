@@ -13,15 +13,6 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
-    {
-        moveAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        moveAction.Disable();
-    }
 
     private void Update()
     {
@@ -31,5 +22,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.linearVelocity = moveInput * moveSpeed;
-    }
+    }  
+
+    
+    private void OnEnable(){ moveAction.Enable();}
+
+    private void OnDisable(){ moveAction.Disable();}
+
 }
