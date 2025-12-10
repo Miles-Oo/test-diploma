@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - interactive
+  - light
   - 
   - 
   - 
@@ -40,6 +40,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: interactive
+    uniqueID: 2033678265
+    locked: 0
+  - name: light
+    uniqueID: 2919530455
     locked: 0
   m_RenderingLayers:
   - Default
