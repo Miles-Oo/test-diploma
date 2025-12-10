@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
     [SerializeField] private InputAction moveAction;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 4f;
     private Vector2 moveInput;
 
     private void Awake()
