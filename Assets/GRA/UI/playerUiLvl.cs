@@ -1,18 +1,29 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class playerUiLvl : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _lvlText;
+    [SerializeField] TextMeshProUGUI _text1;
+    [SerializeField] TextMeshProUGUI _text2;
+    [SerializeField] private Image _fill;
     [SerializeField] leveling _leveling;
+
+    private Color color;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _lvlText.text="player lvl";
-          _leveling.OnExpChange += TextUpdate;
+        color=new Color(255,255,255);
+        _text1.text="player lvl";
+        _text2.text="curr exp/nextlevelcap";
+        _leveling.OnExpChange += TextUpdate;
+        TextUpdate();
     }
     void TextUpdate()
     {
-        _lvlText.text="poziom: "+_leveling.getLvl()+" "+_leveling.getCurrentExp()+"/"+_leveling.getNextLvlExpCap();
+        float precent = _leveling.getCurrentExp() / (float)_leveling.getNextLvlExpCap();
+        _fill.fillAmount =precent;
+        _text1.text="lvl: "+_leveling.getLvl();
+        _text2.text=_leveling.getCurrentExp()+"/"+_leveling.getNextLvlExpCap();
     }
 }

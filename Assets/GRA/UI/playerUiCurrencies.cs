@@ -3,16 +3,19 @@ using TMPro;
 
 public class playerUiCurrencies : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _lvlText;
-    [SerializeField] inventory _inventory;
+    [SerializeField] TextMeshProUGUI _textZlowtowki;
+    [SerializeField] TextMeshProUGUI _textKrypto;
+    [SerializeField] wallet _wallet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _lvlText.text="zloty krypto";
-          _inventory.OnGetMoney += TextUpdate;
+        _textZlowtowki.text="zloty";        
+        _textKrypto.text="krypto";
+        _wallet.OnGetMoney += TextUpdate;
     }
     void TextUpdate()
     {
-        _lvlText.text="złotówki: "+_inventory.getZlotowki()+"krypto: "+_inventory.getKrypto();
+        _textZlowtowki.text="złotówki: "+_wallet.getZlotowki();
+        _textKrypto.text="krypto: "+_wallet.getKrypto();
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using System;
 
-public class inventory:MonoBehaviour{
+public class wallet:MonoBehaviour{
     private int m_zlotowki=0;
     private int m_krypto=0;
 
