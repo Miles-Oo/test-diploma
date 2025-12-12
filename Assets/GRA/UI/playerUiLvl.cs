@@ -17,6 +17,7 @@ public class playerUiLvl : MonoBehaviour
         _text1.text="player lvl";
         _text2.text="curr exp/nextlevelcap";
         _leveling.OnExpChange += TextUpdate;
+        _fill.color=color;
         TextUpdate();
     }
     void TextUpdate()

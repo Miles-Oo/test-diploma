@@ -15,7 +15,7 @@ public class playerUiCurrencies : MonoBehaviour
     }
     void TextUpdate()
     {
-        _textZlowtowki.text="złotówki: "+_wallet.getZlotowki();
-        _textKrypto.text="krypto: "+_wallet.getKrypto();
+        _textZlowtowki.text="złotówki: "+_wallet.getZlotowki()+" zł";
+        _textKrypto.text="krypto: "+_wallet.getKrypto()+" kr";
     }
 }
