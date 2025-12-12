@@ -17,15 +17,19 @@ public class interactions:MonoBehaviour{
         {
             if (isInteracting)
             { 
+                if(_interactable != null){
                 isInteracting=false;
                 print("kończę");
                 _interactable.TurnOFFInteract();
+                }
             }
             else
             { 
+                 if(_interactable != null){
                 isInteracting=true;
                 print("zaczynam");  
                 _interactable.TurnONInteract();
+                 }
             }
         }
     }
