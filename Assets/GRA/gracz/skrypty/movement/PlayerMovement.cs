@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 4f;
     private Vector2 moveInput;
 
+    public bool m_canWalk=true;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -21,10 +22,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(m_canWalk){
         _rb.linearVelocity = moveInput * moveSpeed;
+        }
     }  
 
-    
+    public void CanMove(bool canMoo)
+    {
+        if (canMoo)
+        {
+            moveAction.Enable();
+        }
+        else
+        {
+            moveAction.Disable();
+            _rb.linearVelocity=Vector2.zero;
+        }
+        
+    }
     private void OnEnable(){ moveAction.Enable();}
 
     private void OnDisable(){ moveAction.Disable();}

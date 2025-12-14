@@ -13,33 +13,33 @@ public class interactions:MonoBehaviour{
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (isInteracting)
-            { 
-                if(_interactable != null){
+        if (Input.GetKeyDown(KeyCode.E)){
+        print("AHA.");
+        if(_interactable != null){
+            if (isInteracting){ 
                 isInteracting=false;
                 print("kończę");
                 _interactable.TurnOFFInteract();
-                }
-            }
-            else
-            { 
-                 if(_interactable != null){
+            }else{ 
                 isInteracting=true;
                 print("zaczynam");  
                 _interactable.TurnONInteract();
-                 }
+                }
             }
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(_interactable==null){
        _interactable=other.GetComponent<IInteractable>();
+        }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
+        if(isInteracting) return;
+        if(_interactable!=null){
         _interactable=null;
+        }
     }
 
     private void FixedUpdate()

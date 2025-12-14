@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Rendering;
 
 public class gamewordTimer : MonoBehaviour
 {
@@ -9,8 +10,22 @@ public class gamewordTimer : MonoBehaviour
     private int m_currentSeconds=40000;
     private int m_SecondsInDay=86400;
     [SerializeField] gamewordDate _gamewordData;
+
+
+    private float m_speedOfTime;
+    private float m_normalSpeedOfTime=1;
+
+    public void ChangeOfSpeed(float speed)
+    {
+        m_speedOfTime=1f/speed;
+    }
+    public void ChangeSpeedToNormal()
+    {
+        m_speedOfTime=m_normalSpeedOfTime;
+    }
     void Start()
     {
+        m_speedOfTime=m_normalSpeedOfTime;
         StartCoroutine(Tick());
     }
 
@@ -24,7 +39,7 @@ public class gamewordTimer : MonoBehaviour
             _gamewordData.addDay();
         }
         OnTimeChange?.Invoke();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(m_speedOfTime);
         }
     }
     public int getCurrentSeconds()
