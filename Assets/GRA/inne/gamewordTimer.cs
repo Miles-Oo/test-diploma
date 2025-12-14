@@ -6,8 +6,8 @@ public class gamewordTimer : MonoBehaviour
 {
 
     public event Action OnTimeChange;
-    private int m_currentSeconds=0;
-    private int m_SecondsInDay=60;
+    private int m_currentSeconds=40000;
+    private int m_SecondsInDay=86400;
     [SerializeField] gamewordDate _gamewordData;
     void Start()
     {
@@ -16,7 +16,7 @@ public class gamewordTimer : MonoBehaviour
 
     IEnumerator Tick(){
         while(true){
-            m_currentSeconds++;
+            m_currentSeconds+=5;
             
         if (!(m_currentSeconds < m_SecondsInDay))
         {

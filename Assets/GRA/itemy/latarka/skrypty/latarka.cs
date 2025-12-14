@@ -11,8 +11,6 @@ public class latarka : MonoBehaviour
     _light=GetComponent<Light2D>();
     _light.enabled=false;
     }
-
-    // Update is called once per frame
     void Update()
     {
           if (Input.GetKeyDown(KeyCode.F))
