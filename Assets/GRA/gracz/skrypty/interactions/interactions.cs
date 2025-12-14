@@ -2,44 +2,33 @@ using UnityEngine;
 public class interactions:MonoBehaviour{
     
     [SerializeField] private BoxCollider2D _fieldAction;
+    private IInteractable _interactiveItem=null;
 
-    private bool isInteracting=false;
-    private IInteractable _interactable;
-    private void Awake()
-    {
-     
-    }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E)){
-        print("AHA.");
-        if(_interactable != null){
-            if (isInteracting){ 
-                isInteracting=false;
-                print("kończę");
-                _interactable.TurnOFFInteract();
-            }else{ 
-                isInteracting=true;
-                print("zaczynam");  
-                _interactable.TurnONInteract();
-                }
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if(_interactiveItem!=null){
+            _interactiveItem.Interact();
             }
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(_interactable==null){
-       _interactable=other.GetComponent<IInteractable>();
-        }
-    }
-    void OnTriggerExit2D(Collider2D collision)
+    var interactable = other.GetComponent<IInteractable>();
+    if (interactable != null && _interactiveItem == null)
     {
-        if(isInteracting) return;
-        if(_interactable!=null){
-        _interactable=null;
-        }
+        print("widze");
+        _interactiveItem = interactable;
+    }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+    var interactable = other.GetComponent<IInteractable>();
+    if (interactable == _interactiveItem)
+    {
+        print("nie widze");
+        _interactiveItem = null;
+    }
     }
 
     private void FixedUpdate()
