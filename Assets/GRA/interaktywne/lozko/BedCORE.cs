@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BedTAG : MonoBehaviour, IInteractable
+public class BedCORE : MonoBehaviour, IInteractable
 {
     [SerializeField] gamewordTimer _gamewordTimer;
     [SerializeField] GameObject _gracz;
@@ -33,7 +33,12 @@ public class BedTAG : MonoBehaviour, IInteractable
       _gracz.GetComponent<PlayerMovement>().CanMove(false); 
       _boxCollider2D.enabled=false;
       _gracz.GetComponent<Rigidbody2D>().MovePosition(_sleepPoint.position);
+      //tak, trzeba to tak skomplikować inaczej odpala audio i tak jak gracz ma wył. latarkę
       _gracz.GetComponentInChildren<latarka>().Lock();
+        if (_gracz.GetComponentInChildren<latarka>().IsFlashlightOn())
+        {
+            _gracz.GetComponentInChildren<latarka>().turnOff();
+        }
       //grafika
        _gracz.GetComponent<SpriteRenderer>().enabled=false;
       m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;

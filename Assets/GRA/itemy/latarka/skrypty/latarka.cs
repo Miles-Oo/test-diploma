@@ -14,6 +14,11 @@ public class latarka : MonoBehaviour
     [SerializeField] private AudioSource source;
    [SerializeField] private AudioClip lightOFF;
    [SerializeField] private AudioClip lightON;
+
+   public bool IsFlashlightOn()
+    {
+        return m_isFlashlightOn;
+    }
     void Start()
     {
     _light=GetComponent<Light2D>();
@@ -35,12 +40,11 @@ public class latarka : MonoBehaviour
     public void Lock()
     {
         m_lock=true;
-        turnOff();
     }
     public void FlipFlop()
     {
         if (!m_lock&&!m_isFlashlightOn){turnOn();}
-        else{turnOff();}
+        else if(!m_lock){turnOff();}
     }
     public void turnOn()
     {
