@@ -17,4 +17,5 @@ MonoBehaviour:
   m_nazwa: pomidor
   m_opis: to jest prymitywny keczup
   m_ileMaGracz: 7
-  m_sprite: {fileID: 21300000, guid: 537dfb5770a2af3f2a52aa02039edcb1, type: 3}
+  m_spriteHighLight: {fileID: 21300000, guid: 14c6f1bc84f00a2019d2a451f267e0fe, type: 3}
+  m_spriteNormal: {fileID: 21300000, guid: 537dfb5770a2af3f2a52aa02039edcb1, type: 3}
