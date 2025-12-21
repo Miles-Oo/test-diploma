@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "Produkt", menuName = "Scriptable Objects/Produkt")]
 public class Produkt:ScriptableObject{
@@ -9,7 +8,8 @@ public class Produkt:ScriptableObject{
        [SerializeField] string m_nazwa;
        [SerializeField] string m_opis;
        [SerializeField] private int m_ileMaGracz;
-       [SerializeField] private Sprite m_sprite;
+       [SerializeField] private Sprite m_spriteHighLight;
+       [SerializeField] private Sprite m_spriteNormal;
 
     public int getEnergia(){return m_energia;}
     public int getGlod(){return m_glod;}
@@ -19,5 +19,7 @@ public class Produkt:ScriptableObject{
     public void setIleMaGracz(int ilosc){m_ileMaGracz=ilosc;}
     public void addIleMaGracz(int ilosc){m_ileMaGracz+=ilosc;}
     public void subIleMaGracz(int ilosc){m_ileMaGracz-=ilosc;}
-    public Sprite getSprite(){return m_sprite;}
+    public Sprite getSpriteNormal(){return m_spriteNormal;}
+    public Sprite getSpriteHighLight(){return m_spriteHighLight;}
+
 }
