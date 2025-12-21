@@ -12,14 +12,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     private bool m_isSelected=false;
 
     //ahhh tak ulany jeden plik ze wszystkim potem trzeba to przerobić....
-    private LodowkaCORE _lodowkaCore;
+    private LodowkaMenu _lodowkaMenu;
     public bool IsUsed(){return m_isUsed;}
 
     //kiedy gracz klika na dany produkt
     public bool IsSelected(){return m_isSelected;}
-    public void SetLodowka(LodowkaCORE lod)
+    public void SetLodowka(LodowkaMenu lodM)
     {
-        _lodowkaCore = lod;
+        _lodowkaMenu = lodM;
     }
     public Image GetImage()
     {
@@ -69,9 +69,9 @@ public void AddItem(Produkt produkt)
        if(eventData.button== PointerEventData.InputButton.Left)
         {
             if(m_isUsed){
-            _lodowkaCore.UnFocusAll();
+            _lodowkaMenu.UnFocusAll();
             m_isSelected=true;
-            _lodowkaCore.UpdateDesc(this);
+            _lodowkaMenu.UpdateDesc(this);
             _ilosc.color=new Color(0.2f,1f,0.35f);
             _img.sprite=_produkt.getSpriteHighLight();
         }}
