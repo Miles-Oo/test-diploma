@@ -21,4 +21,5 @@ public class Produkt:ScriptableObject{
     public void subIleMaGracz(int ilosc){m_ileMaGracz-=ilosc;}
     public Sprite getSpriteNormal(){return m_spriteNormal;}
     public Sprite getSpriteHighLight(){return m_spriteHighLight;}
+
 }
