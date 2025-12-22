@@ -1891,8 +1891,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1617952406}
-        m_TargetAssemblyTypeName: LodowkaCORE, Assembly-CSharp
+      - m_Target: {fileID: 1617952408}
+        m_TargetAssemblyTypeName: LodowkaMenu, Assembly-CSharp
         m_MethodName: EatProduct
         m_Mode: 1
         m_Arguments:
@@ -12929,6 +12929,8 @@ GameObject:
   - component: {fileID: 1617952405}
   - component: {fileID: 1617952406}
   - component: {fileID: 1617952407}
+  - component: {fileID: 1617952409}
+  - component: {fileID: 1617952408}
   m_Layer: 0
   m_Name: interactiveArea
   m_TagString: Untagged
@@ -13015,37 +13017,7 @@ MonoBehaviour:
   source: {fileID: 1617952407}
   open: {fileID: 8300000, guid: 1d4545f1705e0ea1292345369dc4804d, type: 3}
   close: {fileID: 8300000, guid: 558774967a06294758e0296bac2fa602, type: 3}
-  _menu: {fileID: 157459605}
-  _itemSlot:
-  - {fileID: 905040311}
-  - {fileID: 1350720385}
-  - {fileID: 1744393701}
-  - {fileID: 1970703043}
-  - {fileID: 2012092421}
-  - {fileID: 2063181487}
-  - {fileID: 1761565778}
-  - {fileID: 911477252}
-  - {fileID: 1024280857}
-  - {fileID: 1968750967}
-  - {fileID: 1074148896}
-  - {fileID: 1623401617}
-  - {fileID: 1530861627}
-  - {fileID: 1561023768}
-  - {fileID: 1661882188}
-  - {fileID: 1405302400}
-  - {fileID: 2063097764}
-  - {fileID: 1876401127}
-  - {fileID: 776481944}
-  - {fileID: 324047008}
-  - {fileID: 658807910}
-  - {fileID: 143030161}
-  - {fileID: 791879940}
-  - {fileID: 111864861}
-  _produkt:
-  - {fileID: 11400000, guid: 7e8539dfab7c5b211b4d2155be6f3d01, type: 2}
-  - {fileID: 11400000, guid: 2b9fdc45875dbdcccba481137854a49a, type: 2}
-  - {fileID: 11400000, guid: 4b6a1fe37a971b0f1bee8de8cceec6a1, type: 2}
-  _opis: {fileID: 1338328753}
+  _lodowkaInventory: {fileID: 1617952409}
 --- !u!82 &1617952407
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13143,6 +13115,64 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1617952408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617952402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f28cefeb3641ae7f919acc19d9a493c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LodowkaMenu
+  _lodowkaInventory: {fileID: 1617952409}
+  _menu: {fileID: 157459605}
+  _opis: {fileID: 1338328753}
+  _itemSlot:
+  - {fileID: 905040311}
+  - {fileID: 1350720385}
+  - {fileID: 1744393701}
+  - {fileID: 1970703043}
+  - {fileID: 2012092421}
+  - {fileID: 2063181487}
+  - {fileID: 1761565778}
+  - {fileID: 911477252}
+  - {fileID: 1024280857}
+  - {fileID: 1968750967}
+  - {fileID: 1074148896}
+  - {fileID: 1623401617}
+  - {fileID: 1530861627}
+  - {fileID: 1561023768}
+  - {fileID: 1661882188}
+  - {fileID: 1405302400}
+  - {fileID: 2063097764}
+  - {fileID: 1876401127}
+  - {fileID: 776481944}
+  - {fileID: 324047008}
+  - {fileID: 658807910}
+  - {fileID: 143030161}
+  - {fileID: 791879940}
+  - {fileID: 111864861}
+--- !u!114 &1617952409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617952402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c499ef0ea3381d5b5cbe4ef3f37516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LodowkaInvetory
+  _lodowkaCORE: {fileID: 1617952406}
+  _lodowkaMenu: {fileID: 1617952408}
+  _produkt:
+  - {fileID: 11400000, guid: 4b6a1fe37a971b0f1bee8de8cceec6a1, type: 2}
+  - {fileID: 11400000, guid: 2b9fdc45875dbdcccba481137854a49a, type: 2}
+  - {fileID: 11400000, guid: 7e8539dfab7c5b211b4d2155be6f3d01, type: 2}
 --- !u!114 &1623401617 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2004876772062135273, guid: cb0884770bb6b3006b5273bb6d0fdacb, type: 3}
@@ -15568,10 +15598,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9206724}
     m_Modifications:
-    - target: {fileID: 2004876772062135273, guid: cb0884770bb6b3006b5273bb6d0fdacb, type: 3}
-      propertyPath: _lodowkaCore
-      value: 
-      objectReference: {fileID: 1617952406}
     - target: {fileID: 7216274245119300470, guid: cb0884770bb6b3006b5273bb6d0fdacb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -74,6 +74,7 @@ public class LodowkaCORE : MonoBehaviour, IInteractable
     GetComponentInParent<SpriteRenderer>().sprite=m_normalSprite;
 
     _lodowkaInventory.GetLodowkaMenu().UnFocusAll();
+    _lodowkaInventory.GetLodowkaMenu().UnSelect();
     }
 
     private void PlayersDisabes(){

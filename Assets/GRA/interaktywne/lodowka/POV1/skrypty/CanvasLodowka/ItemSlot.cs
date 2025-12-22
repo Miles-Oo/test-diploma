@@ -49,6 +49,7 @@ public void Clear()
     _img.enabled = false;
 
     _ilosc.text = "";
+    _ilosc.color = Color.white;
     _ilosc.enabled = false;
 }
 
@@ -70,6 +71,7 @@ public void AddItem(Produkt produkt)
         {
             if(m_isUsed){
             _lodowkaMenu.UnFocusAll();
+            _lodowkaMenu.ShowButton();
             m_isSelected=true;
             _lodowkaMenu.UpdateDesc(this);
             _ilosc.color=new Color(0.2f,1f,0.35f);

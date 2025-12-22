@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using System;
 
 public class LodowkaMenu : MonoBehaviour
@@ -10,9 +10,19 @@ public class LodowkaMenu : MonoBehaviour
     [SerializeField] private GameObject _menu;
     public GameObject GetMenuCanvas(){return _menu;}
     [SerializeField] private TMP_Text _opis;
+    [SerializeField] private ItemSlot[] _itemSlot;    
     [SerializeField] private Button _buttonEat;
-    [SerializeField] private ItemSlot[] _itemSlot;
+
     private ItemSlot _selectedSlot;
+
+
+    public void Start()
+    {
+        _opis.text="";
+        _buttonEat.gameObject.SetActive(false);
+    }
+
+
 
     public void SetForItemSlots()
     {
@@ -41,7 +51,16 @@ public class LodowkaMenu : MonoBehaviour
             }
     }
 
-
+    public void UnSelect()
+    {
+        _selectedSlot=null;
+        _opis.text="";
+        _buttonEat.gameObject.SetActive(false);
+    }
+    public void ShowButton()
+    {
+        _buttonEat.gameObject.SetActive(true);
+    }
 public void ReloadInventory()
 {
     // reset UI
@@ -64,7 +83,6 @@ public void ReloadInventory()
         }
     }
 }
-
 public void EatProduct()
 {
     if (_selectedSlot == null) return;
@@ -74,19 +92,20 @@ public void EatProduct()
 
     // logika gry
     p.subIleMaGracz(1);
-   _lodowkaInventory.GetLodowkaCORE().GetGracz().GetComponent<energy>().addEnergy(p.getEnergia());
+    _lodowkaInventory.GetLodowkaCORE().GetGracz().GetComponent<energy>().addEnergy(p.getEnergia());
     _lodowkaInventory.GetLodowkaCORE().GetGracz().GetComponent<hunger>().addHunger(p.getGlod());
 
-    // aktualizacja UI
-    _selectedSlot.Refresh();
-
-    // jeśli skończył się produkt
-    if (p.getIleMaGracz() <= 0)
+    if (p.getIleMaGracz() > 0)
     {
-        _selectedSlot.Clear();
-        _selectedSlot = null;
-        _opis.text = "";
+        _selectedSlot.Refresh();
+        _selectedSlot.Focus(true);
+        return;
     }
+    _selectedSlot.Clear();
+    _selectedSlot = null;
+    _opis.text = "";
+    _buttonEat.gameObject.SetActive(false);
+
     ReloadInventory();
 }
 
