@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c201e42ac9b146ee952c8d467984096, type: 3}
   m_Name: maslo
   m_EditorClassIdentifier: Assembly-CSharp::Produkt
-  m_energia: -29
-  m_glod: 58
   m_nazwa: "mas\u0142o"
   m_opis: troche drogo
-  m_ileMaGracz: 0
   m_spriteHighLight: {fileID: 21300000, guid: 346d185dc71a1974daf5697ec9c9bca5, type: 3}
   m_spriteNormal: {fileID: 21300000, guid: 044fdbce77b366e4e81d2fa48efe8f8b, type: 3}
+  m_iloscWEQ: 21
+  m_energia: -29
+  m_glod: 58

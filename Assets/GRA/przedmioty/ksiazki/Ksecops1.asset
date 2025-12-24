@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc771fc67ee255797b638caf93c7c7b1, type: 3}
+  m_Name: Ksecops1
+  m_EditorClassIdentifier: Assembly-CSharp::Ksiazka
+  m_nazwa: secops1
+  m_opis: tak
+  m_spriteHighLight: {fileID: 0}
+  m_spriteNormal: {fileID: 21300000, guid: 850a952e9ea0a80c595c2aa01cd8b835, type: 3}
+  _zawartoscKsiazki: "legenda g\u0142osi, \u017Ce co\u015B tu by\u0142o"

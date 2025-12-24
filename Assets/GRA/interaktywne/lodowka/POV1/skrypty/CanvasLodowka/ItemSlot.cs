@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
         [SerializeField] private TMP_Text _ilosc;
-    private Produkt _produkt;
-    public Produkt GetProdukt(){return _produkt;}
+    private Przedmiot _przedmiot;
+    public Przedmiot GetProdukt(){return _przedmiot;}
     [SerializeField] private Image _img;
     private bool m_isUsed=false;
     private bool m_isSelected=false;
@@ -31,19 +31,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         m_isSelected=czyMaBycFocus;
         if (!czyMaBycFocus)
         {
-            _img.sprite=_produkt.getSpriteNormal();
+            _img.sprite=_przedmiot.GetSpriteNormal();
             _ilosc.color=new Color(1,1,1);
         }
     }
     public void Refresh()
     {
-          _ilosc.text = "x" + _produkt.getIleMaGracz();
+          _ilosc.text = "x" + _przedmiot.GetIloscWEQ();
     }
 public void Clear()
 {
     m_isUsed = false;
     m_isSelected = false;
-    _produkt = null;
+    _przedmiot = null;
 
     _img.sprite = null;
     _img.enabled = false;
@@ -53,16 +53,16 @@ public void Clear()
     _ilosc.enabled = false;
 }
 
-public void AddItem(Produkt produkt)
+public void AddItem(Przedmiot produkt)
 {
     m_isUsed = true;
-    _produkt = produkt;
+    _przedmiot = produkt;
 
     _img.enabled = true;
-    _img.sprite = _produkt.getSpriteNormal();
+    _img.sprite = _przedmiot.GetSpriteNormal();
 
     _ilosc.enabled = true;
-    _ilosc.text = "x" + _produkt.getIleMaGracz();
+    _ilosc.text = "x" + _przedmiot.GetIloscWEQ();
 }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -75,7 +75,7 @@ public void AddItem(Produkt produkt)
             m_isSelected=true;
             _lodowkaMenu.UpdateDesc(this);
             _ilosc.color=new Color(0.2f,1f,0.35f);
-            _img.sprite=_produkt.getSpriteHighLight();
+            _img.sprite=_przedmiot.GetSpriteHighLight();
         }}
     }
 }

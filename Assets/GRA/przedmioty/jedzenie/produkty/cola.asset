@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c201e42ac9b146ee952c8d467984096, type: 3}
   m_Name: cola
   m_EditorClassIdentifier: Assembly-CSharp::Produkt
-  m_energia: 22
-  m_glod: -5
   m_nazwa: cola
   m_opis: odrdzewiacz smaczniejszy
-  m_ileMaGracz: 0
   m_spriteHighLight: {fileID: 21300000, guid: 8de1841621a0b35189cc83f9221a33c6, type: 3}
   m_spriteNormal: {fileID: 21300000, guid: 5eb21f4dadbad4ab6886d270d6f5d59a, type: 3}
+  m_iloscWEQ: 23
+  m_energia: 22
+  m_glod: -5

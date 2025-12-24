@@ -34,12 +34,7 @@ public class LodowkaMenu : MonoBehaviour
     public void UpdateDesc(ItemSlot itemSlot)
     {
         _selectedSlot = itemSlot;
-        
-        String na= "Nazwa: "+itemSlot.GetProdukt().getNazwa()+
-                    "\nOpis: "+itemSlot.GetProdukt().getOpis()+
-                    "\nEnergia: "+itemSlot.GetProdukt().getEnergia()+
-                    "\nGłód: "+itemSlot.GetProdukt().getGlod();
-                _opis.text=na;
+         _opis.text=_selectedSlot.GetProdukt().GetText();
     }
 
     public void UnFocusAll()
@@ -70,7 +65,7 @@ public void ReloadInventory()
     // ponowne ładowanie produktów
     for (int i = 0; i < _lodowkaInventory.GetProdukts().Length; i++)
     {
-        if (_lodowkaInventory.GetProdukts()[i].getIleMaGracz() <= 0)
+        if (_lodowkaInventory.GetProdukts()[i].GetIloscWEQ() <= 0)
             continue;
 
         for (int j = 0; j < _itemSlot.Length; j++)
@@ -85,17 +80,22 @@ public void ReloadInventory()
 }
 public void EatProduct()
 {
+
+/*TUTAJ ZMIENIC ABY DZIALALO DLA ROZNYCH RZECZY*/
     if (_selectedSlot == null) return;
 
-    Produkt p = _selectedSlot.GetProdukt();
-    if (p.getIleMaGracz() <= 0) return;
+                    //new
+    Przedmiot item = _selectedSlot.GetProdukt();
+    if(item is Produkt p){
+    if (p.GetIloscWEQ() <= 0) return;
 
     // logika gry
-    p.subIleMaGracz(1);
+    p.SubIloscWEQ(1);
     _lodowkaInventory.GetLodowkaCORE().GetGracz().GetComponent<energy>().addEnergy(p.getEnergia());
     _lodowkaInventory.GetLodowkaCORE().GetGracz().GetComponent<hunger>().addHunger(p.getGlod());
-
-    if (p.getIleMaGracz() > 0)
+    }
+                    //new
+    if (item.GetIloscWEQ() > 0)
     {
         _selectedSlot.Refresh();
         _selectedSlot.Focus(true);
@@ -108,10 +108,4 @@ public void EatProduct()
 
     ReloadInventory();
 }
-
-
-
-
-
-
 }

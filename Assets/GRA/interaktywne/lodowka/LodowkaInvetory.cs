@@ -1,8 +1,5 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UIElements;
-
-public class LodowkaInvetory : MonoBehaviour
+public class LodowkaInvetory : Inventory<Produkt>
 {
    [SerializeField] private LodowkaCORE _lodowkaCORE;
        public LodowkaCORE GetLodowkaCORE(){return _lodowkaCORE;}
@@ -11,13 +8,6 @@ public class LodowkaInvetory : MonoBehaviour
     [SerializeField] private Produkt[] _produkt;
     public Produkt[] GetProdukts(){return _produkt;}
 
-    
-    public void Start()
-    {
-      //  _lodowkaCORE=GetComponentInParent<LodowkaCORE>();
-    }
-
-
-
-
+    public Przedmiot[] GetItems()
+    {return _produkt;}
 }
