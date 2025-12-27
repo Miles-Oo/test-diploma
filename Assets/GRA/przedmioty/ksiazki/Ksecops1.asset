@@ -16,4 +16,4 @@ MonoBehaviour:
   m_opis: tak
   m_spriteHighLight: {fileID: 0}
   m_spriteNormal: {fileID: 21300000, guid: 850a952e9ea0a80c595c2aa01cd8b835, type: 3}
-  _zawartoscKsiazki: "legenda g\u0142osi, \u017Ce co\u015B tu by\u0142o"
+  m_iloscWEQ: 15

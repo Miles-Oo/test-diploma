@@ -19,8 +19,15 @@ public class Produkt:Przedmiot{
       return na;
     }
 
-    public override void UsePrzedmiot()
-    {
-        throw new System.NotImplementedException();
-    }
+public override void UsePrzedmiot()
+{
+    var gracz = FindAnyObjectByType<LodowkaInvetory>()
+        .GetLodowkaCORE()
+        .GetGracz();
+
+    gracz.GetComponent<energy>().addEnergy(m_energia);
+    gracz.GetComponent<hunger>().addHunger(m_glod);
+    SubIloscWEQ(1);
+}
+
 }

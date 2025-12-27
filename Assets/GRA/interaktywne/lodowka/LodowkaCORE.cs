@@ -23,7 +23,7 @@ public class LodowkaCORE : MonoBehaviour, IInteractable
     {
         _lodowkaInventory.GetLodowkaMenu().GetMenuCanvas().SetActive(false);
         _lodowkaInventory.GetLodowkaMenu().SetForItemSlots();
-        _lodowkaInventory.GetLodowkaMenu().ReloadInventory();
+        _lodowkaInventory.GetLodowkaMenu().ReloadInventory(_lodowkaInventory);
     }
     public void Interact()
     {

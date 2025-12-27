@@ -6,20 +6,20 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
         [SerializeField] private TMP_Text _ilosc;
     private Przedmiot _przedmiot;
-    public Przedmiot GetProdukt(){return _przedmiot;}
+    public Przedmiot GetPrzedmiot(){return _przedmiot;}
     [SerializeField] private Image _img;
     private bool m_isUsed=false;
     private bool m_isSelected=false;
 
     //ahhh tak ulany jeden plik ze wszystkim potem trzeba to przerobić....
-    private LodowkaMenu _lodowkaMenu;
+    private Menu _menu;
     public bool IsUsed(){return m_isUsed;}
 
     //kiedy gracz klika na dany produkt
     public bool IsSelected(){return m_isSelected;}
-    public void SetLodowka(LodowkaMenu lodM)
+    public void SetLodowka(Menu lodM)
     {
-        _lodowkaMenu = lodM;
+        _menu = lodM;
     }
     public Image GetImage()
     {
@@ -70,10 +70,10 @@ public void AddItem(Przedmiot produkt)
        if(eventData.button== PointerEventData.InputButton.Left)
         {
             if(m_isUsed){
-            _lodowkaMenu.UnFocusAll();
-            _lodowkaMenu.ShowButton();
+            _menu.UnFocusAll();
+            _menu.ShowButton();
             m_isSelected=true;
-            _lodowkaMenu.UpdateDesc(this);
+            _menu.UpdateDesc(this);
             _ilosc.color=new Color(0.2f,1f,0.35f);
             _img.sprite=_przedmiot.GetSpriteHighLight();
         }}
