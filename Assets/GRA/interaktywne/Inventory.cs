@@ -1,14 +1,13 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Inventory<T> : MonoBehaviour where T : Przedmiot
+public abstract class Inventory : MonoBehaviour
 {
-    [SerializeField] protected T[] _przedmioty;
-    public T[] GetPrzedmioty(){return _przedmioty;}
+    [SerializeField] protected Przedmiot[] _przedmioty;
+    public Przedmiot[] GetPrzedmioty(){return _przedmioty;}
 
     public void AddPrzedmiot(Przedmiot przedmiot)
     {
-       if(przedmiot is T typed){
+       if(przedmiot is Przedmiot typed){
        typed.AddIloscWEQ(1);
        }
     }

@@ -52,7 +52,7 @@ public class Menu : MonoBehaviour
     {
         _buttonEat.gameObject.SetActive(true);
     }
-public void ReloadInventory<T>(Inventory<T> inventory ) where T:Przedmiot
+public void ReloadInventory(Inventory inventory )
 {
     // reset UI
     for (int i = 0; i < _itemSlot.Length; i++)

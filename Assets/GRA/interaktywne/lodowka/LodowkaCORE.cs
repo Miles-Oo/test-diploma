@@ -1,71 +1,59 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LodowkaCORE : MonoBehaviour, IInteractable
+public class LodowkaCORE :Core, IInteractable
 {
-    [SerializeField] GameObject _gracz;
-    public GameObject GetGracz(){ return _gracz;}
-    private bool m_jestInterakcja=false;
+
+    
     //boxColider łóżka, ten od kolizji, na rodzicu 
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
-   [SerializeField] private AudioSource source;
-   [SerializeField] private AudioClip open;
-   [SerializeField] private AudioClip close;
-
-
 
     [SerializeField] private LodowkaInvetory _lodowkaInventory;
-
+    public override Inventory GetInventory()
+    {
+        return _lodowkaInventory;
+    }
 
     public void Start()
     {
         _lodowkaInventory.GetLodowkaMenu().GetMenuCanvas().SetActive(false);
         _lodowkaInventory.GetLodowkaMenu().SetForItemSlots();
         _lodowkaInventory.GetLodowkaMenu().ReloadInventory(_lodowkaInventory);
+            m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
     }
     public void Interact()
     {
-        if (m_jestInterakcja){
+        if (IsInteractja()){
             TurnOFFInteract();
-            m_jestInterakcja=false;
+          SetJestInterakcja(false);
         }
         else{
              TurnONInteract();
-             m_jestInterakcja=true;
+            SetJestInterakcja(true);
         }
     }
 
-
-
-
-
-
-
-
-    public void TurnONInteract()
-    {
+    public void TurnONInteract(){
     Debug.Log("Otwieram Lodówkę");
     PlayersDisabes();
-
     //dźwięk otwierania lodówki
-    source.PlayOneShot(open);
-
+    PlayAudioOn();
     //grafika zapisanie spritea oraz zmiana na sprite otwartej lodówki
-    m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
+
     GetComponentInParent<SpriteRenderer>().sprite=m_sleepSprite;
 
     //uruchomienie menu lodówki
      _lodowkaInventory.GetLodowkaMenu().GetMenuCanvas().SetActive(true);
+     _lodowkaInventory.GetLodowkaMenu().ReloadInventory(_lodowkaInventory);
     }
-    public void TurnOFFInteract()
-    {
+    public void TurnOFFInteract(){
     Debug.Log("Zamykam Lodówkę");
     PlayersEnabes();
 
     //dźwięk zamykania lodówki;
-    source.PlayOneShot(close);
+    PlayAudioOff();
 
     //wyłączenie menu lodówki
      _lodowkaInventory.GetLodowkaMenu().GetMenuCanvas().SetActive(false);
@@ -77,19 +65,5 @@ public class LodowkaCORE : MonoBehaviour, IInteractable
     _lodowkaInventory.GetLodowkaMenu().UnSelect();
     }
 
-    private void PlayersDisabes(){
-         _gracz.GetComponent<PlayerMovement>().CanMove(false); 
-        //ZMIANA TUTAJ JAK JEDNAK LODÓWKA BEZ PRĄDU MA DZIAŁAĆ
-      _gracz.GetComponentInChildren<latarka>().Lock();
-        if (_gracz.GetComponentInChildren<latarka>().IsFlashlightOn())
-        {
-            _gracz.GetComponentInChildren<latarka>().turnOff();
-        }
-    }
-    private void PlayersEnabes()
-    {
-    _gracz.GetComponent<PlayerMovement>().CanMove(true);
-    _gracz.GetComponentInChildren<latarka>().Unlock();
 
-    }
 }

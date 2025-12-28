@@ -13044,11 +13044,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LodowkaCORE
   _gracz: {fileID: 1235280508}
+  source: {fileID: 1617952407}
+  openClip: {fileID: 8300000, guid: 1d4545f1705e0ea1292345369dc4804d, type: 3}
+  closeClip: {fileID: 8300000, guid: 558774967a06294758e0296bac2fa602, type: 3}
   _boxCollider2D: {fileID: 19853645}
   m_sleepSprite: {fileID: 21300000, guid: 13f52c5ae1654b4328a4a8707162e23d, type: 3}
-  source: {fileID: 1617952407}
-  open: {fileID: 8300000, guid: 1d4545f1705e0ea1292345369dc4804d, type: 3}
-  close: {fileID: 8300000, guid: 558774967a06294758e0296bac2fa602, type: 3}
   _lodowkaInventory: {fileID: 1617952409}
 --- !u!82 &1617952407
 AudioSource:

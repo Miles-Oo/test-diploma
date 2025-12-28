@@ -9,11 +9,10 @@ public class paczka : MonoBehaviour,IInteractable
     // wywoływane, jak gracz na stronie zamówi to tworzy nową paczkę oraz jej zawartość, wraz z miejscem do którego ma dodać rzeczy jak gracz użyje interakcji.
    //Zamienic na interfejs inventory
    //Przerobić inventory aby był to hashset czy coś gdzie da się drugą rzecz jako ilosc.
-    IInteractable _miejsceDodania;
-    GameObject _rzecz;
+   [SerializeField] Core _miejsceDodania;
+   [SerializeField] Przedmiot _przedmiot;
    void Start()
     {
-      
     }
     
     public void Interact()
@@ -25,12 +24,13 @@ public class paczka : MonoBehaviour,IInteractable
     }
 
 
-    public void Sender(IInteractable miejsce, GameObject rzecz)
+    public void Sender(Core miejsce, Przedmiot rzecz)
     {
         _miejsceDodania=miejsce;
+        _przedmiot=rzecz;
     }
     private void Recive()
     {
-          //miejsce.dodajPrzedmiot(rzecz).
+          _miejsceDodania.GetInventory().AddPrzedmiot(_przedmiot);
     }
 }
