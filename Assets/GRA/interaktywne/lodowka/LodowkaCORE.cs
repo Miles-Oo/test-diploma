@@ -20,8 +20,10 @@ public class LodowkaCORE :Core, IInteractable
     {
         _lodowkaInventory.GetLodowkaMenu().GetMenuCanvas().SetActive(false);
         _lodowkaInventory.GetLodowkaMenu().SetForItemSlots();
-        _lodowkaInventory.GetLodowkaMenu().ReloadInventory(_lodowkaInventory);
+        _lodowkaInventory.GetLodowkaMenu().ReloadInventory();
             m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
+      //  _lodowkaInventory.GetLodowkaMenu().GetInventory() = _lodowkaInventory;
+
     }
     public void Interact()
     {
@@ -46,7 +48,7 @@ public class LodowkaCORE :Core, IInteractable
 
     //uruchomienie menu lodówki
      _lodowkaInventory.GetLodowkaMenu().GetMenuCanvas().SetActive(true);
-     _lodowkaInventory.GetLodowkaMenu().ReloadInventory(_lodowkaInventory);
+     _lodowkaInventory.GetLodowkaMenu().ReloadInventory();
     }
     public void TurnOFFInteract(){
     Debug.Log("Zamykam Lodówkę");
@@ -64,6 +66,4 @@ public class LodowkaCORE :Core, IInteractable
     _lodowkaInventory.GetLodowkaMenu().UnFocusAll();
     _lodowkaInventory.GetLodowkaMenu().UnSelect();
     }
-
-
 }

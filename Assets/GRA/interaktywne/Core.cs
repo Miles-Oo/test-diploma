@@ -24,7 +24,10 @@ public abstract class Core: MonoBehaviour
     protected void PlayAudio(AudioClip audioClip){source.PlayOneShot(audioClip);}
 
     //nw jak to zrobić aby zwracał inventory, bo inventory może nie musi posidać i to różnego typu.
-    public abstract Inventory GetInventory();
+    public virtual Inventory GetInventory()
+    {
+        return null;
+    }
     protected void PlayersDisabes(){
          _gracz.GetComponent<PlayerMovement>().CanMove(false); 
         //ZMIANA TUTAJ JAK JEDNAK LODÓWKA BEZ PRĄDU MA DZIAŁAĆ
@@ -33,11 +36,12 @@ public abstract class Core: MonoBehaviour
         {
             _gracz.GetComponentInChildren<latarka>().turnOff();
         }
+        _gracz.GetComponent<PlayerRotation>().enabled=false;
     }   
     protected void PlayersEnabes()
     {
     _gracz.GetComponent<PlayerMovement>().CanMove(true);
     _gracz.GetComponentInChildren<latarka>().Unlock();
-
+ _gracz.GetComponent<PlayerRotation>().enabled=true;
     }
 }

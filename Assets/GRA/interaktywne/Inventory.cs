@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Inventory : MonoBehaviour
 {
-    [SerializeField] protected Przedmiot[] _przedmioty;
-    public Przedmiot[] GetPrzedmioty(){return _przedmioty;}
+    [SerializeField] protected List<Przedmiot> _przedmioty;
+    public List<Przedmiot>  GetPrzedmioty(){return _przedmioty;}
 
     public void AddPrzedmiot(Przedmiot przedmiot)
     {

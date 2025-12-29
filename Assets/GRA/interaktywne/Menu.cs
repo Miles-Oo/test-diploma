@@ -7,7 +7,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private TMP_Text _opis;
     [SerializeField] private ItemSlot[] _itemSlot;    
     [SerializeField] private Button _buttonEat;
-
+    [SerializeField] private Inventory _inventory;
+   // public Inventory GetInventory(){return _inventory;}
     private ItemSlot _selectedSlot;
 
 
@@ -52,23 +53,23 @@ public class Menu : MonoBehaviour
     {
         _buttonEat.gameObject.SetActive(true);
     }
-public void ReloadInventory(Inventory inventory )
+public void ReloadInventory()
 {
     // reset UI
     for (int i = 0; i < _itemSlot.Length; i++)
         _itemSlot[i].Clear();
 
     // ponowne ładowanie produktów
-    for (int i = 0; i < inventory.GetPrzedmioty().Length; i++)
+    for (int i = 0; i < _inventory.GetPrzedmioty().Count; i++)
     {
-        if (inventory.GetPrzedmioty()[i].GetIloscWEQ() <= 0)
+        if (_inventory.GetPrzedmioty()[i].GetIloscWEQ() <= 0)
             continue;
 
         for (int j = 0; j < _itemSlot.Length; j++)
         {
             if (!_itemSlot[j].IsUsed())
             {
-                _itemSlot[j].AddItem(inventory.GetPrzedmioty()[i]);
+                _itemSlot[j].AddItem(_inventory.GetPrzedmioty()[i]);
                 break;
             }
         }
@@ -92,6 +93,8 @@ public void UseSelected()
     _selectedSlot = null;
     _opis.text = "";
     _buttonEat.gameObject.SetActive(false);
+
+    ReloadInventory();
 }
 
 }

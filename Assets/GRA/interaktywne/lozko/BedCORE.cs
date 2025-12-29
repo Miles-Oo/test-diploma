@@ -13,10 +13,6 @@ public class BedCORE : Core, IInteractable
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
-    public override Inventory GetInventory()
-    {
-       return null;
-    }
     public void Interact()
     {
         if (IsInteractja()){

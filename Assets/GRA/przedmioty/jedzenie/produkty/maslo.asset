@@ -16,6 +16,6 @@ MonoBehaviour:
   m_opis: troche drogo
   m_spriteHighLight: {fileID: 21300000, guid: 346d185dc71a1974daf5697ec9c9bca5, type: 3}
   m_spriteNormal: {fileID: 21300000, guid: 044fdbce77b366e4e81d2fa48efe8f8b, type: 3}
-  m_iloscWEQ: 21
+  m_iloscWEQ: 3
   m_energia: -29
   m_glod: 58
