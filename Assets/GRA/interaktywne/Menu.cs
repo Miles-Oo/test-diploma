@@ -1,21 +1,15 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-public class Menu : MonoBehaviour
-{    [SerializeField] private GameObject _menu;
+using UnityEngine.Video;
+public abstract class Menu : MonoBehaviour
+{    [SerializeField] protected GameObject _menu;
     public GameObject GetMenuCanvas(){return _menu;}
-    [SerializeField] private TMP_Text _opis;
-    [SerializeField] private ItemSlot[] _itemSlot;    
-    [SerializeField] private Button _buttonEat;
-    [SerializeField] private Inventory _inventory;
-   // public Inventory GetInventory(){return _inventory;}
-    private ItemSlot _selectedSlot;
+    [SerializeField] protected ItemSlot[] _itemSlot;    
+    [SerializeField] protected Inventory _inventory;
+    protected ItemSlot _selectedSlot;
 
 
-    public void Start()
+    public virtual void Start()
     {
-        _opis.text="";
-        _buttonEat.gameObject.SetActive(false);
         SetForItemSlots();
     }
 
@@ -24,14 +18,14 @@ public class Menu : MonoBehaviour
     public void SetForItemSlots()
     {
         for(int i =0;i<_itemSlot.Length; i++){
-            _itemSlot[i].SetLodowka(this);
+            _itemSlot[i].SetMenu(this);
         }
     }
 
-    public void UpdateDesc(ItemSlot itemSlot)
+    public virtual void UpdateDesc(ItemSlot itemSlot)
     {
         _selectedSlot = itemSlot;
-         _opis.text=_selectedSlot.GetPrzedmiot().GetText();
+
     }
 
     public void UnFocusAll()
@@ -43,15 +37,14 @@ public class Menu : MonoBehaviour
             }
     }
 
-    public void UnSelect()
+    public virtual void UnSelect()
     {
         _selectedSlot=null;
-        _opis.text="";
-        _buttonEat.gameObject.SetActive(false);
+
     }
-    public void ShowButton()
+    public virtual void ShowButton()
     {
-        _buttonEat.gameObject.SetActive(true);
+
     }
 public void ReloadInventory()
 {
@@ -91,10 +84,9 @@ public void UseSelected()
 
     _selectedSlot.Clear();
     _selectedSlot = null;
-    _opis.text = "";
-    _buttonEat.gameObject.SetActive(false);
-
+    OtherUsage();
     ReloadInventory();
 }
 
+public virtual void OtherUsage(){}
 }

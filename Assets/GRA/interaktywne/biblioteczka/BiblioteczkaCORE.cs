@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LodowkaCORE :Core, IInteractable
+public class BiblioteczkaCORE :Core, IInteractable
 {
 
     
@@ -10,7 +10,7 @@ public class LodowkaCORE :Core, IInteractable
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
 
-    [SerializeField] private LodowkaInvetory _inventory;
+    [SerializeField] private BiblioteczkaInvetory _inventory;
     public override Inventory GetInventory()
     {
         return _inventory;
@@ -41,8 +41,7 @@ public class LodowkaCORE :Core, IInteractable
     Debug.Log("Otwieram Lodówkę");
     PlayersDisabes();
     //dźwięk otwierania lodówki
-    PlayAudioOn();
-    //grafika zapisanie spritea oraz zmiana na sprite otwartej lodówki
+   // PlayAudioOn();
 
     GetComponentInParent<SpriteRenderer>().sprite=m_sleepSprite;
 
@@ -55,7 +54,7 @@ public class LodowkaCORE :Core, IInteractable
     PlayersEnabes();
 
     //dźwięk zamykania lodówki;
-    PlayAudioOff();
+   // PlayAudioOff();
 
     //wyłączenie menu lodówki
      _inventory.GetMenu().GetMenuCanvas().SetActive(false);

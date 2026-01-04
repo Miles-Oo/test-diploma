@@ -1,38 +1,58 @@
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 public class interactions:MonoBehaviour{
     
     [SerializeField] private BoxCollider2D _fieldAction;
-    private IInteractable _interactiveItem=null;
+    private List<IInteractable>  _interactiveItem=new();
 
-    private void Update(){
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(_interactiveItem!=null){
-            _interactiveItem.Interact();
-            }
-        }
-    }
-    void OnTriggerEnter2D(Collider2D other)
+   private void Update()
+{
+    if (Input.GetKeyDown(KeyCode.E) && _interactiveItem.Count > 0)
     {
-    var interactable = other.GetComponent<IInteractable>();
-    if (interactable != null && _interactiveItem == null)
-    {
-        print("widze");
-        _interactiveItem = interactable;
+        rawr();
     }
-    }
-    void OnTriggerExit2D(Collider2D other)
+}
+
+private void rawr()
+{
+    if (_interactiveItem.Count == 0) return;
+
+    var najblizy = _interactiveItem[0];
+
+    for (int i = 1; i < _interactiveItem.Count; i++)
     {
-    var interactable = other.GetComponent<IInteractable>();
-    if (interactable == _interactiveItem)
-    {
-        print("nie widze");
-        _interactiveItem = null;
-    }
+        var a = _interactiveItem[i] as MonoBehaviour;
+        var b = najblizy as MonoBehaviour;
+
+        if (a == null || b == null) continue;
+
+        float da = Vector2.Distance(transform.position, a.transform.position);
+        float db = Vector2.Distance(transform.position, b.transform.position);
+
+        if (da < db)
+            najblizy = _interactiveItem[i];
     }
 
-    private void FixedUpdate()
+    najblizy.Interact();
+}
+
+void OnTriggerEnter2D(Collider2D other)
+{
+    var interactable = other.GetComponent<IInteractable>();
+    if (interactable != null && !_interactiveItem.Contains(interactable))
     {
-        
+        _interactiveItem.Add(interactable);
     }
+}
+
+void OnTriggerExit2D(Collider2D other)
+{
+    var interactable = other.GetComponent<IInteractable>();
+    if (interactable != null)
+    {
+        _interactiveItem.Remove(interactable);
+    }
+}
+
 }

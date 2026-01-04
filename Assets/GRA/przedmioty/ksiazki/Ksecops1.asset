@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ksiazka
   m_nazwa: secops1
   m_opis: tak
-  m_spriteHighLight: {fileID: 0}
+  m_spriteHighLight: {fileID: 21300000, guid: e117fad6042700e698f28dc833f7eee3, type: 3}
   m_spriteNormal: {fileID: 21300000, guid: 850a952e9ea0a80c595c2aa01cd8b835, type: 3}
   m_iloscWEQ: 15

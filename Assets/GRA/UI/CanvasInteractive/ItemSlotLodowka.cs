@@ -1,32 +1,12 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlotLodowka : ItemSlot
 {
-        [SerializeField] private TMP_Text _ilosc;
-    private Przedmiot _przedmiot;
-    public Przedmiot GetPrzedmiot(){return _przedmiot;}
-    [SerializeField] private Image _img;
-    private bool m_isUsed=false;
-    private bool m_isSelected=false;
+    [SerializeField] private TMP_Text _ilosc;
 
-    //ahhh tak ulany jeden plik ze wszystkim potem trzeba to przerobić....
-    private Menu _menu;
-    public bool IsUsed(){return m_isUsed;}
-
-    //kiedy gracz klika na dany produkt
-    public bool IsSelected(){return m_isSelected;}
-    public void SetLodowka(Menu lodM)
-    {
-        _menu = lodM;
-    }
-    public Image GetImage()
-    {
-        return _img;
-    }
     //jak gracz klinknie na iknoe produktu co ma się zadziać
-    public void Focus(bool czyMaBycFocus)
+    public override void Focus(bool czyMaBycFocus)
     {
         m_isSelected=czyMaBycFocus;
         if (!czyMaBycFocus)
@@ -35,11 +15,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             _ilosc.color=new Color(1,1,1);
         }
     }
-    public void Refresh()
+    public override void Refresh()
     {
           _ilosc.text = "x" + _przedmiot.GetIloscWEQ();
     }
-public void Clear()
+public override void Clear()
 {
     m_isUsed = false;
     m_isSelected = false;
@@ -53,19 +33,14 @@ public void Clear()
     _ilosc.enabled = false;
 }
 
-public void AddItem(Przedmiot produkt)
+public override void AddItem(Przedmiot produkt)
 {
-    m_isUsed = true;
-    _przedmiot = produkt;
-
-    _img.enabled = true;
-    _img.sprite = _przedmiot.GetSpriteNormal();
-
+    base.AddItem(produkt);
     _ilosc.enabled = true;
     _ilosc.text = "x" + _przedmiot.GetIloscWEQ();
 }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
        if(eventData.button== PointerEventData.InputButton.Left)
         {
@@ -77,5 +52,16 @@ public void AddItem(Przedmiot produkt)
             _ilosc.color=new Color(0.2f,1f,0.35f);
             _img.sprite=_przedmiot.GetSpriteHighLight();
         }}
+    }   
+     public override void OnPointerExit(PointerEventData eventData)
+    {
+        if(!m_isSelected){
+       _img.sprite=_przedmiot.GetSpriteNormal();
+        }
+    }     public override void OnPointerEnter(PointerEventData eventData)
+    {
+        if(!m_isSelected){
+       _img.sprite=_przedmiot.GetSpriteHighLight();
+        }
     }
 }

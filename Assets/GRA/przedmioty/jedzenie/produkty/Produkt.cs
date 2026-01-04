@@ -22,7 +22,7 @@ public class Produkt:Przedmiot{
 public override void UsePrzedmiot()
 {
     var gracz = FindAnyObjectByType<LodowkaInvetory>()
-        .GetLodowkaCORE()
+        .GetCORE()
         .GetGracz();
 
     gracz.GetComponent<energy>().addEnergy(m_energia);
