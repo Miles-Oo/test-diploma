@@ -42,6 +42,7 @@ public class BiblioteczkaCORE :Core, IInteractable
     PlayersDisabes();
     //dźwięk otwierania lodówki
    // PlayAudioOn();
+    //grafika zapisanie spritea oraz zmiana na sprite otwartej lodówki
 
     GetComponentInParent<SpriteRenderer>().sprite=m_sleepSprite;
 
