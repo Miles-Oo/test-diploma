@@ -31,17 +31,14 @@ public abstract class Core: MonoBehaviour
     protected void PlayersDisabes(){
          _gracz.GetComponent<PlayerMovement>().CanMove(false); 
         //ZMIANA TUTAJ JAK JEDNAK LODÓWKA BEZ PRĄDU MA DZIAŁAĆ
-      _gracz.GetComponentInChildren<latarka>().Lock();
-        if (_gracz.GetComponentInChildren<latarka>().IsFlashlightOn())
-        {
-            _gracz.GetComponentInChildren<latarka>().turnOff();
-        }
         _gracz.GetComponent<PlayerRotation>().enabled=false;
+         GetGracz().GetComponentInChildren<latarka>().CanvasLightON();
     }   
     protected void PlayersEnabes()
     {
+         GetGracz().GetComponentInChildren<latarka>().CanvasLightOFF();
     _gracz.GetComponent<PlayerMovement>().CanMove(true);
-    _gracz.GetComponentInChildren<latarka>().Unlock();
+
  _gracz.GetComponent<PlayerRotation>().enabled=true;
     }
 }

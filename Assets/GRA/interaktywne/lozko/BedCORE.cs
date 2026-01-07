@@ -30,6 +30,12 @@ public class BedCORE : Core, IInteractable
       _gamewordTimer.ChangeOfSpeed(10);
      
      PlayersDisabes();
+ GetGracz().GetComponentInChildren<latarka>().Lock();
+        if (GetGracz().GetComponentInChildren<latarka>().IsFlashlightOn())
+        {
+            GetGracz().GetComponentInChildren<latarka>().turnOff();
+        }
+
       _boxCollider2D.enabled=false;
       GetGracz().GetComponent<Rigidbody2D>().MovePosition(_sleepPoint.position);
       //tak, trzeba to tak skomplikować inaczej odpala audio i tak jak gracz ma wył. latarkę
@@ -43,6 +49,8 @@ public class BedCORE : Core, IInteractable
       Debug.Log("Wstaje");
       _gamewordTimer.ChangeSpeedToNormal();
      PlayersEnabes();
+
+         GetGracz().GetComponentInChildren<latarka>().Unlock();
       _boxCollider2D.enabled=true;
       GetGracz().GetComponent<Rigidbody2D>().MovePosition(_wakeUpPoint.position);
      

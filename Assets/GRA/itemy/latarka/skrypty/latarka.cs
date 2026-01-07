@@ -8,6 +8,10 @@ public class latarka : MonoBehaviour
    
    private bool m_isFlashlightOn=false;
    private Light2D _light;
+   private Light2D _lightInCanvas;
+   [SerializeField] private GameObject _lightCanvas;
+   public void CanvasLightON(){_lightCanvas.SetActive(true);}
+   public void CanvasLightOFF(){_lightCanvas.SetActive(false);}
    private SpriteRenderer _spriteRenderer;
    private bool m_lock;
 
@@ -22,8 +26,10 @@ public class latarka : MonoBehaviour
     void Start()
     {
     _light=GetComponent<Light2D>();
+    _lightInCanvas=_lightCanvas.GetComponent<Light2D>();
     _spriteRenderer=GetComponent<SpriteRenderer>();
     _light.enabled=false;
+    _lightCanvas.SetActive(false);
     _spriteRenderer.enabled=false;
 
     m_lock=false;
@@ -50,6 +56,7 @@ public class latarka : MonoBehaviour
     {
         source.PlayOneShot(lightON);
         _light.enabled=true;
+        _lightInCanvas.enabled=true;
         _spriteRenderer.enabled=true;
         m_isFlashlightOn=true;
     }
@@ -57,6 +64,7 @@ public class latarka : MonoBehaviour
     {
         source.PlayOneShot(lightOFF);
          _light.enabled=false;
+         _lightInCanvas.enabled=false;
         _spriteRenderer.enabled=false;
         m_isFlashlightOn=false;
     }

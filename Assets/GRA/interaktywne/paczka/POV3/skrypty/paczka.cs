@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class paczka : MonoBehaviour,IInteractable
 {
@@ -10,9 +8,10 @@ public class paczka : MonoBehaviour,IInteractable
    //Zamienic na interfejs inventory
    //Przerobić inventory aby był to hashset czy coś gdzie da się drugą rzecz jako ilosc.
    [SerializeField] Core _miejsceDodania;
-   [SerializeField] Przedmiot _przedmiot;
+   [SerializeField] List<Przedmiot> _przedmiotList;
    void Start()
     {
+        _przedmiotList=new List<Przedmiot>();
     }
     
     public void Interact()
@@ -24,13 +23,27 @@ public class paczka : MonoBehaviour,IInteractable
     }
 
 
-    public void Sender(Core miejsce, Przedmiot rzecz)
+    public void SenderOne(Core miejsce, Przedmiot rzecz)
     {
         _miejsceDodania=miejsce;
-        _przedmiot=rzecz;
+        _przedmiotList.Add(rzecz);
+    }
+    public void SenderMulti(Core miejsce, List<Przedmiot> rzeczy)
+    {
+        _miejsceDodania=miejsce;
+        for(int i = 0; i < rzeczy.Count; i++)
+        {
+             _przedmiotList.Add(rzeczy[i]);
+        }
     }
     private void Recive()
     {
-          _miejsceDodania.GetInventory().AddPrzedmiot(_przedmiot);
+        if(_przedmiotList==null) return;
+        if(_przedmiotList.Count==0) return;
+        for(int i = 0; i < _przedmiotList.Count; i++)
+        {
+             _miejsceDodania.GetInventory().AddPrzedmiot(_przedmiotList[i]);
+        }
+         
     }
 }

@@ -15,7 +15,7 @@ TagManager:
   - 
   - interactive
   - light
-  - 
+  - test
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: light
     uniqueID: 2919530455
+    locked: 0
+  - name: test
+    uniqueID: 1905599245
     locked: 0
   m_RenderingLayers:
   - Default
