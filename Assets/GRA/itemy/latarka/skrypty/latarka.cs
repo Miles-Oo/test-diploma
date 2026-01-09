@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,8 +8,8 @@ public class latarka : MonoBehaviour
    private Light2D _light;
    private Light2D _lightInCanvas;
    [SerializeField] private GameObject _lightCanvas;
-   public void CanvasLightON(){_lightCanvas.SetActive(true);}
-   public void CanvasLightOFF(){_lightCanvas.SetActive(false);}
+   public void CanvasLightActive(bool wylwl){_lightCanvas.SetActive(wylwl);}
+
    private SpriteRenderer _spriteRenderer;
    private bool m_lock;
 
@@ -39,14 +37,8 @@ public class latarka : MonoBehaviour
           if (Input.GetKeyDown(KeyCode.F)){FlipFlop();}
     }
 
-    public void Unlock()
-    {
-        m_lock=false;
-    }
-    public void Lock()
-    {
-        m_lock=true;
-    }
+    public void Unlock(){m_lock=false;}
+    public void Lock(){m_lock=true;}
     public void FlipFlop()
     {
         if (!m_lock&&!m_isFlashlightOn){turnOn();}

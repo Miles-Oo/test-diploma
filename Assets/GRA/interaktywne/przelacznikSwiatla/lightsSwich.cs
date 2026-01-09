@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class lightsSwich : MonoBehaviour,IInteractable
 {
-   [SerializeField] private Light2D[] _lights;
+   [SerializeField] private LightHandler[] _lights;
    [SerializeField] private AudioSource source;
    [SerializeField] private AudioClip lightsOFF;
    [SerializeField] private AudioClip lightsON;
@@ -15,8 +15,8 @@ public class lightsSwich : MonoBehaviour,IInteractable
         if (_lights == null){this.enabled=false;}
         else{
         for(int i =0;i<_lights.Length;i++){
-        _lights[i].enabled=false;
-       }
+        _lights[i].LightOFF();
+        }
         }
     }
     
@@ -34,7 +34,7 @@ public class lightsSwich : MonoBehaviour,IInteractable
     {
         source.PlayOneShot(lightsOFF);
         for(int i =0;i<_lights.Length;i++){
-        _lights[i].enabled=false;
+        _lights[i].LightOFF();
        }
     }
 
@@ -42,7 +42,7 @@ public class lightsSwich : MonoBehaviour,IInteractable
     {
         source.PlayOneShot(lightsON);
         for(int i =0;i<_lights.Length;i++){
-        _lights[i].enabled=true;
+        _lights[i].LightON();
        }
     }
 
