@@ -23,7 +23,8 @@ public class LightHandler : MonoBehaviour
         {
             if (hit.GetComponent<IInteractable>() != null)
             {
-                if ( hit.GetComponentInChildren<CanvasLight2D>()!=null)
+                
+                if ( hit.transform.parent.GetComponentInChildren<CanvasLight2D>()!=null)
                 {
                     przedmioityInteractive.Add(hit);
                     LightSet(hit);
@@ -53,13 +54,13 @@ public class LightHandler : MonoBehaviour
     {
         foreach (Collider2D hit in przedmioityInteractive)
         {
-            hit.GetComponentInChildren<CanvasLight2D>().GetLight2D().enabled=true;
+            hit.transform.parent.GetComponentInChildren<CanvasLight2D>(true).GetLight2D().enabled=true;
         }
     }
     private void LightCanvasOFF()
     {
         foreach (Collider2D hit in przedmioityInteractive){
-            hit.GetComponentInChildren<CanvasLight2D>().GetLight2D().enabled=false;
+            hit.transform.parent.GetComponentInChildren<CanvasLight2D>(true).GetLight2D().enabled=false;
         }
     }
 
@@ -76,10 +77,10 @@ public class LightHandler : MonoBehaviour
         //odległość między światłem a obiektem do oświetlenia
         var distance= math.sqrt(math.pow(hit.transform.position.x-transform.position.x,2)+math.pow(  hit.transform.position.y-transform.position.y,2));
         //jeżeli pare świateł świeci na obiekt to wybierze najaśniejsze/najbiższe
-        if (hit.GetComponentInChildren<CanvasLight2D>().GetLight2D().intensity<=_light2D_onMap.intensity/distance)
+        if (hit.transform.parent.GetComponentInChildren<CanvasLight2D>().GetLight2D().intensity<=_light2D_onMap.intensity/distance)
         {
-        hit.GetComponentInChildren<CanvasLight2D>().GetLight2D().intensity=_light2D_onMap.intensity/distance;
-        hit.GetComponentInChildren<CanvasLight2D>().GetLight2D().color=_light2D_onMap.color;
+        hit.transform.parent.GetComponentInChildren<CanvasLight2D>().GetLight2D().intensity=_light2D_onMap.intensity/distance;
+        hit.transform.parent.GetComponentInChildren<CanvasLight2D>().GetLight2D().color=_light2D_onMap.color;
         }
        }
 }
