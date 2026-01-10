@@ -8,10 +8,10 @@ public class paczka : MonoBehaviour,IInteractable
    //Zamienic na interfejs inventory
    //Przerobić inventory aby był to hashset czy coś gdzie da się drugą rzecz jako ilosc.
    [SerializeField] Core _miejsceDodania;
-   [SerializeField] List<Przedmiot> _przedmiotList;
+   [SerializeField] List<Przedmiot> _przedmiotList=new List<Przedmiot>();
    void Start()
     {
-        _przedmiotList=new List<Przedmiot>();
+    
     }
     
     public void Interact()
