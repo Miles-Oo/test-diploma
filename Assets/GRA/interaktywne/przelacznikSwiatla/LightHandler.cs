@@ -21,15 +21,14 @@ public class LightHandler : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
-            if (hit.GetComponent<IInteractable>() != null)
-            {
-                
+            if (hit.GetComponent<IInteractable>() != null && hit.GetComponent<Menu>()!=null)
+            { 
+                print(hit.gameObject);
                 if ( hit.transform.parent.GetComponentInChildren<CanvasLight2D>()!=null)
                 {
                     przedmioityInteractive.Add(hit);
                     LightSet(hit);
                 }
-               
             }
         }
     }
