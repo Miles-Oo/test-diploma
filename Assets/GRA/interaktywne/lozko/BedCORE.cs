@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 public class BedCORE : Core, IInteractable
 {
     [SerializeField] gamewordTimer _gamewordTimer;
-    [SerializeField] Transform _sleepPoint;
-    [SerializeField] Transform _wakeUpPoint;
+    [SerializeField] GameObject _sleepPoint;
+    [SerializeField] GameObject _wakeUpPoint;
 
     //boxColider łóżka, ten od kolizji, na rodzicu 
     [SerializeField] private BoxCollider2D _boxCollider2D;
@@ -37,7 +37,8 @@ public class BedCORE : Core, IInteractable
         }
 
       _boxCollider2D.enabled=false;
-      GetGracz().GetComponent<Rigidbody2D>().MovePosition(_sleepPoint.position);
+      GetGracz().GetComponent<Rigidbody2D>().MovePosition(_sleepPoint.transform.position);
+      print(_sleepPoint.transform.position);
       //tak, trzeba to tak skomplikować inaczej odpala audio i tak jak gracz ma wył. latarkę
       //grafika
        GetGracz().GetComponent<SpriteRenderer>().enabled=false;
@@ -45,15 +46,16 @@ public class BedCORE : Core, IInteractable
       GetComponentInParent<SpriteRenderer>().sprite=m_sleepSprite;
     }
     public void TurnOFFInteract()
-    {
+    {      
+            print(_wakeUpPoint.transform.position);
+
       Debug.Log("Wstaje");
       _gamewordTimer.ChangeSpeedToNormal();
      PlayersEnabes();
 
          GetGracz().GetComponentInChildren<latarka>().Unlock();
-      _boxCollider2D.enabled=true;
-      GetGracz().GetComponent<Rigidbody2D>().MovePosition(_wakeUpPoint.position);
-     
+      GetGracz().GetComponent<Rigidbody2D>().position=_wakeUpPoint.transform.position;
+     _boxCollider2D.enabled=true;
       //grafika
        GetGracz().GetComponent<SpriteRenderer>().enabled=true;
       GetComponentInParent<SpriteRenderer>().sprite=m_normalSprite;
