@@ -4,6 +4,7 @@ public class playerUiTime : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _text;
     [SerializeField] gamewordTimer _time;
+    private System.TimeSpan t;
     void Start()
     {
         _time.OnTimeChange += TextUpdate;
@@ -13,6 +14,7 @@ public class playerUiTime : MonoBehaviour
 
     void TextUpdate()
     {
-        _text.text="czas: "+_time.getCurrentSeconds();
+        t =System.TimeSpan.FromSeconds(_time.getCurrentSeconds());
+        _text.text="czas: "+string.Format("{0:D2}:{1:D2}:{2:D2}",t.Hours,t.Minutes,t.Seconds);
     }
 }

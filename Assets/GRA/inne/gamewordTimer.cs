@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class gamewordTimer : MonoBehaviour
 {
     public event Action OnTimeChange;
-    private int m_currentSeconds=40000;
+    [SerializeField] private int m_currentSeconds=40000;
     private int m_SecondsInDay=86400;
     [SerializeField] gamewordDate _gamewordData;
 

@@ -21,6 +21,10 @@ public class BiblioteczkaCORE :Core, IInteractable
         _inventory.GetMenu().GetMenuCanvas().SetActive(false);
         _inventory.GetMenu().SetForItemSlots();
         _inventory.GetMenu().ReloadInventory();
+        foreach (Ksiazka ksiazka in _inventory.GetPrzedmioty())
+        {
+            ksiazka.LoadFileToString();
+        }
             m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
       //  _lodowkaInventory.GetLodowkaMenu().GetInventory() = _lodowkaInventory;
 

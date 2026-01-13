@@ -1,19 +1,29 @@
-using System.IO;
+
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 [CreateAssetMenu(menuName = "Przedmioty/Ksiazka")]
 public class Ksiazka : Przedmiot
 {
   [TextArea] private string _zawartoscKsiazki;
-  public string getZawartoscKsiazki()
+  [SerializeField] private TextAsset _fileZTrescia;
+  public string GetZawartoscKsiazki()
     {
         return _zawartoscKsiazki;
     }
+  public void LoadFileToString()
+    {
+      if(_fileZTrescia!=null){
+      _zawartoscKsiazki=_fileZTrescia.text;
+      Debug.Log("czytanie: ");
+        Debug.Log(_zawartoscKsiazki);
+        }
+    }
 
-           public override string GetText()
+    public override string GetText()
     {
       string na="Nazwa: "+GetNazwa()+
                     "\nOpis: "+GetOpis()+
-                    "\nEnergia: "+getZawartoscKsiazki();
+                    "\nEnergia: "+GetZawartoscKsiazki();
       return na;
     }
 
