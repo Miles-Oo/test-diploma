@@ -10,7 +10,7 @@ public class MiniGameCore :Core, IInteractable
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
 
-    [SerializeField] private MiniGameMenu _menu;
+    [SerializeField] private Menu _menu;
 
     public void Start()
     {

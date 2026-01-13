@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class MiniGameMenu : Menu{
+public class MiniGameKabelkiMenu : Menu{
     [SerializeField] private TMP_Text _opis;
     [SerializeField] private Button _buttonEat;
 
