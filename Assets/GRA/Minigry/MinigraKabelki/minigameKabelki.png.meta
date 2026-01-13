@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d677bfc327353f44b42804e54ce31c2
+guid: 247814fcc27b249a994cecc708513ec5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5482852057824676179
-    second: playerV3_0
+      213: 218957960007848427
+    second: minigameKabelki_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: playerV3_0
+      name: minigameKabelki_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 22
-        width: 48
-        height: 20
+        x: 0
+        y: 0
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 359c8aea5e0071c40800000000000000
-      internalID: 5482852057824676179
+      spriteID: be11303ca15e90300800000000000000
+      internalID: 218957960007848427
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      playerV3_0: 5482852057824676179
+      minigameKabelki_0: 218957960007848427
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d677bfc327353f44b42804e54ce31c2
+guid: e94ee2ae523a3bf748dda9e15bd6e1ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5482852057824676179
-    second: playerV3_0
+      213: -6244526553556108481
+    second: KabelkSkrzynkai_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: playerV3_0
+      name: KabelkSkrzynkai_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 22
-        width: 48
-        height: 20
+        x: 0
+        y: 4
+        width: 64
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 359c8aea5e0071c40800000000000000
-      internalID: 5482852057824676179
+      spriteID: f3b3bc83f2cf659a0800000000000000
+      internalID: -6244526553556108481
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      playerV3_0: 5482852057824676179
+      KabelkSkrzynkai_0: -6244526553556108481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
