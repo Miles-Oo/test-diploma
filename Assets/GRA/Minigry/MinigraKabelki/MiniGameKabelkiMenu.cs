@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class MiniGameKabelkiMenu : MonoBehaviour{
+public class MiniGameKabelkiMenu : MiniGameMenu{
 
 
  [SerializeField] protected GameObject _menu;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class MiniGameLutowanieMasyMenu : MonoBehaviour{
+public class MiniGameLutowanieMasyMenu : MiniGameMenu{
 
 
  [SerializeField] protected GameObject _menu;

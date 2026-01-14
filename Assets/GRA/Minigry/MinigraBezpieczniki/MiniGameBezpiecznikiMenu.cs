@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class MiniGameBezpiecznikiMenu : MonoBehaviour{
+public class MiniGameBezpiecznikiMenu : MiniGameMenu{
 
 
  [SerializeField] protected GameObject _menu;

@@ -10,7 +10,7 @@ public class gamewordTimer : MonoBehaviour
     private int m_SecondsInDay=86400;
     [SerializeField] gamewordDate _gamewordData;
 
-
+    private int m_howMuchAddSeconds=5;
     private float m_speedOfTime;
     private float m_normalSpeedOfTime=1;
 
@@ -30,7 +30,7 @@ public class gamewordTimer : MonoBehaviour
 
     IEnumerator Tick(){
         while(true){
-            m_currentSeconds+=5;
+            m_currentSeconds+=m_howMuchAddSeconds;
             
         if (!(m_currentSeconds < m_SecondsInDay))
         {
