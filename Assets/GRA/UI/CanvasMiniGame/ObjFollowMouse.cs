@@ -1,25 +1,22 @@
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ObjFollowMouse : MonoBehaviour,IDragHandler
-{
+public class ObjFollowMouse : MonoBehaviour,IDragHandler,IPointerDownHandler
+{ 
+    private Vector2 _distance;
+  
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-       transform.position=mousePosition;
+       Vector2 pointerPosition=Camera.main.ScreenToWorldPoint(eventData.position);
+        Vector2 newobjpos=pointerPosition-_distance;
+        
+             transform.position=newobjpos;
+        
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
-       
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-      
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
+       _distance=Camera.main.ScreenToWorldPoint(eventData.position)-transform.position;
     }
 }
