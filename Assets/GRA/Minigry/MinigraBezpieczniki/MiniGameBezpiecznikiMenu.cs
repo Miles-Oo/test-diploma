@@ -1,38 +1,59 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class MiniGameBezpiecznikiMenu : Menu{
+public class MiniGameBezpiecznikiMenu : MonoBehaviour{
+
+
+ [SerializeField] protected GameObject _menu;
+    public GameObject GetMenuCanvas(){return _menu;}
+
+    protected ItemSlot _selectedSlot;
+
+
+    public virtual void UpdateDesc(ItemSlot itemSlot)
+    {
+        _selectedSlot = itemSlot;
+
+    }
+
+
+
+    public virtual void UnSelect()
+    {
+        _selectedSlot=null;
+
+    }
+    public virtual void ShowButton()
+    {
+
+    }
+
+public void UseSelected()
+{
+    if (_selectedSlot == null) return;
+
+    var item = _selectedSlot.GetPrzedmiot();
+    item.UsePrzedmiot();
+
+    if (item.GetIloscWEQ() > 0)
+    {
+        _selectedSlot.Refresh();
+        _selectedSlot.Focus(true);
+        return;
+    }
+
+    _selectedSlot.Clear();
+    _selectedSlot = null;
+    OtherUsage();
+}
+
+public virtual void OtherUsage(){}
+
+
+
     [SerializeField] private TMP_Text _opis;
     [SerializeField] private Button _buttonEat;
 
-    public override void Start()
-    {
-        base.Start();
-        _opis.text="";
-        _buttonEat.gameObject.SetActive(false);
-    }
 
-    public override void UpdateDesc(ItemSlot itemSlot)
-    {
-        _selectedSlot = itemSlot;
-         _opis.text=_selectedSlot.GetPrzedmiot().GetText();
-    }
-
-    public override void UnSelect()
-    {
-        _selectedSlot=null;
-        _opis.text="";
-        _buttonEat.gameObject.SetActive(false);
-    }
-    public override void ShowButton()
-    {
-        _buttonEat.gameObject.SetActive(true);
-    }
-
-
-public override void OtherUsage(){
-    _opis.text = "";
-    _buttonEat.gameObject.SetActive(false);
-    }
 
 }
