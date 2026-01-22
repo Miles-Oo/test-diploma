@@ -10,20 +10,17 @@ public class PcCORE :Core, IInteractable
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
 
-    [SerializeField] private PcInventory _inventory;
-    public override Inventory GetInventory()
-    {
-        return _inventory;
-    }
+    [SerializeField] private PcMenu _pcMenu;
 
     public void Start()
     {
-        _inventory.GetMenu().GetMenuCanvas().SetActive(false);
-        _inventory.GetMenu().SetForItemSlots();
-        _inventory.GetMenu().ReloadInventory();
-            m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
-      //  _pcInventory.GetPcMenu().GetInventory() = _pcInventory;
-
+        if (_pcMenu != null)
+        {
+            var menuCanvas = _pcMenu.GetMenuCanvas();
+            if (menuCanvas != null)
+                menuCanvas.SetActive(false);
+        }
+        m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
     }
     public void Interact()
     {
@@ -47,8 +44,13 @@ public class PcCORE :Core, IInteractable
     GetComponentInParent<SpriteRenderer>().sprite=m_sleepSprite;
 
     //uruchomienie menu PC
-     _inventory.GetMenu().GetMenuCanvas().SetActive(true);
-     _inventory.GetMenu().ReloadInventory();
+    if (_pcMenu != null)
+    {
+        var menuCanvas = _pcMenu.GetMenuCanvas();
+        if (menuCanvas != null)
+            menuCanvas.SetActive(true);
+        _pcMenu.ActivateTerminal();
+    }
     }
     public void TurnOFFInteract(){
     Debug.Log("Zamykam PC");
@@ -58,12 +60,15 @@ public class PcCORE :Core, IInteractable
     PlayAudioOff();
 
     //wyłączenie menu PC
-     _inventory.GetMenu().GetMenuCanvas().SetActive(false);
+    if (_pcMenu != null)
+    {
+        _pcMenu.DeactivateTerminal();
+        var menuCanvas = _pcMenu.GetMenuCanvas();
+        if (menuCanvas != null)
+            menuCanvas.SetActive(false);
+    }
     
     //grafika
     GetComponentInParent<SpriteRenderer>().sprite=m_normalSprite;
-
-    _inventory.GetMenu().UnFocusAll();
-    _inventory.GetMenu().UnSelect();
     }
 }

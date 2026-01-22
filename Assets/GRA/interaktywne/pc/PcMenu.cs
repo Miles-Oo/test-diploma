@@ -1,38 +1,52 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class PcMenu : Menu{
-    [SerializeField] private TMP_Text _opis;
-    [SerializeField] private Button _buttonEat;
 
-    public override void Start()
+public class PcMenu : MonoBehaviour
+{
+    [SerializeField] private GameObject _menu;
+    public GameObject GetMenuCanvas() 
+    { 
+        if (_menu == null)
+            return null;
+        return _menu; 
+    }
+    
+    [SerializeField] private PcDesktop _desktop;
+    [SerializeField] private PcTerminal _terminal;
+
+    public void Start()
     {
-        base.Start();
-        _opis.text="";
-        _buttonEat.gameObject.SetActive(false);
+        if (_menu != null)
+            _menu.SetActive(false);
+        
+        if (_desktop != null)
+            _desktop.ShowDesktop();
     }
 
-    public override void UpdateDesc(ItemSlot itemSlot)
+    public void ActivateTerminal()
     {
-        _selectedSlot = itemSlot;
-         _opis.text=_selectedSlot.GetPrzedmiot().GetText();
+        if (_terminal != null)
+            _terminal.ActivateTerminal();
     }
 
-    public override void UnSelect()
+    public void DeactivateTerminal()
     {
-        _selectedSlot=null;
-        _opis.text="";
-        _buttonEat.gameObject.SetActive(false);
+        if (_terminal != null)
+            _terminal.DeactivateTerminal();
     }
-    public override void ShowButton()
+    
+    public PcDesktop GetDesktop()
     {
-        _buttonEat.gameObject.SetActive(true);
+        if (_desktop == null)
+            return null;
+        return _desktop;
     }
-
-
-public override void OtherUsage(){
-    _opis.text = "";
-    _buttonEat.gameObject.SetActive(false);
+    
+    public PcTerminal GetTerminal()
+    {
+        if (_terminal == null)
+            return null;
+        return _terminal;
     }
-
 }
