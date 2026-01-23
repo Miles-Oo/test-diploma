@@ -9,6 +9,8 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
     private Sprite m_normalSprite;
 
     [SerializeField] private MiniGameBezpiecznikiMenu _menu;
+    [SerializeField] private MiniGameBezpiecznikiController _controller;
+
 
 
 
@@ -75,6 +77,10 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
 
     public void TurnONInteract(){
     Debug.Log("Otwieram Lodówkę");
+
+    // _controller.ResetGame(); //??
+
+
     PlayersDisabes();
     //dźwięk otwierania lodówki
     PlayAudioOn();
@@ -85,9 +91,21 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
     //uruchomienie menu lodówki
      _menu.GetMenuCanvas().SetActive(true);
 
+     _controller.StartGame();
+     _controller.OnGameFinished += FinishMiniGame;
+
+     _controller.OnExitRequested += ExitMiniGame;
+
+
     }
     public void TurnOFFInteract(){
     Debug.Log("Zamykam Lodówkę");
+
+    _controller.OnExitRequested -= ExitMiniGame;
+    _controller.OnGameFinished -= FinishMiniGame;
+
+    _controller.ResetGame();
+
     PlayersEnabes();
 
     //dźwięk zamykania lodówki;
@@ -100,5 +118,18 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
     GetComponentInParent<SpriteRenderer>().sprite=m_normalSprite;
 
     _menu.UnSelect();
+    }
+
+    private void FinishMiniGame()
+    {
+        _controller.OnGameFinished -= FinishMiniGame;
+        TurnOFFInteract();
+    }
+    
+    private void ExitMiniGame()
+    {
+        _controller.OnExitRequested -= ExitMiniGame;
+        _controller.OnGameFinished -= FinishMiniGame;
+        TurnOFFInteract();
     }
 }
