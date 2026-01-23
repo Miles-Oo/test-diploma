@@ -89,4 +89,10 @@ RectTransform obj3RT = _koncowyKabel.GetComponent<RectTransform>();
        _line.SetPosition(1,d);
        _ruchomyKabel.ResetPosition();
     }
+    public void ForceBorkeLine()
+    {
+               Vector2 d=_startowyKabel.GetComponent<RectTransform>().position;
+       _line.SetPosition(0,d);
+       _line.SetPosition(1,d);
+    }
 }

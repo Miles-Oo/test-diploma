@@ -39,6 +39,7 @@ public class RuchomyKabel: MonoBehaviour,IDragHandler,IPointerDownHandler,IEndDr
         jebaclysego=false;
         ciagnie=true;
         tick=StartCoroutine(Tick());
+        _kabelekCore.ForceBorkeLine();
         _kabelekCore.SetOnTopCanvas();
     }
 
