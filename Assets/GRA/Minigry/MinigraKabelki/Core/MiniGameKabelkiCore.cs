@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MiniGameCore : MonoBehaviour,IInteractable
+public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
 {
 
     [SerializeField] private BoxCollider2D _boxCollider2D;

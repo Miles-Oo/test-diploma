@@ -41,6 +41,7 @@ public class RuchomyKabel: MonoBehaviour,IDragHandler,IPointerDownHandler,IEndDr
         tick=StartCoroutine(Tick());
         _kabelekCore.ForceBorkeLine();
         _kabelekCore.SetOnTopCanvas();
+
     }
 
     public void OnDrag(PointerEventData eventData)

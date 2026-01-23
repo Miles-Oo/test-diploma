@@ -24,7 +24,15 @@ public class energy : MonoBehaviour
         OnEnergyChange?.Invoke();
     }
     public void subEnergy(int energy){
-        m_currentEnergy-=energy;
+
+
+        if (m_currentEnergy- energy <=0){
+             m_currentEnergy=0;
+        }
+        else{
+                   m_currentEnergy-=energy;
+        }
+
         OnEnergyChange?.Invoke();
     }
     public int getCurrEnergy(){return m_currentEnergy;}

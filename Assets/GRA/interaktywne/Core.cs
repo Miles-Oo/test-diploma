@@ -10,7 +10,7 @@ public abstract class Core: MonoBehaviour
         m_jestInterakcja=isInteractja;
     }
     protected bool IsInteractja(){return m_jestInterakcja;}
-    [SerializeField] private GameObject _gracz;
+    private GameObject _gracz;
     public GameObject GetGracz(){return _gracz;}
 
     //audio
@@ -18,7 +18,10 @@ public abstract class Core: MonoBehaviour
    [SerializeField] private AudioClip openClip;
    [SerializeField] private AudioClip closeClip;
 
-
+    void Awake()
+    {
+     _gracz=Object.FindFirstObjectByType<PlayerMovement>().gameObject;
+    }
     protected void PlayAudioOn(){source.PlayOneShot(openClip);}
     protected void PlayAudioOff(){source.PlayOneShot(closeClip);}
     protected void PlayAudio(AudioClip audioClip){source.PlayOneShot(audioClip);}

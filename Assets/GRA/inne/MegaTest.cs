@@ -19,11 +19,11 @@ public class MegaTest : MonoBehaviour
         while (true)
         {
             _leveling.addExp(10);
-            _energy.subEnergy(3);
-            _hunger.subHunger(3);
-            _wallet.addZlotowki(1);
+            _energy.subEnergy(1);
+            _hunger.subHunger(1);
+          //  _wallet.addZlotowki(1);
             _wallet.addKrypto(1);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(10f);
         }
     }
 }

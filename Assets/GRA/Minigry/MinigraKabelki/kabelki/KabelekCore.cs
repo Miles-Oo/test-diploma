@@ -24,11 +24,16 @@ public class KabelekCore : MonoBehaviour
     public void SetOnTopCanvas()
     {
        
-        _startowyKabel.transform.SetAsLastSibling();
-         _koncowyKabel.transform.SetAsLastSibling();
-          _ruchomyKabel.transform.SetAsLastSibling();
+      //  _startowyKabel.transform.SetAsLastSibling();
+      //   _koncowyKabel.transform.SetAsLastSibling();
+      //    _ruchomyKabel.GetComponent<RectTransform>().anchoredPosition;
            _blob.GetComponent<LineRenderer>().sortingOrder=100;
-           Canvas.ForceUpdateCanvases();
+        
+    ///RUCHOMY KABEL NA CANVAS TUTAJ TEŻ DODAĆ
+
+
+
+          // _ruchomyKabel.GetComponent<Canvas>().sortingOrder=3000;
     }
     public void SetOnNormalCanvas()
     {       InOrder++;

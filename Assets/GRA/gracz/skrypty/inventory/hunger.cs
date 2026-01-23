@@ -18,11 +18,17 @@ private int m_maxHunger=100;
         else{
              m_currentHunger+=hunger;
         }
-        
               OnHungerChange?.Invoke();
     }
     public void subHunger(int hunger){
-        m_currentHunger-=hunger;
+
+        if (m_currentHunger -hunger <= 0){
+              m_currentHunger=0;
+        }
+        else{
+              m_currentHunger-=hunger;
+        }
+      
         OnHungerChange?.Invoke();
     }
     public int getCurrHunger(){return m_currentHunger;}

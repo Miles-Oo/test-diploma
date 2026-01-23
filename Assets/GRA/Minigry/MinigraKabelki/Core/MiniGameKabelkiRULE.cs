@@ -16,7 +16,7 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
     public int GetLicznik(){return m_licznikKabli;}
     [SerializeField] private Timer _timer;
     private int m_Score;
-
+    private MiniGameKabelkiCore _minigamekabelkicore;
     public int GetScore(){return m_Score;}
    
 
@@ -24,6 +24,13 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
     
     private DiffConf currDiffConf;
     public Difficulty GetDifficulty(){return currDiffConf.GetDifficulty();}
+
+
+    void Awake()
+    {
+        _minigamekabelkicore= GetComponent<MiniGameKabelkiCore>();
+    }
+
     void Start()
     {
         m_currentLicznik=0;
@@ -58,6 +65,7 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
        UpDiff();
        UpdateRoles();
         _timer.SetTopTime(currDiffConf.GetMaxCzas());
+        _minigamekabelkicore.GetGracz().GetComponent<wallet>().addZlotowki(currDiffConf.GetWartosc());
     }
     private void UpdateRoles()
     {
