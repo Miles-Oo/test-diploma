@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using UnityEngine.Rendering;
-
 public class gamewordTimer : MonoBehaviour
 {
     public event Action OnTimeChange;
