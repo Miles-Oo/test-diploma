@@ -77,6 +77,7 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
 
 
     public void ReBuild(){
+        Canvas.ForceUpdateCanvases();
         lewa.Tasowanie();
         prawa.Tasowanie();
         Canvas.ForceUpdateCanvases();
