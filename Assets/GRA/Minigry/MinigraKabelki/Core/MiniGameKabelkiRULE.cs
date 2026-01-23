@@ -20,7 +20,7 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
     public int GetScore(){return m_Score;}
    
 
-    public static readonly DiffConf[] m_DiffConf={new DiffConf(Difficulty.Low,0,3f,40,10),new DiffConf(Difficulty.Medium,3,1f,30,25),new DiffConf(Difficulty.High,7,0.6f,24,100),new DiffConf(Difficulty.Max,10,0.2f,100,300)};
+    public static readonly DiffConf[] m_DiffConf={new DiffConf(Difficulty.Low,0,3f,40,10),new DiffConf(Difficulty.Medium,3,1f,30,25),new DiffConf(Difficulty.High,7,0.6f,50,100),new DiffConf(Difficulty.Max,10,0.2f,100,300)};
     
     private DiffConf currDiffConf;
     public Difficulty GetDifficulty(){return currDiffConf.GetDifficulty();}
