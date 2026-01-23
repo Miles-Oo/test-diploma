@@ -35,10 +35,12 @@ public class MiniGameCore : MonoBehaviour,IInteractable
          _gracz.GetComponent<PlayerMovement>().CanMove(false); 
         //ZMIANA TUTAJ JAK JEDNAK LODÓWKA BEZ PRĄDU MA DZIAŁAĆ
         _gracz.GetComponent<PlayerRotation>().enabled=false;
-         GetGracz().GetComponentInChildren<latarka>().CanvasLightActive(true);
+        _gracz.GetComponentInChildren<cameraFollow>().CameraFollow(false);
+        GetGracz().GetComponentInChildren<latarka>().CanvasLightActive(true);
     }   
     protected void PlayersEnabes()
     {
+           _gracz.GetComponentInChildren<cameraFollow>().CameraFollow(true);
          GetGracz().GetComponentInChildren<latarka>().CanvasLightActive(false);
     _gracz.GetComponent<PlayerMovement>().CanMove(true);
 
