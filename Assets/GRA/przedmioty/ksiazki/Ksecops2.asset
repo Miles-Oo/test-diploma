@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc771fc67ee255797b638caf93c7c7b1, type: 3}
   m_Name: Ksecops2
   m_EditorClassIdentifier: Assembly-CSharp::Ksiazka
-  m_nazwa: secops2
-  m_opis: ddd
+  m_nazwa: 
+  m_opis: 
   m_spriteHighLight: {fileID: 21300000, guid: 17edfd8285b30254292fbc80f9301954, type: 3}
   m_spriteNormal: {fileID: 21300000, guid: 88cbffc7cbc22bce294d620f25aaccff, type: 3}
   m_iloscWEQ: 2
+  _fileZTrescia: {fileID: 4900000, guid: 13c0dec957fdf8a1cba4741087f092a1, type: 3}

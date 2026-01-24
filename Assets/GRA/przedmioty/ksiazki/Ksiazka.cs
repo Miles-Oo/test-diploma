@@ -21,10 +21,7 @@ public class Ksiazka : Przedmiot
 
     public override string GetText()
     {
-      string na="Nazwa: "+GetNazwa()+
-                    "\nOpis: "+GetOpis()+
-                    "\nEnergia: "+GetZawartoscKsiazki();
-      return na;
+      return GetZawartoscKsiazki();
     }
 
     public override void UsePrzedmiot()
