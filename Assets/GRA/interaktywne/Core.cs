@@ -1,6 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+[RequireComponent(typeof(AudioSource))]
 public abstract class Core: MonoBehaviour
 {
     // flipflop 
