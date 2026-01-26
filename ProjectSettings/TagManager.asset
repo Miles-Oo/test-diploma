@@ -11,8 +11,8 @@ TagManager:
   - wall
   - Water
   - UI
-  - 
-  - 
+  - floor
+  - player
   - interactive
   - light
   - test
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: floor
+    uniqueID: 2171635571
+    locked: 0
   - name: wall
     uniqueID: 2910032193
     locked: 0
@@ -46,6 +49,9 @@ TagManager:
     locked: 0
   - name: interactive
     uniqueID: 2033678265
+    locked: 0
+  - name: player
+    uniqueID: 4120862809
     locked: 0
   - name: light
     uniqueID: 2919530455

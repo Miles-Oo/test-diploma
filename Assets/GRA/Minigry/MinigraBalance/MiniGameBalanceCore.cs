@@ -50,7 +50,7 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable
         var rot = _gracz.GetComponent<PlayerRotation>();
         if (rot != null) rot.enabled = false;
 
-        var lat = _gracz.GetComponentInChildren<latarka>();
+        var lat = _gracz.GetComponentInChildren<Latarka>();
         if (lat != null) lat.CanvasLightActive(true);
     }
 
@@ -58,7 +58,7 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable
     {
         if (_gracz == null) return;
 
-        var lat = _gracz.GetComponentInChildren<latarka>();
+        var lat = _gracz.GetComponentInChildren<Latarka>();
         if (lat != null) lat.CanvasLightActive(false);
 
         var move = _gracz.GetComponent<PlayerMovement>();

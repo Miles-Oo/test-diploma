@@ -26,10 +26,10 @@ public class BedCORE : Core, IInteractable
       _gamewordTimer.ChangeOfSpeed(10);
      
      PlayersDisabes();
- GetGracz().GetComponentInChildren<latarka>().Lock();
-        if (GetGracz().GetComponentInChildren<latarka>().IsFlashlightOn())
+ GetGracz().GetComponentInChildren<Latarka>().Lock();
+        if (GetGracz().GetComponentInChildren<Latarka>().IsFlashlightOn())
         {
-            GetGracz().GetComponentInChildren<latarka>().turnOff();
+            GetGracz().GetComponentInChildren<Latarka>().turnOff();
         }
 
       _boxCollider2D.enabled=false;
@@ -49,7 +49,7 @@ public class BedCORE : Core, IInteractable
       _gamewordTimer.ChangeSpeedToNormal();
      PlayersEnabes();
 
-         GetGracz().GetComponentInChildren<latarka>().Unlock();
+         GetGracz().GetComponentInChildren<Latarka>().Unlock();
       GetGracz().GetComponent<Rigidbody2D>().position=_wakeUpPoint.transform.position;
      _boxCollider2D.enabled=true;
       //grafika

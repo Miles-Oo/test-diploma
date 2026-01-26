@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
 
     public bool m_canWalk=true;
+
+     private bool m_Moving=false;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -20,10 +22,19 @@ public class PlayerMovement : MonoBehaviour
         moveInput = moveAction.ReadValue<Vector2>();
     }
 
+    public bool IsMoving(){return m_Moving;}
     private void FixedUpdate()
     {
         if(m_canWalk){
         _rb.linearVelocity = moveInput * moveSpeed;
+        }
+        if(_rb.linearVelocity.x==0&&_rb.linearVelocity.y==0)
+        {
+            m_Moving=false;
+        }
+        else
+        {
+            m_Moving=true;
         }
     }  
 

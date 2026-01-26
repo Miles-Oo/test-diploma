@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class latarka : MonoBehaviour
+public class Latarka : MonoBehaviour
 {
-   
+        public event Action OnFlashLightChange;
    private bool m_isFlashlightOn=false;
    private Light2D _light;
    private Light2D _lightInCanvas;
@@ -51,6 +52,8 @@ public class latarka : MonoBehaviour
         _lightInCanvas.enabled=true;
         _spriteRenderer.enabled=true;
         m_isFlashlightOn=true;
+        OnFlashLightChange?.Invoke();
+
     }
     public void turnOff()
     {
@@ -58,6 +61,7 @@ public class latarka : MonoBehaviour
          _light.enabled=false;
          _lightInCanvas.enabled=false;
         _spriteRenderer.enabled=false;
-        m_isFlashlightOn=false;
+        m_isFlashlightOn=false; 
+        OnFlashLightChange?.Invoke();
     }
 }
