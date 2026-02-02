@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2041615788083163484}
   - component: {fileID: 7897696506806643968}
   - component: {fileID: 2763935876343537871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: interakcja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2607756792240188653}
   - component: {fileID: 9010999496923198303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: poswiatalDlaNocy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000b9773779d77f04ae419173ad
+  m_ApplyToSortingLayers: b9773779419173ad73877081
   m_LightCookieSprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 7664923457918713990}
   - component: {fileID: 6650600817340763453}
   - component: {fileID: 7814238605812298852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: latarka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 3292510112437169195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42, y: 0.18, z: 0}
+  m_LocalPosition: {x: -0.42, y: 0.18, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -454,7 +454,8 @@ GameObject:
   - component: {fileID: 4758381834539904956}
   - component: {fileID: 3745813022056000383}
   - component: {fileID: 7295387273628225256}
-  m_Layer: 0
+  - component: {fileID: 4807981036660381321}
+  m_Layer: 7
   m_Name: gracz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +530,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 1d677bfc327353f44b42804e54ce31c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48f2c129ec41f5746b4cd8d166dad25e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -724,6 +725,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39516975560cbfe56ab3e21909ebbe09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMouseRotation
+--- !u!114 &4807981036660381321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969491235630504562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab1671d2da48098d9e28b87a47b06c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OwnAnimator
+  spriteSheetNormal: {fileID: 21300000, guid: 7d44c6b79b331aff2a92969a7ac4a762, type: 3}
+  spriteSheetUseFlashLight: {fileID: 21300000, guid: 27a54e0eb8d0997ff932127801cc6f89, type: 3}
+  m_changeSpriteSpeed: 0.06
 --- !u!1 &4624854233975953521
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +751,7 @@ GameObject:
   - component: {fileID: 8686967103411368751}
   - component: {fileID: 2345658667933969105}
   - component: {fileID: 8716119156440300491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LAMPA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4546176588700041587}
   - component: {fileID: 2518728637055854982}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CamFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

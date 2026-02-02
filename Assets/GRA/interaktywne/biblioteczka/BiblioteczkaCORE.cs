@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BiblioteczkaCORE :Core, IInteractable
 {
 
     
-    //boxColider łóżka, ten od kolizji, na rodzicu 
+    //boxColider przedmiotu, ten od kolizji, na rodzicu 
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
@@ -42,26 +41,26 @@ public class BiblioteczkaCORE :Core, IInteractable
     }
 
     public void TurnONInteract(){
-    Debug.Log("Otwieram Lodówkę");
+    Debug.Log("Otwieram:"+this);
     PlayersDisabes();
-    //dźwięk otwierania lodówki
+    //dźwięk otwierania
    // PlayAudioOn();
-    //grafika zapisanie spritea oraz zmiana na sprite otwartej lodówki
+    //grafika zapisanie spritea oraz zmiana na sprite otwartej
 
     GetComponentInParent<SpriteRenderer>().sprite=m_sleepSprite;
 
-    //uruchomienie menu lodówki
+    //uruchomienie menu
      _inventory.GetMenu().GetMenuCanvas().SetActive(true);
      _inventory.GetMenu().ReloadInventory();
     }
     public void TurnOFFInteract(){
-    Debug.Log("Zamykam Lodówkę");
+    Debug.Log("Zamykam:"+this);
     PlayersEnabes();
 
-    //dźwięk zamykania lodówki;
+    //dźwięk zamykania
    // PlayAudioOff();
 
-    //wyłączenie menu lodówki
+    //wyłączenie menu
      _inventory.GetMenu().GetMenuCanvas().SetActive(false);
     
     //grafika

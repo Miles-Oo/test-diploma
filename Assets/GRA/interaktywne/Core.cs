@@ -16,13 +16,14 @@ public abstract class Core: MonoBehaviour
     public GameObject GetGracz(){return _gracz;}
 
     //audio
-    [SerializeField] private AudioSource source;
+    private AudioSource source;
    [SerializeField] private AudioClip openClip;
    [SerializeField] private AudioClip closeClip;
 
-    void Awake()
+    protected virtual void Awake()
     {
      _gracz=Object.FindFirstObjectByType<PlayerMovement>().gameObject;
+     source=GetComponent<AudioSource>();
     }
     protected void PlayAudioOn(){source.PlayOneShot(openClip);}
     protected void PlayAudioOff(){source.PlayOneShot(closeClip);}

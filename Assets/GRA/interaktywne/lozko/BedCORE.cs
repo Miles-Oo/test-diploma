@@ -9,6 +9,7 @@ public class BedCORE : Core, IInteractable
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
+    [SerializeField] private float sleepSpeed;
     public void Interact()
     {
         if (IsInteractja()){
@@ -20,10 +21,18 @@ public class BedCORE : Core, IInteractable
             SetJestInterakcja(true);
         }
     }
+    protected override void Awake()
+    {
+        base.Awake();
+        if (sleepSpeed >1000)
+        {
+            sleepSpeed=10;
+        }
+    }
     public void TurnONInteract()
     {
       Debug.Log("Kładę się spać");
-      _gamewordTimer.ChangeOfSpeed(10);
+      _gamewordTimer.ChangeOfSpeed(sleepSpeed);
      
      PlayersDisabes();
  GetGracz().GetComponentInChildren<Latarka>().Lock();

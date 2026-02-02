@@ -1,15 +1,18 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-
+[RequireComponent(typeof(AudioSource))]
 public class lightsSwich : MonoBehaviour,IInteractable
 {
    [SerializeField] private LightHandler[] _lights;
-   [SerializeField] private AudioSource source;
+   private AudioSource _source;
    [SerializeField] private AudioClip lightsOFF;
    [SerializeField] private AudioClip lightsON;
    private bool m_flipflop=false;
+  
+  void Awake()
+    {
+        _source=GetComponent<AudioSource>();
+    }
+  
    void Start()
     {
         if (_lights == null){this.enabled=false;}
@@ -32,7 +35,7 @@ public class lightsSwich : MonoBehaviour,IInteractable
     }
     public void LightsOFF()
     {
-        source.PlayOneShot(lightsOFF);
+        _source.PlayOneShot(lightsOFF);
         for(int i =0;i<_lights.Length;i++){
         _lights[i].LightOFF();
        }
@@ -40,7 +43,7 @@ public class lightsSwich : MonoBehaviour,IInteractable
 
     public void LightsON()
     {
-        source.PlayOneShot(lightsON);
+        _source.PlayOneShot(lightsON);
         for(int i =0;i<_lights.Length;i++){
         _lights[i].LightON();
        }

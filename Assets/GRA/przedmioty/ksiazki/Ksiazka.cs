@@ -14,8 +14,6 @@ public class Ksiazka : Przedmiot
     {
       if(_fileZTrescia!=null){
       _zawartoscKsiazki=_fileZTrescia.text;
-      Debug.Log("czytanie: ");
-        Debug.Log(_zawartoscKsiazki);
         }
     }
 

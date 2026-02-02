@@ -14,6 +14,9 @@ private int m_maxHunger=100;
     public void addHunger(int hunger){
         if (m_currentHunger + hunger > m_maxHunger){
               m_currentHunger=m_maxHunger;
+        }else if (m_currentHunger + hunger <=0)
+        {
+            m_currentHunger=0;
         }
         else{
              m_currentHunger+=hunger;

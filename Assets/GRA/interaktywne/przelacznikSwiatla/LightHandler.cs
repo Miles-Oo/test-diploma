@@ -23,7 +23,7 @@ public class LightHandler : MonoBehaviour
         {
             if (hit.GetComponent<IInteractable>() != null && (hit.GetComponent<Menu>()!=null||hit.GetComponent<MiniGameMenu>()!=null))
             { 
-                print(hit.gameObject);
+                //print(hit.gameObject);
                 if ( hit.transform.parent.GetComponentInChildren<CanvasLight2D>()!=null)
                 {
                     przedmioityInteractive.Add(hit);

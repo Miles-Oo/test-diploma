@@ -17,6 +17,9 @@ public class energy : MonoBehaviour
     public void addEnergy(int energy){
         if (m_currentEnergy + energy > m_maxEnergy){
              m_currentEnergy=m_maxEnergy;
+        }else if (m_currentEnergy + energy <=0)
+        {
+            m_currentEnergy=0;
         }
         else{
                 m_currentEnergy+=energy;
