@@ -1,13 +1,20 @@
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+
+[RequireComponent(typeof(BoxCollider2D))]
 public class interactions:MonoBehaviour{
     
-    [SerializeField] private BoxCollider2D _fieldAction;
+    private BoxCollider2D _fieldAction;
     private List<IInteractable>  _interactiveItem=new();
 
-   private void Update()
-{
+
+
+
+    void Awake()
+    {
+        _fieldAction=GetComponent<BoxCollider2D>();
+    }
+    private void Update(){
     if (Input.GetKeyDown(KeyCode.E) && _interactiveItem.Count > 0)
     {
         rawr();
