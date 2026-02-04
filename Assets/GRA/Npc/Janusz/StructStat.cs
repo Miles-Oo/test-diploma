@@ -18,7 +18,7 @@ public class StructStat
         m_naturalDegradator=naturalDegradator;
     }
     public void DoNaturalDegradation()
-    {
+    {    if (m_CurrStat <= 0) return;
          if (m_CurrStat- m_naturalDegradator <=0){m_CurrStat=0;}
         else{m_CurrStat-=m_naturalDegradator;}
          OnStatChange?.Invoke();

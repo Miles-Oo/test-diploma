@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 public class npctesthunger : MonoBehaviour
 {
     [SerializeField] private Statystyka _stat;

@@ -4,7 +4,11 @@ public class Statystyka : MonoBehaviour
 {
   [SerializeField] public StructStat structStat;
    public bool czyZgloszone;
-   public GameObject miejsceUzupelnienia;
+  [SerializeField] private GameObject miejsceUzupelnienia;
+  public GameObject GetMiejsceUzupelnienia()
+    {
+        return miejsceUzupelnienia;
+    }
 public event Action<Statystyka> OnReportChange; 
     [SerializeField] private string nazwa;
     [SerializeField] private float maxStat;
@@ -21,15 +25,19 @@ public event Action<Statystyka> OnReportChange;
         czyZgloszone=false;
         structStat.OnStatChange+=Zglos;
     }
-    public void Zglos()
+public void Zglos()
+{
+    if (!structStat.IsUnderNormal())
     {
-        if (structStat.IsUnderNormal()&&!czyZgloszone)
-        {
-            print("o nie! moje: "+structStat.getStatName()+" jest poniżej 20%");
-
-            //użycie action dla dodania tego do stosu 
-            OnReportChange?.Invoke(this);
-            czyZgloszone=true;
-        }
+        czyZgloszone = false;
+        return;
     }
+
+    if (!czyZgloszone)
+    {
+        OnReportChange?.Invoke(this);
+        czyZgloszone = true;
+    }
+}
+
 }

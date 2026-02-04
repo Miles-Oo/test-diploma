@@ -13,10 +13,7 @@ public class NpcPathCalculatorAndFinder : MonoBehaviour
     public NpcRotation GetNpcRotation(){return m_NpcRotation;}
    private GameObject target;
    private NpcSimpleTargetAI m_NpcSimpleTargetAI;
-   public NpcSimpleTargetAI GetNpcSimpleTargetAI()
-    {
-        return m_NpcSimpleTargetAI;
-    }
+   public NpcSimpleTargetAI GetNpcSimpleTargetAI(){return m_NpcSimpleTargetAI;}
     public void SetTarget(GameObject gameObject){target = gameObject;}
     BoxCollider2D _boxCollider2D;
     private Vector2 wantedpos;
@@ -34,12 +31,19 @@ public class NpcPathCalculatorAndFinder : MonoBehaviour
       
     }
 
+private bool m_wspXGit=false;
+private bool m_wspYGit=false;
+public void ResetXYgit()
+    {
+        m_wspXGit=false;
+        m_wspYGit=false;
+    }
 private Coroutine moveTo;
 
 public void MoveToTarget()
 {
     needToGo = true;
-
+    ResetXYgit();
     if (moveTo != null)
         StopCoroutine(moveTo);
 
@@ -67,7 +71,9 @@ public void MoveToTarget()
         {
             s.x=0;
         }
-        }
+        }else{
+                m_wspXGit=true;
+            }
         if(Math.Abs(wantedpos.y - m_NpcMovement.getCurrPos().y)>1){
         if (wantedpos.y >m_NpcMovement.getCurrPos().y)
         {
@@ -81,17 +87,30 @@ public void MoveToTarget()
         {
             s.y=0;
         }
-        }
+            }
+            else
+            {
+                m_wspYGit=true;
+            }
         m_NpcMovement.moveFor(s);
+            if (m_wspXGit && m_wspYGit)
+            {
+                KoniecTrasy();
+            }
         yield return null;
                 }
 
     }
-    void OnTriggerEnter2D(Collider2D collision){
-        if (collision.GetComponent<LodowkaCORE>() != null){
-            print("jestem");
-            needToGo=false;
-          //  m_NpcSimpleTargetAI.GetSomsiadAI().GetNpcStats().addHunger(100);
-        }}
+
+public event Action OnTest;
+
+
+public void KoniecTrasy()
+    { 
+         print("jestem");
+        needToGo=false;
+         OnTest?.Invoke();
+    }
+
 
 }
