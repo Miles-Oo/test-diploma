@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
 using UnityEngine;
 [RequireComponent(typeof(NpcSimpleTargetAI))]
 public class SomsiadAI : MonoBehaviour
@@ -45,6 +43,10 @@ void Tester()
     var stat = m_ListaZadan[0];
 
     stat.structStat.addToCurrStat(100);
+
+    stat.GetMiejsceUzupelnienia().GetComponentInChildren<IInteractable>().Interact();
+        
+    
     stat.czyZgloszone = false;
 
     m_ListaZadan.RemoveAt(0);
@@ -64,7 +66,7 @@ void Tester()
         Wyswietl();
         }
         MakeMeASandWitch();
-    }
+    }   
     void Wyswietl()
     {
         for(int i = 0; i < m_ListaZadan.Count; i++)

@@ -507,7 +507,7 @@ Transform:
   m_GameObject: {fileID: 4326334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.57, y: 2.69, z: 0}
+  m_LocalPosition: {x: -10.88, y: 5.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982dd06ac851ed41180e597d1b2056d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OwnAnimator
-  spriteSheetNormal: {fileID: 21300000, guid: 015b69d0957a76d8ba8d15d36f2f3e24, type: 3}
+  spriteSheetNormal: {fileID: 21300000, guid: 1fb6f47afeb2a44979a5efd8de3f717f, type: 3}
   m_changeSpriteSpeed: 0.06
 --- !u!114 &4326342
 MonoBehaviour:
@@ -36249,6 +36249,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490759966}
   m_CullTransparentMesh: 1
+--- !u!1 &1498125227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498125229}
+  - component: {fileID: 1498125228}
+  m_Layer: 0
+  m_Name: Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1498125228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498125227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0feae67b71333494aed0b1dea9432b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorMenager
+  cursorTexture: {fileID: 2800000, guid: 08b9973a65303f97ebfb5897945f067c, type: 3}
+  clikpos: {x: 16, y: 16}
+--- !u!4 &1498125229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498125227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.65942, y: 4.98507, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1530861626 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7216274245119300470, guid: cb0884770bb6b3006b5273bb6d0fdacb, type: 3}
@@ -43206,3 +43252,4 @@ SceneRoots:
   - {fileID: 553073275}
   - {fileID: 2259681}
   - {fileID: 4326339}
+  - {fileID: 1498125229}

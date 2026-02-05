@@ -30,6 +30,8 @@ public class BiblioteczkaCORE :Core, IInteractable
     }
     public void Interact()
     {
+        print("interakcja");
+        
         if (IsInteractja()){
             TurnOFFInteract();
           SetJestInterakcja(false);
@@ -38,7 +40,9 @@ public class BiblioteczkaCORE :Core, IInteractable
              TurnONInteract();
             SetJestInterakcja(true);
         }
+        
     }
+    
 
     public void TurnONInteract(){
     Debug.Log("Otwieram:"+this);
