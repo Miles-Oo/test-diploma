@@ -5,9 +5,13 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
 {
     [SerializeField] private Button button;
     [SerializeField] private Image diode;
+    [SerializeField] private Image button_color;
 
     [SerializeField] private Color dimmedColor = new Color(0.3f, 0.3f, 0.3f);
     [SerializeField] private Color activeColor = Color.white;
+
+    private const float ALPHA_HIDDEN = 0f;
+    private const float ALPHA_DIMMED = 128f / 255f;
 
     private bool isSolved = false;
     private MiniGameBezpiecznikiController controller;
@@ -29,6 +33,8 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
         diode.color = Color.red;
         button.interactable = true;
         SetButtonColor(activeColor);
+
+        SetButtonImageAlpha(ALPHA_HIDDEN); // aktywny → znika
     }
 
     public void Deactivate()
@@ -38,6 +44,8 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
         diode.color = Color.white;
         button.interactable = false;
         SetButtonColor(dimmedColor);
+
+        SetButtonImageAlpha(ALPHA_DIMMED); // nieaktywny → 128
     }
 
     public void Solve()
@@ -48,6 +56,8 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
         diode.color = Color.green;
         button.interactable = false;
         SetButtonColor(activeColor);
+
+        SetButtonImageAlpha(ALPHA_HIDDEN); // rozwiązany → znika
     }
 
     public void ResetState()
@@ -59,6 +69,8 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
     private void OnClick()
     {
         if (isSolved) return;
+
+        SetButtonImageAlpha(ALPHA_HIDDEN); // kliknięty → znika
         controller.PlayerClicked(this);
     }
 
@@ -67,6 +79,8 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
         diode.color = Color.white;
         button.interactable = false;
         SetButtonColor(dimmedColor);
+
+        SetButtonImageAlpha(ALPHA_DIMMED); // domyślnie → 128
     }
 
     private void SetButtonColor(Color color)
@@ -78,6 +92,15 @@ public class MiniGameBezpiecznikiButton : MonoBehaviour
         colors.selectedColor = color;
         colors.disabledColor = color;
         button.colors = colors;
+    }
+
+    private void SetButtonImageAlpha(float alpha)
+    {
+        if (button_color == null) return;
+
+        Color c = button_color.color;
+        c.a = alpha;
+        button_color.color = c;
     }
 
     public bool IsSolved()
