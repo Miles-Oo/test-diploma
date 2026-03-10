@@ -9,12 +9,30 @@ public class interactions:MonoBehaviour{
 
 
 
-
-    void Awake()
+void Awake()
     {
         _fieldAction=GetComponent<BoxCollider2D>();
     }
-    private void Update(){
+private void Update()
+{
+    if (DialogManager.Instance != null)
+    {
+        // jeśli dialog trwa
+        if (DialogManager.Instance.inDialog)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+                DialogManager.Instance.EndDialog();
+
+            return;
+        }
+
+        // jeśli właśnie wyszliśmy z dialogu
+        if (DialogManager.Instance.IsInteractionBlocked)
+        {
+            return;
+        }
+    }
+
     if (Input.GetKeyDown(KeyCode.E) && _interactiveItem.Count > 0)
     {
         rawr();
