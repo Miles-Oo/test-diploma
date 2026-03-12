@@ -15,16 +15,9 @@ void Awake()
     }
 private void Update()
 {
-    if (DialogManager.Instance != null)
-    {
-        if (DialogManager.Instance.inDialog)
-            return;
+    if (DialogueManager.Instance != null && DialogueManager.Instance.IsInDialogue())
+        return;
 
-        if (DialogManager.Instance.IsInteractionBlocked)
-            return;
-    }
-
-    // tylko jeśli gracz naciska E i jest w triggerze
     if (Input.GetKeyDown(KeyCode.E) && _interactiveItem.Count > 0)
     {
         rawr();
@@ -56,6 +49,9 @@ private void rawr()
 
 void OnTriggerEnter2D(Collider2D other)
 {
+    if (DialogueManager.Instance != null && DialogueManager.Instance.IsInDialogue())
+        return;
+
     var interactable = other.GetComponent<IInteractable>();
     if (interactable != null && !_interactiveItem.Contains(interactable))
     {

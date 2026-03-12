@@ -1,106 +1,95 @@
-// using UnityEngine;
-// using UnityEngine.UI;
-// using TMPro;
-// using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
 
-// public class DialogueManager : MonoBehaviour
-// {
-//     public static DialogueManager Instance;
+public class DialogueManager : MonoBehaviour
+{
+    public static DialogueManager Instance { get; private set; }
 
-//     [Header("UI Elements")]
-//     public GameObject dialogUI;
-//     public TextMeshProUGUI dialogText;
+    public GameObject dialoguePanel;
+    public TMP_Text dialogueText;
+    public string npcTag = "Npc";
+    [TextArea]
+    public string defaultDialogue = "Cześć!";
 
-//     public Button choiceButton1;
-//     public Button choiceButton2;
-//     public Button choiceButton3;
+    private bool inDialogue = false;
+    private GameObject currentNPCObject;
 
-//     private DialogueNode currentNode;
+    public GameObject CurrentNPC => currentNPCObject;
 
-//     private bool _inDialog = false;
-//     public bool inDialog => _inDialog;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
 
-//     private float interactionBlockTimer = 0f;
-//     public bool IsInteractionBlocked => interactionBlockTimer > 0f;
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
+    }
 
-//     void Awake()
-//     {
-//         if (Instance == null) Instance = this;
-//         else Destroy(gameObject);
+    private void Update()
+    {
+        if (!inDialogue && currentNPCObject != null && Input.GetKeyDown(KeyCode.E))
+            StartDialogue(currentNPCObject);
+        else if (inDialogue && Input.GetKeyDown(KeyCode.E))
+            EndDialogue();
+    }
 
-//         dialogUI.SetActive(false);
-//     }
+    public void SetCurrentNPC(GameObject obj)
+    {
+        if (obj.CompareTag(npcTag))
+            currentNPCObject = obj;
+    }
 
-//     void Update()
-//     {
-//         if (interactionBlockTimer > 0f)
-//             interactionBlockTimer -= Time.deltaTime;
-//     }
+    public void ClearCurrentNPC(GameObject obj)
+    {
+        if (currentNPCObject == obj)
+            currentNPCObject = null;
+    }
 
-//     public void StartDialogue(DialogueNode startNode)
-//     {
-//         dialogUI.SetActive(true);
-//         _inDialog = true;
+    public void StartDialogue(GameObject npcObj)
+    {
+        if (inDialogue) return;
 
-//         FreezeCharacters(true);
+        inDialogue = true;
+        dialoguePanel.SetActive(true);
 
-//         ShowNode(startNode);
-//     }
+        var npcDialogue = npcObj.GetComponent<NPCDialogue>();
+        dialogueText.text = npcDialogue != null ? npcDialogue.dialogueText : defaultDialogue;
 
-//     void ShowNode(DialogueNode node)
-//     {
-//         currentNode = node;
-//         dialogText.text = node.npcText;
+        FreezeCharacters(true);
 
-//         SetupChoice(choiceButton1, 0);
-//         SetupChoice(choiceButton2, 1);
-//         SetupChoice(choiceButton3, 2);
-//     }
+        Debug.Log("Rozpoczęto dialog z: " + npcObj.name);
+    }
 
-//     void SetupChoice(Button button, int index)
-//     {
-//         if (currentNode.choices.Count > index)
-//         {
-//             button.gameObject.SetActive(true);
+    public void EndDialogue()
+    {
+        if (!inDialogue) return;
 
-//             var choice = currentNode.choices[index];
-//             button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
+        inDialogue = false;
+        dialoguePanel.SetActive(false);
+        currentNPCObject = null;
+        FreezeCharacters(false);
 
-//             button.onClick.RemoveAllListeners();
-//             button.onClick.AddListener(() =>
-//             {
-//                 if (choice.nextNode != null)
-//                     ShowNode(choice.nextNode);
-//                 else
-//                     EndDialog();
-//             });
-//         }
-//         else
-//         {
-//             button.gameObject.SetActive(false);
-//         }
-//     }
+        Debug.Log("Zakończono dialog");
+    }
 
-//     public void EndDialog()
-//     {
-//         dialogUI.SetActive(false);
-//         _inDialog = false;
+    public bool IsInDialogue()
+    {
+        return inDialogue;
+    }
 
-//         interactionBlockTimer = 0.2f;
+    private void FreezeCharacters(bool freeze)
+    {
+        // blokada gracza
+        var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
+        if (player != null) player.enabled = !freeze;
 
-//         FreezeCharacters(false);
-//     }
-
-//     private void FreezeCharacters(bool freeze)
-//     {
-//         var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
-//         if (player != null) player.enabled = !freeze;
-
-//         var npcs = FindObjectsOfType<NpcMovement>();
-
-//         foreach (var npc in npcs)
-//         {
-//             npc.m_canWalk = !freeze;
-//         }
-//     }
-// }
+        // blokada NPC
+        var npcs = FindObjectsOfType<NpcMovement>();
+        foreach (var npc in npcs)
+        {
+            npc.m_canWalk = !freeze;
+        }
+    }
+}
