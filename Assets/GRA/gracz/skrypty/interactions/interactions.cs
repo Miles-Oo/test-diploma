@@ -17,22 +17,14 @@ private void Update()
 {
     if (DialogManager.Instance != null)
     {
-        // jeśli dialog trwa
         if (DialogManager.Instance.inDialog)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-                DialogManager.Instance.EndDialog();
-
             return;
-        }
 
-        // jeśli właśnie wyszliśmy z dialogu
         if (DialogManager.Instance.IsInteractionBlocked)
-        {
             return;
-        }
     }
 
+    // tylko jeśli gracz naciska E i jest w triggerze
     if (Input.GetKeyDown(KeyCode.E) && _interactiveItem.Count > 0)
     {
         rawr();
@@ -68,6 +60,7 @@ void OnTriggerEnter2D(Collider2D other)
     if (interactable != null && !_interactiveItem.Contains(interactable))
     {
         _interactiveItem.Add(interactable);
+        Debug.Log("Entered trigger with: " + other.name);
     }
 }
 
@@ -77,6 +70,7 @@ void OnTriggerExit2D(Collider2D other)
     if (interactable != null)
     {
         _interactiveItem.Remove(interactable);
+        Debug.Log("Exited trigger with: " + other.name);
     }
 }
 

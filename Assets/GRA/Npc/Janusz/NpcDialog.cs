@@ -9,7 +9,7 @@ public class NPCDialog : MonoBehaviour, IInteractable
     {
         if (dialogLines.Length > 0)
         {
-            DialogManager.Instance.StartDialog(dialogLines[0]);
+            DialogManager.Instance.StartDialog(dialogLines);
         }
     }
 }

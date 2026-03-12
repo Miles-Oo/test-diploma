@@ -14,64 +14,69 @@ public class DialogManager : MonoBehaviour
     private bool _inDialog = false;
     public bool inDialog => _inDialog;
 
-    // blokada interakcji po wyjściu z dialogu
     private float interactionBlockTimer = 0f;
     public bool IsInteractionBlocked => interactionBlockTimer > 0f;
 
-    private System.Action onDialogEnd;
+    private string[] currentLines;
+    private int currentLineIndex;
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
 
         dialogUI.SetActive(false);
-        continueButton.onClick.AddListener(EndDialog);
+        continueButton.onClick.AddListener(NextLine);
     }
 
     void Update()
     {
         if (interactionBlockTimer > 0f)
             interactionBlockTimer -= Time.deltaTime;
+    }
 
-        if (_inDialog && Input.GetKeyDown(KeyCode.E))
+    public void StartDialog(string[] lines)
+    {
+        currentLines = lines;
+        currentLineIndex = 0;
+
+        _inDialog = true; // ustaw od razu, żeby Update() wiedział, że jesteśmy w dialogu
+        dialogUI.SetActive(true);
+        dialogText.text = currentLines[currentLineIndex];
+
+        FreezeCharacters(true);
+    }
+
+    private void NextLine()
+    {
+        currentLineIndex++;
+        if (currentLineIndex >= currentLines.Length)
         {
             EndDialog();
         }
-    }
-
-    public void StartDialog(string text, System.Action onEnd = null)
-    {
-        dialogUI.SetActive(true);
-        dialogText.text = text;
-        _inDialog = true;
-        onDialogEnd = onEnd;
-
-        FreezeCharacters(true);
+        else
+        {
+            dialogText.text = currentLines[currentLineIndex];
+        }
     }
 
     public void EndDialog()
     {
         dialogUI.SetActive(false);
         _inDialog = false;
-
-        // blokujemy interakcje na chwilę
         interactionBlockTimer = 0.2f;
-
         FreezeCharacters(false);
-
-        onDialogEnd?.Invoke();
     }
 
     private void FreezeCharacters(bool freeze)
     {
-        // gracz
         var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
-        if (player != null) player.enabled = !freeze;
+        if (player != null)
+            player.enabled = !freeze;
 
-        // NPC
         var npcs = FindObjectsOfType<NpcMovement>();
-
         foreach (var npc in npcs)
         {
             npc.m_canWalk = !freeze;
