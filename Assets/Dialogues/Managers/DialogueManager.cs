@@ -23,6 +23,8 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueNode currentNode;
 
+    public GameObject dmBackground;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,6 +34,8 @@ public class DialogueManager : MonoBehaviour
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
+        if (dmBackground != null)
+            dmBackground.SetActive(false);
     }
 
     private void Update()
@@ -61,6 +65,7 @@ public class DialogueManager : MonoBehaviour
         inDialogue = true;
         dialogueStartFrame = Time.frameCount;
         dialoguePanel.SetActive(true);
+        dmBackground.SetActive(true);
 
         currentNPCObject = npcObj;
         var npcDialogue = npcObj.GetComponent<NPCDialogue>();
@@ -92,6 +97,7 @@ public class DialogueManager : MonoBehaviour
 
         inDialogue = false;
         dialoguePanel.SetActive(false);
+        dmBackground.SetActive(false);
         // currentNPCObject = null;
         FreezeCharacters(false);
 
