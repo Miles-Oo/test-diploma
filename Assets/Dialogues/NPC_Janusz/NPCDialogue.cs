@@ -5,6 +5,8 @@ public class NPCDialogue : MonoBehaviour, IInteractable
     [TextArea]
     public string dialogueText = "Cześć!";
     public DialogueNode startNode; // początkowy węzeł dialogu
+    [HideInInspector]
+    public DialogueNode lastNodeUsed = null;
 
     // Ta metoda jest wywoływana przez Twój interactions
     public void Interact()

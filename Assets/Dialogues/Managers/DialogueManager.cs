@@ -62,11 +62,20 @@ public class DialogueManager : MonoBehaviour
         dialogueStartFrame = Time.frameCount;
         dialoguePanel.SetActive(true);
 
+        currentNPCObject = npcObj;
         var npcDialogue = npcObj.GetComponent<NPCDialogue>();
 
         if (npcDialogue != null && npcDialogue.startNode != null)
         {
-            ShowNode(npcDialogue.startNode);
+            DialogueNode nodeToShow = npcDialogue.lastNodeUsed;
+
+            // Jeśli checkpoint jest zły -> wróć do startNode
+            if (nodeToShow == null || nodeToShow.options == null || nodeToShow.options.Length == 0)
+            {
+                nodeToShow = npcDialogue.startNode;
+            }
+
+            ShowNode(nodeToShow);
         }
         else
         {
@@ -83,7 +92,7 @@ public class DialogueManager : MonoBehaviour
 
         inDialogue = false;
         dialoguePanel.SetActive(false);
-        currentNPCObject = null;
+        // currentNPCObject = null;
         FreezeCharacters(false);
 
         Debug.Log("Zakończono dialog");
@@ -116,7 +125,11 @@ public class DialogueManager : MonoBehaviour
 
         // usuń stare opcje
         foreach (Transform child in optionsContainer)
+        {
             Destroy(child.gameObject);
+        }
+        if (node.options == null || node.options.Length == 0)
+            return;
 
         // stwórz nowe
         foreach (var option in node.options)
@@ -131,7 +144,7 @@ public class DialogueManager : MonoBehaviour
             btnText.enabled = true;
             btnText.text = option.optionText;
 
-            btnObj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
+            button.onClick.AddListener(() =>
             {
                 ChooseOption(option);
             });
@@ -140,6 +153,15 @@ public class DialogueManager : MonoBehaviour
 
     void ChooseOption(DialogueOption option)
     {
+        if (currentNPCObject != null)
+        {
+            var npcDialogue = currentNPCObject.GetComponent<NPCDialogue>();
+            if (npcDialogue != null)
+            {
+                // zapisujemy checkpoint tylko jeśli nextNode istnieje
+                npcDialogue.lastNodeUsed = currentNode;
+            }
+        }
         if (option.nextNode != null)
             ShowNode(option.nextNode);
         else
