@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject dmBackground;
     public System.Action<GameObject> OnDialogueEnded;
+    public Image portraitImage;
 
     private void Awake()
     {
@@ -45,6 +47,20 @@ public class DialogueManager : MonoBehaviour
             StartDialogue(currentNPCObject);
         else if (inDialogue && Input.GetKeyDown(KeyCode.E) && Time.frameCount > dialogueStartFrame)
             EndDialogue();
+
+        // --- nowa część: obsługa klawiszy 1,2,3 ---
+        if (inDialogue && currentNode != null && currentNode.options != null)
+        {
+            for (int i = 0; i < currentNode.options.Length && i < 9; i++)
+            {
+                KeyCode key = KeyCode.Alpha1 + i; // Alpha1 = "1", Alpha2 = "2", ...
+                if (Input.GetKeyDown(key))
+                {
+                    ChooseOption(currentNode.options[i]);
+                    break;
+                }
+            }
+        }
     }
 
     public void SetCurrentNPC(GameObject obj)
@@ -70,6 +86,19 @@ public class DialogueManager : MonoBehaviour
 
         currentNPCObject = npcObj;
         var npcDialogue = npcObj.GetComponent<NPCDialogue>();
+
+        if (portraitImage != null)
+        {
+            if (npcDialogue != null && npcDialogue.portrait != null)
+            {
+                portraitImage.sprite = npcDialogue.portrait;
+                portraitImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                portraitImage.gameObject.SetActive(false);
+            }
+        }
 
         if (npcDialogue != null && npcDialogue.startNode != null)
         {
@@ -102,6 +131,11 @@ public class DialogueManager : MonoBehaviour
         // currentNPCObject = null;
         FreezeCharacters(false);
 
+        if (portraitImage != null)
+        {
+            portraitImage.gameObject.SetActive(false);
+        }
+
         Debug.Log("Zakończono dialog");
 
     }
@@ -113,15 +147,30 @@ public class DialogueManager : MonoBehaviour
 
     private void FreezeCharacters(bool freeze)
     {
-        // blokada gracza
         var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
-        if (player != null) player.enabled = !freeze;
+        if (player != null)
+        {
+            player.enabled = !freeze;
 
-        // blokada NPC
+            var rb = player.GetComponent<Rigidbody2D>();
+            if (rb != null && freeze)
+            {
+                rb.linearVelocity = Vector2.zero;
+                // rb.angularVelocity = 0f; 
+            }
+        }
+
         var npcs = FindObjectsOfType<NpcMovement>();
         foreach (var npc in npcs)
         {
             npc.m_canWalk = !freeze;
+
+            var rb = npc.GetComponent<Rigidbody2D>();
+            if (rb != null && freeze)
+            {
+                rb.linearVelocity = Vector2.zero;
+                // rb.angularVelocity = 0f;
+            }
         }
     }
 
@@ -140,21 +189,22 @@ public class DialogueManager : MonoBehaviour
             return;
 
         // stwórz nowe
-        foreach (var option in node.options)
+        for (int i = 0; i < node.options.Length; i++)
         {
+            var option = node.options[i];
+
             GameObject btnObj = Instantiate(optionButtonPrefab, optionsContainer);
             btnObj.SetActive(true);
 
             var button = btnObj.GetComponent<UnityEngine.UI.Button>();
-            button.enabled = true;
-
             TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
-            btnText.enabled = true;
-            btnText.text = option.optionText;
 
+            btnText.text = $"{i + 1}. {option.optionText}"; // dodaj numerkę
+
+            int optionIndex = i; // potrzebne do lambdy
             button.onClick.AddListener(() =>
             {
-                ChooseOption(option);
+                ChooseOption(node.options[optionIndex]);
             });
         }
     }
@@ -168,7 +218,7 @@ public class DialogueManager : MonoBehaviour
         if (currentNPCObject != null)
         {
             var npcDialogue = currentNPCObject.GetComponent<NPCDialogue>();
-            if (npcDialogue != null)
+            if (npcDialogue != null && option.rememberNode)
             {
                 npcDialogue.lastNodeUsed = currentNode;
             }

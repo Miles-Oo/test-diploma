@@ -4,11 +4,10 @@ using UnityEngine;
 public class DialogueOption
 {
     public string optionText;          
-
     // [SerializeReference]   
     public DialogueNode nextNode;
-
     public MiniGameBezpiecznikiCore unlockMiniGame;
+    public bool rememberNode = false;
 }
 
 // Węzeł dialogowy NPC
