@@ -1,13 +1,14 @@
 using UnityEngine;
 
-// Pojedyncza opcja, którą może wybrać gracz
 [System.Serializable]
 public class DialogueOption
 {
-    public string optionText;          // Tekst wyświetlany na przycisku
+    public string optionText;          
 
-    // [SerializeReference]   // <- zamiast zwykłego DialogueNode
-    public DialogueNode nextNode;      // Wskaźnik na kolejny węzeł dialogu
+    // [SerializeReference]   
+    public DialogueNode nextNode;
+
+    public MiniGameBezpiecznikiCore unlockMiniGame;
 }
 
 // Węzeł dialogowy NPC
@@ -17,6 +18,6 @@ public class DialogueNode
     [TextArea]
     public string npcText;
 
-    // [SerializeReference]   // <- tablica opcji jako referencje
+    // [SerializeReference]
     public DialogueOption[] options;
 }

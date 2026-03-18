@@ -11,6 +11,10 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
     [SerializeField] private MiniGameBezpiecznikiMenu _menu;
     [SerializeField] private MiniGameBezpiecznikiController _controller;
 
+    private bool isUnlocked = false;
+    [SerializeField] private GameObject questMark;
+
+
 
 
 
@@ -57,14 +61,41 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
 
     public void Start()
     {
+        if (questMark != null)
+            questMark.SetActive(false);
         _menu.GetMenuCanvas().SetActive(false);
 
             m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
       //  _lodowkaInventory.GetLodowkaMenu().GetInventory() = _lodowkaInventory;
 
     }
+
+    public void UnlockMiniGame()
+    {
+        isUnlocked = true;
+        Debug.Log("MiniGra odblokowana!");
+
+        if (questMark != null)
+            questMark.SetActive(true);
+    }
+
+    public void LockMiniGame()
+    {
+        isUnlocked = false;
+        Debug.Log("MiniGra zablokowana!");
+
+        if (questMark != null)
+            questMark.SetActive(false);
+    }
+
     public void Interact()
     {
+        if (!isUnlocked)
+            {
+                Debug.Log("MiniGra jeszcze zablokowana.");
+                return;
+            }
+
         if (IsInteractja()){
             TurnOFFInteract();
           SetJestInterakcja(false);
@@ -124,6 +155,7 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
     {
         _controller.OnGameFinished -= FinishMiniGame;
         TurnOFFInteract();
+        LockMiniGame();
     }
     
     private void ExitMiniGame()

@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     private DialogueNode currentNode;
 
     public GameObject dmBackground;
+    public System.Action<GameObject> OnDialogueEnded;
 
     private void Awake()
     {
@@ -102,6 +103,7 @@ public class DialogueManager : MonoBehaviour
         FreezeCharacters(false);
 
         Debug.Log("Zakończono dialog");
+
     }
 
     public bool IsInDialogue()
@@ -159,12 +161,15 @@ public class DialogueManager : MonoBehaviour
 
     void ChooseOption(DialogueOption option)
     {
+        if (option.unlockMiniGame != null)
+        {
+            option.unlockMiniGame.UnlockMiniGame();
+        }
         if (currentNPCObject != null)
         {
             var npcDialogue = currentNPCObject.GetComponent<NPCDialogue>();
             if (npcDialogue != null)
             {
-                // zapisujemy checkpoint tylko jeśli nextNode istnieje
                 npcDialogue.lastNodeUsed = currentNode;
             }
         }

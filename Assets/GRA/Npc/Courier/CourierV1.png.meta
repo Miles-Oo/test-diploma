@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 31666d458228fdd41acddbb100c12bc5
+guid: 4a59c0606a064df49b7d37610754b515
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2794630349577992573
-    second: Janusz_portrait_0
+      213: 1538003581513321594
+    second: CourierV1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Janusz_portrait_0
+      name: CourierV1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 400
-        height: 400
+        x: 12
+        y: 21
+        width: 37
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d793f111f7588c620800000000000000
-      internalID: 2794630349577992573
+      spriteID: a7c4163db16185510800000000000000
+      internalID: 1538003581513321594
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Janusz_portrait_0: 2794630349577992573
+      CourierV1_0: 1538003581513321594
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

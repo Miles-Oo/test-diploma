@@ -6,8 +6,8 @@ public class MiniGameBezpiecznikiController : MonoBehaviour
 {
     [SerializeField] private List<MiniGameBezpiecznikiButton> bezpieczniki;
     [SerializeField] private float startTimeToClick = 0.25f;
-    [SerializeField] private float minTimeToClick = 0.05f;
-    [SerializeField] private float speedUpPerSuccess = 0.015f;
+    [SerializeField] private float minTimeToClick = 0.18f;
+    [SerializeField] private float speedUpPerSuccess = 0.01f;
 
     private float currentTimeToClick;
 
