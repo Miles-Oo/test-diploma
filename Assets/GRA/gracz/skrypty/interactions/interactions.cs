@@ -44,7 +44,7 @@ private void rawr()
             najblizy = _interactiveItem[i];
     }
 
-    najblizy.Interact(gameObject, InteractorType.Gracz);
+    najblizy.Interact();
 }
 
 void OnTriggerEnter2D(Collider2D other)

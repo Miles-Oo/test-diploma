@@ -9,10 +9,8 @@ public class NPCDialogue : MonoBehaviour, IInteractable
     public DialogueNode lastNodeUsed = null;
     public Sprite portrait;
 
-    public void Interact(GameObject gameObject, InteractorType interactor)
+    public void Interact()
     {
-        if (interactor != InteractorType.Gracz)
-            return;
 
         var dm = DialogueManager.Instance;
         if (dm == null)

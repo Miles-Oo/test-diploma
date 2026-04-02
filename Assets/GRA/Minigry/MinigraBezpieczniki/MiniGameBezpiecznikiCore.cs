@@ -87,11 +87,8 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
             questMark.SetActive(false);
     }
 
-    public void Interact(GameObject gameObject, InteractorType interactor)
+    public void Interact()
     {
-        if (interactor != InteractorType.Gracz)
-            return;
-
         if (!isUnlocked)
             {
                 Debug.Log("MiniGra jeszcze zablokowana.");
