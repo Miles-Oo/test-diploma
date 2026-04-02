@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
@@ -88,8 +87,11 @@ public class MiniGameBezpiecznikiCore: MonoBehaviour,IInteractable
             questMark.SetActive(false);
     }
 
-    public void Interact()
+    public void Interact(GameObject gameObject, InteractorType interactor)
     {
+        if (interactor != InteractorType.Gracz)
+            return;
+
         if (!isUnlocked)
             {
                 Debug.Log("MiniGra jeszcze zablokowana.");
