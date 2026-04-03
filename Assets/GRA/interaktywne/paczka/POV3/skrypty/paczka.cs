@@ -14,7 +14,7 @@ public class paczka : MonoBehaviour,IInteractable
     
     }
     
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
         Recive();
         Destroy(this.gameObject);

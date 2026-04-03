@@ -25,9 +25,21 @@ public class LodowkaCORE :Core, IInteractable
       //  _lodowkaInventory.GetLodowkaMenu().GetInventory() = _lodowkaInventory;
 
     }
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
-        if (IsInteractja()){
+        switch (interactor)
+        {
+            case InteractorType.Gracz:
+            InteractPlayer();
+            break;
+            case InteractorType.Npc:
+            InteractNpc(gameObject);
+            break;
+        }
+    }
+    public void InteractPlayer()
+    {
+                if (IsInteractja()){
             TurnOFFInteract();
           SetJestInterakcja(false);
         }
@@ -36,7 +48,10 @@ public class LodowkaCORE :Core, IInteractable
             SetJestInterakcja(true);
         }
     }
-
+    public void InteractNpc(GameObject gameObject)
+    {
+        gameObject.GetComponent<SomsiadAI>().ZnajdzStatystyke("glod").GetStat().addToCurrStat(100);
+    }
     public void TurnONInteract(){
     Debug.Log("Otwieram Lodówkę");
     PlayersDisabes();

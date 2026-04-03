@@ -10,9 +10,21 @@ public class BedCORE : Core, IInteractable
     [SerializeField] private Sprite m_sleepSprite;
     private Sprite m_normalSprite;
     [SerializeField] private float sleepSpeed;
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
-        if (IsInteractja()){
+        switch (interactor)
+        {
+            case InteractorType.Gracz:
+            InteractPlayer();
+            break;
+            case InteractorType.Npc:
+            InteractNpc(gameObject);
+            break;
+        }
+    }
+    public void InteractPlayer()
+    {
+                if (IsInteractja()){
             TurnOFFInteract();
           SetJestInterakcja(false);
         }
@@ -20,6 +32,10 @@ public class BedCORE : Core, IInteractable
              TurnONInteract();
             SetJestInterakcja(true);
         }
+    }
+    public void InteractNpc(GameObject gameObject)
+    {
+        gameObject.GetComponent<SomsiadAI>().ZnajdzStatystyke("energia").GetStat().addToCurrStat(100);
     }
     protected override void Awake()
     {

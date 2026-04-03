@@ -28,7 +28,7 @@ public class MiniGamePipesCore : MonoBehaviour, IInteractable
             _menu.GetMenuCanvas().SetActive(false);
     }
 
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
         if (_isOpen) Close();
         else Open();

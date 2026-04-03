@@ -53,7 +53,19 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
         _menu.GetMenuCanvas().SetActive(false);
         m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
     }
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
+    {
+        switch (interactor)
+        {
+            case InteractorType.Gracz:
+            InteractPlayer();
+            break;
+            case InteractorType.Npc:
+            InteractNpc(gameObject);
+            break;
+        }
+    }
+    public void InteractPlayer()
     {
         if (IsInteractja()){
            _zasady.StopALL();
@@ -66,6 +78,10 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
              TurnONInteract();
             SetJestInterakcja(true);
         }
+    }
+    public void InteractNpc(GameObject gameObject)
+    {
+        gameObject.GetComponent<SomsiadAI>().ZnajdzStatystyke("nuda").GetStat().addToCurrStat(100);
     }
 
     public void TurnONInteract(){

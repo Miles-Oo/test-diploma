@@ -22,9 +22,21 @@ public class PcCORE :Core, IInteractable
         }
         m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
     }
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
-        if (IsInteractja()){
+        switch (interactor)
+        {
+            case InteractorType.Gracz:
+            InteractPlayer();
+            break;
+            case InteractorType.Npc:
+            InteractNpc();
+            break;
+        }
+    }
+    public void InteractPlayer()
+    {
+                if (IsInteractja()){
             TurnOFFInteract();
           SetJestInterakcja(false);
         }
@@ -32,6 +44,10 @@ public class PcCORE :Core, IInteractable
              TurnONInteract();
             SetJestInterakcja(true);
         }
+    }
+    public void InteractNpc()
+    {
+        
     }
 
     public void TurnONInteract(){

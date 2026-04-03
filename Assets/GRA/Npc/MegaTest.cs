@@ -19,7 +19,7 @@ public class MegaTestNPCSTATSSIMULATOR : MonoBehaviour
         {
             foreach(Statystyka sd in statystyki)
             {
-                 sd.structStat.DoNaturalDegradation();
+                 sd.GetStat().DoNaturalDegradation();
             }
             yield return new WaitForSeconds(1f);
         }

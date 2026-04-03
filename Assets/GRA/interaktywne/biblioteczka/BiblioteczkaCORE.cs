@@ -1,3 +1,4 @@
+using Unity.Collections;
 using UnityEngine;
 
 public class BiblioteczkaCORE :Core, IInteractable
@@ -28,11 +29,21 @@ public class BiblioteczkaCORE :Core, IInteractable
       //  _lodowkaInventory.GetLodowkaMenu().GetInventory() = _lodowkaInventory;
 
     }
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
-        print("interakcja");
-        
-        if (IsInteractja()){
+        switch (interactor)
+        {
+            case InteractorType.Gracz:
+            InteractPlayer();
+            break;
+            case InteractorType.Npc:
+            InteractNpc(gameObject);
+            break;
+        }
+    }
+    public void InteractPlayer()
+    {
+                if (IsInteractja()){
             TurnOFFInteract();
           SetJestInterakcja(false);
         }
@@ -40,7 +51,10 @@ public class BiblioteczkaCORE :Core, IInteractable
              TurnONInteract();
             SetJestInterakcja(true);
         }
-        
+    }
+    public void InteractNpc(GameObject gameObject)
+    {
+        gameObject.GetComponent<SomsiadAI>().ZnajdzStatystyke("nuda").GetStat().addToCurrStat(100);
     }
     
 

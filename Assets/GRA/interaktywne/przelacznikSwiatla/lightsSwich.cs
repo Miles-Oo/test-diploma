@@ -23,7 +23,7 @@ public class lightsSwich : MonoBehaviour,IInteractable
         }
     }
     
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
         if (m_flipflop)LightsOFF();
         else LightsON();

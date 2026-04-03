@@ -1,5 +1,5 @@
 using System;
-public class StructStat
+public class Stat
 {
 
     public event Action OnStatChange; 
@@ -10,7 +10,7 @@ public class StructStat
     //o ile ma się zmniejszyć w 1 ticku
     private float m_naturalDegradator;
 
-    public StructStat(string nazwa,float maxStat,float naturalDegradator)
+    public Stat(string nazwa,float maxStat,float naturalDegradator)
     {
         m_StatName=nazwa;
         m_MaxStat=maxStat;

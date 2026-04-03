@@ -82,7 +82,7 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable
             _menu.GetMenuCanvas().SetActive(false);
     }
 
-    public void Interact()
+    public void Interact(GameObject gameObject,InteractorType interactor)
     {
         if (IsInterakcja())
         {

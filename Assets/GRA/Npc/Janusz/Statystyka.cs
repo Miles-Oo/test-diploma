@@ -2,7 +2,8 @@ using UnityEngine;
 using System;
 public class Statystyka : MonoBehaviour
 {
-  [SerializeField] public StructStat structStat;
+  [SerializeField] private Stat structStat;
+    public Stat GetStat(){return structStat;}
    public bool czyZgloszone;
   [SerializeField] private GameObject miejsceUzupelnienia;
   public GameObject GetMiejsceUzupelnienia()
@@ -21,7 +22,7 @@ public event Action<Statystyka> OnReportChange;
         if (naturalDegradator<0){naturalDegradator=1;print("użyta ujemna wartość dla naturalDegradator: "+this);}
         //
 
-        structStat=new StructStat(nazwa,maxStat,naturalDegradator);
+        structStat=new Stat(nazwa,maxStat,naturalDegradator);
         czyZgloszone=false;
         structStat.OnStatChange+=Zglos;
     }

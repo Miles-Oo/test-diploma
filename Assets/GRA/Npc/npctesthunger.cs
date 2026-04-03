@@ -6,12 +6,12 @@ public class npctesthunger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
 
     void Start(){
-        _stat.structStat.OnStatChange += BarUpdate;
+        _stat.GetStat().OnStatChange += BarUpdate;
         BarUpdate();
         _text.text="pasek glodu";
     }
 
     void BarUpdate(){
-        _text.text = _stat.structStat.getStatName()+" : "+_stat.structStat.getCurrStat()+"/"+_stat.structStat.getMaxStat();
+        _text.text = _stat.GetStat().getStatName()+" : "+_stat.GetStat().getCurrStat()+"/"+_stat.GetStat().getMaxStat();
     }
 }
