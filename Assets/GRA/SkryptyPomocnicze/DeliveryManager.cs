@@ -7,26 +7,16 @@ public class DeliveryManager : MonoBehaviour
     public Transform spawnPoint;
     public Transform doorPoint;
 
-    [SerializeField] private GameObject fridge;
-    [SerializeField] private GameObject library;
-
     private bool isOrderActive = false;
 
-    private enum TargetType
+    public void SpawnCourier(OrderData order)
     {
-        Fridge,
-        Library
+        if (isOrderActive) return;
+
+        StartCoroutine(OrderCourier(order));
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K) && !isOrderActive)
-        {
-            StartCoroutine(OrderCourier());
-        }
-    }
-
-    IEnumerator OrderCourier()
+    private IEnumerator OrderCourier(OrderData order)
     {
         isOrderActive = true;
 
@@ -38,26 +28,9 @@ public class DeliveryManager : MonoBehaviour
 
         CourierBehaviour cb = courier.GetComponent<CourierBehaviour>();
 
-        IInventoryTarget target = GetTarget(TargetType.Fridge);
-
-        cb.SetDeliveryTarget(target);
+        cb.SetOrder(order);
 
         cb.Init(doorPoint, spawnPoint, OnCourierFinished);
-    }
-
-    private IInventoryTarget GetTarget(TargetType type)
-    {
-        switch (type)
-        {
-            case TargetType.Fridge:
-                return fridge.GetComponentInChildren<IInventoryTarget>();
-
-            case TargetType.Library:
-                return library.GetComponentInChildren<IInventoryTarget>();
-
-            default:
-                return fridge.GetComponentInChildren<IInventoryTarget>();
-        }
     }
 
     void OnCourierFinished()

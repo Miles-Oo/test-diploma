@@ -1,17 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(NpcPathCalculatorAndFinder))]
 public class CourierBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject paczka;
-
-    private IInventoryTarget target;
+    [SerializeField] private GameObject paczkaPrefab;
 
     private NpcPathCalculatorAndFinder path;
     private Transform doorTarget;
     private Transform exitTarget;
     private System.Action onFinish;
+
+    private OrderData order;
 
     private enum State
     {
@@ -28,9 +29,9 @@ public class CourierBehaviour : MonoBehaviour
         path = GetComponent<NpcPathCalculatorAndFinder>();
     }
 
-    public void SetDeliveryTarget(IInventoryTarget t)
+    public void SetOrder(OrderData newOrder)
     {
-        target = t;
+        order = newOrder;
     }
 
     public bool Init(Transform door, Transform exit, System.Action callback)
@@ -77,9 +78,34 @@ public class CourierBehaviour : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        TrySpawnPackage();
+        SpawnPackage();
 
         GoBack();
+    }
+
+    private void SpawnPackage()
+    {
+        if (paczkaPrefab == null)
+        {
+            return;
+        }
+
+        if (order == null)
+        {
+            return;
+        }
+
+        GameObject obj = Instantiate(paczkaPrefab, doorTarget.position, Quaternion.identity);
+
+        paczka p = obj.GetComponent<paczka>();
+
+        if (p == null)
+        {
+            return;
+        }
+
+        p.SetItems(order.items);
+
     }
 
     private bool GoBack()
@@ -88,26 +114,6 @@ public class CourierBehaviour : MonoBehaviour
 
         path.SetTarget(exitTarget.gameObject);
         path.MoveToTarget();
-
-        return true;
-    }
-
-    private bool TrySpawnPackage()
-    {
-        if (paczka == null)
-        {
-            return false;
-        }
-
-        if (target == null)
-        {
-            return false;
-        }
-
-        GameObject obj = Instantiate(paczka, doorTarget.position, Quaternion.identity);
-
-        var p = obj.GetComponent<paczka>();
-        p.SetMiejsce(target);
 
         return true;
     }
