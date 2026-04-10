@@ -1,7 +1,7 @@
 using Unity.Collections;
 using UnityEngine;
 
-public class BiblioteczkaCORE :Core, IInteractable
+public class BiblioteczkaCORE :Core, IInteractable, IInventoryTarget
 {
 
     

@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8107809470149776559
 Transform:
   m_ObjectHideFlags: 0
@@ -339,18 +339,28 @@ MonoBehaviour:
           nextNode:
             npcText: 1
             options: []
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
         - optionText: 1
           nextNode:
             npcText: 1
             options: []
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
         - optionText: 1
           nextNode:
             npcText: 1
             options: []
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
         - optionText: 1
           nextNode:
             npcText: 1
             options: []
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
     - optionText: Kim jestes?
       nextNode:
         npcText: Doigrasz sie ziom
@@ -359,6 +369,10 @@ MonoBehaviour:
           nextNode:
             npcText: 2
             options: []
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
     - optionText: Nie krzycz
       nextNode:
         npcText: "Masz bana na k\u0105kuter"
@@ -367,9 +381,14 @@ MonoBehaviour:
           nextNode:
             npcText: 3
             options: []
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
   lastNodeUsed:
     npcText: 
     options: []
+  portrait: {fileID: 0}
 --- !u!114 &7281939196937124202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b14114daf22c54d91160cfad250a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CourierBehaviour
+  paczka: {fileID: 5768559081710900741, guid: effbdedd6986ded4091e5dc96da0d0d4, type: 3}
+  fridgeObject: {fileID: 5732109841306821774, guid: f92b745cff8a0174680cd83a9e0c9c22, type: 3}
 --- !u!1 &2821323829064143860
 GameObject:
   m_ObjectHideFlags: 0

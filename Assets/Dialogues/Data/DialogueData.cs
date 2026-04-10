@@ -10,7 +10,6 @@ public class DialogueOption
     public bool rememberNode = false;
 }
 
-// Węzeł dialogowy NPC
 [System.Serializable]
 public class DialogueNode
 {

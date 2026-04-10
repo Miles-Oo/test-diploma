@@ -28,6 +28,24 @@ public class DialogueManager : MonoBehaviour
     public System.Action<GameObject> OnDialogueEnded;
     public Image portraitImage;
 
+    private IInteractable currentInteractable = null;
+
+    public bool CanInteract(IInteractable interactable)
+    {
+        return currentInteractable == null || currentInteractable == interactable;
+    }
+
+    public void SetCurrentInteractable(IInteractable interactable)
+    {
+        currentInteractable = interactable;
+    }
+
+    public void ClearCurrentInteractable(IInteractable interactable)
+    {
+        if (currentInteractable == interactable)
+            currentInteractable = null;
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -48,12 +66,11 @@ public class DialogueManager : MonoBehaviour
         else if (inDialogue && Input.GetKeyDown(KeyCode.E) && Time.frameCount > dialogueStartFrame)
             EndDialogue();
 
-        // --- nowa część: obsługa klawiszy 1,2,3 ---
         if (inDialogue && currentNode != null && currentNode.options != null)
         {
             for (int i = 0; i < currentNode.options.Length && i < 9; i++)
             {
-                KeyCode key = KeyCode.Alpha1 + i; // Alpha1 = "1", Alpha2 = "2", ...
+                KeyCode key = KeyCode.Alpha1 + i;
                 if (Input.GetKeyDown(key))
                 {
                     ChooseOption(currentNode.options[i]);
@@ -104,7 +121,6 @@ public class DialogueManager : MonoBehaviour
         {
             DialogueNode nodeToShow = npcDialogue.lastNodeUsed;
 
-            // Jeśli checkpoint jest zły -> wróć do startNode
             if (nodeToShow == null || nodeToShow.options == null || nodeToShow.options.Length == 0)
             {
                 nodeToShow = npcDialogue.startNode;
@@ -116,6 +132,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = defaultDialogue;
         }
+
         FreezeCharacters(true);
 
         Debug.Log("Rozpoczęto dialog z: " + npcObj.name);
@@ -128,16 +145,22 @@ public class DialogueManager : MonoBehaviour
         inDialogue = false;
         dialoguePanel.SetActive(false);
         dmBackground.SetActive(false);
-        // currentNPCObject = null;
         FreezeCharacters(false);
 
         if (portraitImage != null)
         {
             portraitImage.gameObject.SetActive(false);
         }
+        if (currentNPCObject != null)
+        {
+            if (currentNPCObject.TryGetComponent<IInteractable>(out var interactable))
+            {
+                ClearCurrentInteractable(interactable);
+            }
+            currentNPCObject = null;
+        }
 
         Debug.Log("Zakończono dialog");
-
     }
 
     public bool IsInDialogue()
@@ -156,7 +179,6 @@ public class DialogueManager : MonoBehaviour
             if (rb != null && freeze)
             {
                 rb.linearVelocity = Vector2.zero;
-                // rb.angularVelocity = 0f; 
             }
         }
 
@@ -169,7 +191,6 @@ public class DialogueManager : MonoBehaviour
             if (rb != null && freeze)
             {
                 rb.linearVelocity = Vector2.zero;
-                // rb.angularVelocity = 0f;
             }
         }
     }
@@ -180,7 +201,6 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = node.npcText;
 
-        // usuń stare opcje
         foreach (Transform child in optionsContainer)
         {
             Destroy(child.gameObject);
@@ -188,7 +208,6 @@ public class DialogueManager : MonoBehaviour
         if (node.options == null || node.options.Length == 0)
             return;
 
-        // stwórz nowe
         for (int i = 0; i < node.options.Length; i++)
         {
             var option = node.options[i];
@@ -196,12 +215,12 @@ public class DialogueManager : MonoBehaviour
             GameObject btnObj = Instantiate(optionButtonPrefab, optionsContainer);
             btnObj.SetActive(true);
 
-            var button = btnObj.GetComponent<UnityEngine.UI.Button>();
+            var button = btnObj.GetComponent<Button>();
             TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
 
-            btnText.text = $"{i + 1}. {option.optionText}"; // dodaj numerkę
+            btnText.text = $"{i + 1}. {option.optionText}";
 
-            int optionIndex = i; // potrzebne do lambdy
+            int optionIndex = i;
             button.onClick.AddListener(() =>
             {
                 ChooseOption(node.options[optionIndex]);

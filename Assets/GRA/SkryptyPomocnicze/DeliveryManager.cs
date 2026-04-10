@@ -7,7 +7,16 @@ public class DeliveryManager : MonoBehaviour
     public Transform spawnPoint;
     public Transform doorPoint;
 
+    [SerializeField] private GameObject fridge;
+    [SerializeField] private GameObject library;
+
     private bool isOrderActive = false;
+
+    private enum TargetType
+    {
+        Fridge,
+        Library
+    }
 
     void Update()
     {
@@ -17,26 +26,39 @@ public class DeliveryManager : MonoBehaviour
         }
     }
 
-IEnumerator OrderCourier()
-{
-    isOrderActive = true;
+    IEnumerator OrderCourier()
+    {
+        isOrderActive = true;
 
-    Debug.Log("Zamówiono kuriera...");
+        Debug.Log("Zamówiono kuriera...");
 
-    yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
 
-    GameObject courier = Instantiate(courierPrefab, spawnPoint.position, Quaternion.identity);
+        GameObject courier = Instantiate(courierPrefab, spawnPoint.position, Quaternion.identity);
 
-    // 🔹 debug przed Init
-    Debug.Log("doorPoint: " + doorPoint + ", spawnPoint: " + spawnPoint);
-    Debug.Log("courier prefab: " + courier);
+        CourierBehaviour cb = courier.GetComponent<CourierBehaviour>();
 
-    CourierBehaviour cb = courier.GetComponent<CourierBehaviour>();
-    if(cb == null)
-        Debug.LogError("Brak CourierBehaviour na prefabie!");
+        IInventoryTarget target = GetTarget(TargetType.Fridge);
 
-    cb.Init(doorPoint, spawnPoint, OnCourierFinished);
-}
+        cb.SetDeliveryTarget(target);
+
+        cb.Init(doorPoint, spawnPoint, OnCourierFinished);
+    }
+
+    private IInventoryTarget GetTarget(TargetType type)
+    {
+        switch (type)
+        {
+            case TargetType.Fridge:
+                return fridge.GetComponentInChildren<IInventoryTarget>();
+
+            case TargetType.Library:
+                return library.GetComponentInChildren<IInventoryTarget>();
+
+            default:
+                return fridge.GetComponentInChildren<IInventoryTarget>();
+        }
+    }
 
     void OnCourierFinished()
     {

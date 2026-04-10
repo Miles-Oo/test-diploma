@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LodowkaCORE :Core, IInteractable
+public class LodowkaCORE :Core, IInteractable, IInventoryTarget
 {
 
     

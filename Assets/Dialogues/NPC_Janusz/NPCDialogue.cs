@@ -18,15 +18,24 @@ public class NPCDialogue : MonoBehaviour, IInteractable
         if (dm == null)
             return;
 
+        if (!dm.CanInteract(this)) //
+            return;
+        
+        if (UnityEngine.EventSystems.EventSystem.current != null && //////////////
+            UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (dm.IsInDialogue() && dm.CurrentNPC == this.gameObject)
         {
             dm.EndDialogue();
+            dm.ClearCurrentInteractable(this); //
             return;
         }
 
         if (dm.IsInDialogue() && dm.CurrentNPC != this.gameObject)
             return;
-
+        
+        dm.SetCurrentInteractable(this); //
         dm.StartDialogue(this.gameObject);
     }
 

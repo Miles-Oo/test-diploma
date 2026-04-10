@@ -35,9 +35,7 @@ public class SomsiadAI : MonoBehaviour
         {
            st.OnReportChange+=CheckOnStats;
         }
-        //... 
-        //...
-        //inne modele
+
     }
     void Start()
     {
@@ -61,7 +59,7 @@ void Tester()
     m_ListaZadan.RemoveAt(0);
     wykonujeZadanie = false;
 
-    MakeMeASandWitch(); // następne zadanie
+    MakeMeASandWitch();
 }
 
     void CheckOnStats(Statystyka statystyka)
