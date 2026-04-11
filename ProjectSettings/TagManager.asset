@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Npc
-  - NPC
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -18,7 +16,7 @@ TagManager:
   - interactive
   - light
   - test
-  - mark
+  - 
   - 
   - 
   - 
@@ -51,9 +49,6 @@ TagManager:
     locked: 0
   - name: interactive
     uniqueID: 2033678265
-    locked: 0
-  - name: mark
-    uniqueID: 3115596657
     locked: 0
   - name: player
     uniqueID: 4120862809

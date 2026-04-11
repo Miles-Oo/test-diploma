@@ -8,6 +8,8 @@ public class DialogueOption
     public DialogueNode nextNode;
     public string miniGameID;
     public bool rememberNode = false;
+    public bool unlockMiniGame;
+
 }
 
 [System.Serializable]

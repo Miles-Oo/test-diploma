@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bce59745f068e46babe0eecead9b60, type: 3}
+  m_Name: NewDialogue 4
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  startNode:
+    npcText: "O, dzia\u0142a. Czyli jednak da\u0142o si\u0119 to zrobi\u0107."
+    options:
+    - optionText: "Da\u0142o si\u0119, bo przesta\u0142 pan przeszkadza\u0107."
+      nextNode:
+        npcText: "No dobra, mo\u017Ce troch\u0119 si\u0119 pospieszy\u0142em."
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
+    - optionText: Tak, magia. Na pewno nie naprawa.
+      nextNode:
+        npcText: Sarkazm to pan ma po tym internecie chyba.
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
+    - optionText: "Prosz\u0119 niczego wi\u0119cej nie rusza\u0107."
+      nextNode:
+        npcText: "Dobrze, dobrze. Chocia\u017C i tak by\u0142o \u017Ale zamontowane."
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
