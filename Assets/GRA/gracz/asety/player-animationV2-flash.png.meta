@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: cd87915492b32ed508c4dd06608204cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6373263635283906270
+    second: player-animationV2png-flash_0
+  - first:
+      213: 355090439837172070
+    second: player-animationV2png-flash_1
+  - first:
+      213: 982044834694571749
+    second: player-animationV2png-flash_2
+  - first:
+      213: -9030877214704716884
+    second: player-animationV2png-flash_3
+  - first:
+      213: 7347773206392162524
+    second: player-animationV2png-flash_4
+  - first:
+      213: -89455059957886685
+    second: player-animationV2png-flash_5
+  - first:
+      213: -3770196577186628588
+    second: player-animationV2png-flash_6
+  - first:
+      213: -4193571390784192194
+    second: player-animationV2png-flash_7
+  - first:
+      213: -5167438205421021237
+    second: player-animationV2png-flash_8
+  - first:
+      213: -7715603599965315499
+    second: player-animationV2png-flash_9
+  - first:
+      213: 8908996140945118858
+    second: player-animationV2png-flash_10
+  - first:
+      213: 3536872854670078393
+    second: player-animationV2png-flash_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player-animationV2png-flash_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 22
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede03016281627850800000000000000
+      internalID: 6373263635283906270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 20
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 661c1a9afd88de400800000000000000
+      internalID: 355090439837172070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_2
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 18
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e62a75f29ce0ad00800000000000000
+      internalID: 982044834694571749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 16
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca33b575501eba280800000000000000
+      internalID: -9030877214704716884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 18
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd843211dc888f560800000000000000
+      internalID: 7347773206392162524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_5
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 20
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32159dfc81132cef0800000000000000
+      internalID: -89455059957886685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 22
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41cb56b30329dabc0800000000000000
+      internalID: -3770196577186628588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_7
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 20
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e314110e9017dc5c0800000000000000
+      internalID: -4193571390784192194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_8
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 18
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7191794529948b0800000000000000
+      internalID: -5167438205421021237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_9
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 16
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e9754a76bace490800000000000000
+      internalID: -7715603599965315499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_10
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 18
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a861c5ec9cc13ab70800000000000000
+      internalID: 8908996140945118858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-animationV2png-flash_11
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 20
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b1f4564f1f751130800000000000000
+      internalID: 3536872854670078393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player-animationV2png-flash_0: 6373263635283906270
+      player-animationV2png-flash_1: 355090439837172070
+      player-animationV2png-flash_10: 8908996140945118858
+      player-animationV2png-flash_11: 3536872854670078393
+      player-animationV2png-flash_2: 982044834694571749
+      player-animationV2png-flash_3: -9030877214704716884
+      player-animationV2png-flash_4: 7347773206392162524
+      player-animationV2png-flash_5: -89455059957886685
+      player-animationV2png-flash_6: -3770196577186628588
+      player-animationV2png-flash_7: -4193571390784192194
+      player-animationV2png-flash_8: -5167438205421021237
+      player-animationV2png-flash_9: -7715603599965315499
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 2c84ac3299e6c594fa1969fee8ce3e4f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7245113173589914231
+    second: CourierV1-sheet_0
+  - first:
+      213: 9133243791720810402
+    second: CourierV1-sheet_1
+  - first:
+      213: 8288205986105981562
+    second: CourierV1-sheet_2
+  - first:
+      213: -4872404452586924988
+    second: CourierV1-sheet_3
+  - first:
+      213: 5867586921228577919
+    second: CourierV1-sheet_4
+  - first:
+      213: 5139076594847020921
+    second: CourierV1-sheet_5
+  - first:
+      213: -1351936209873190799
+    second: CourierV1-sheet_6
+  - first:
+      213: -2427803786549938425
+    second: CourierV1-sheet_7
+  - first:
+      213: -2905167465110381787
+    second: CourierV1-sheet_8
+  - first:
+      213: -5405967211025473665
+    second: CourierV1-sheet_9
+  - first:
+      213: -3880984442136801347
+    second: CourierV1-sheet_10
+  - first:
+      213: 5315652793460923266
+    second: CourierV1-sheet_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CourierV1-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 22
+        width: 37
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 772745d8b00db8460800000000000000
+      internalID: 7245113173589914231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 22
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a78f8ca6dccfbe70800000000000000
+      internalID: 9133243791720810402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 22
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7afc1b7e6f950370800000000000000
+      internalID: 8288205986105981562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 21
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 444568927fdb16cb0800000000000000
+      internalID: -4872404452586924988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 22
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7cae80973bdd6150800000000000000
+      internalID: 5867586921228577919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 22
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977716d5feaa15740800000000000000
+      internalID: 5139076594847020921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 22
+        width: 37
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17045831e25fc3de0800000000000000
+      internalID: -1351936209873190799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 22
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 707b756b155be4ed0800000000000000
+      internalID: -2427803786549938425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 22
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bd21d2595cea7d0800000000000000
+      internalID: -2905167465110381787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 21
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7fda6fa6752af4b0800000000000000
+      internalID: -5405967211025473665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 22
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbf4e935639f32ac0800000000000000
+      internalID: -3880984442136801347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CourierV1-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 22
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28b1d875d0ef4c940800000000000000
+      internalID: 5315652793460923266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CourierV1-sheet_0: 7245113173589914231
+      CourierV1-sheet_1: 9133243791720810402
+      CourierV1-sheet_10: -3880984442136801347
+      CourierV1-sheet_11: 5315652793460923266
+      CourierV1-sheet_2: 8288205986105981562
+      CourierV1-sheet_3: -4872404452586924988
+      CourierV1-sheet_4: 5867586921228577919
+      CourierV1-sheet_5: 5139076594847020921
+      CourierV1-sheet_6: -1351936209873190799
+      CourierV1-sheet_7: -2427803786549938425
+      CourierV1-sheet_8: -2905167465110381787
+      CourierV1-sheet_9: -5405967211025473665
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc771fc67ee255797b638caf93c7c7b1, type: 3}
+  m_Name: Ksecops1
+  m_EditorClassIdentifier: Assembly-CSharp::Ksiazka
+  m_nazwa: secops1
+  m_opis: tak
+  m_spriteHighLight: {fileID: 21300000, guid: e117fad6042700e698f28dc833f7eee3, type: 3}
+  m_spriteNormal: {fileID: 21300000, guid: 850a952e9ea0a80c595c2aa01cd8b835, type: 3}
+  m_iloscWEQ: 15
+  _fileZTrescia: {fileID: 4900000, guid: 8ae29e871bc1a3a20b5a6f19114e0282, type: 3}
