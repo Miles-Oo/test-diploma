@@ -1,5 +1,5 @@
 
-public enum  InteractorType
-{
-   Gracz,Npc,other
-}
+// public enum  InteractorType
+// {
+//    Gracz,Npc,other
+// }
