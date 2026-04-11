@@ -6,7 +6,7 @@ public class DialogueOption
     public string optionText;          
     // [SerializeReference]   
     public DialogueNode nextNode;
-    public MiniGameBezpiecznikiCore unlockMiniGame;
+    public string miniGameID;
     public bool rememberNode = false;
 }
 

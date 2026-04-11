@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
+public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable, IUnlockableMiniGame
 {
     [SerializeField] private BoxCollider2D _boxCollider2D;
     [SerializeField] private Sprite m_sleepSprite;
@@ -10,9 +10,10 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
     [SerializeField] private MiniGameBezpiecznikiMenu _menu;
     [SerializeField] private MiniGameBezpiecznikiController _controller;
 
-    // 🔓 SYSTEM ODBLOKOWANIA (z pierwszego kodu)
-    private bool isUnlocked = false;
+    [SerializeField] private string miniGameID;
     [SerializeField] private GameObject questMark;
+
+    private bool isUnlocked = false;
 
     // flipflop 
     private bool m_jestInterakcja = false;
@@ -57,29 +58,25 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
     {
         _menu.GetMenuCanvas().SetActive(false);
 
-        if (questMark != null)
-            questMark.SetActive(false);
-
         m_normalSprite = GetComponentInParent<SpriteRenderer>().sprite;
+
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RegisterMiniGame(miniGameID, this);
+            EventManager.Instance.RegisterMiniGameTarget(miniGameID, transform);
+            EventManager.Instance.RegisterQuestMark(miniGameID, questMark);
+        }
     }
 
-    // 🔓 ODBLOKOWANIE
     public void UnlockMiniGame()
     {
         isUnlocked = true;
-        Debug.Log("MiniGra odblokowana!");
-
-        if (questMark != null)
-            questMark.SetActive(true);
     }
 
     public void LockMiniGame()
     {
         isUnlocked = false;
-        Debug.Log("MiniGra zablokowana!");
-
-        if (questMark != null)
-            questMark.SetActive(false);
+        EventManager.Instance.LockMiniGame(miniGameID);
     }
 
     public void Interact(GameObject gameObject, InteractorType interactor)
@@ -97,10 +94,8 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
 
     public void InteractPlayer()
     {
-        // 🔒 BLOKADA jeśli nie odblokowane
         if (!isUnlocked)
         {
-            Debug.Log("MiniGra jeszcze zablokowana.");
             return;
         }
 
@@ -123,7 +118,6 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
 
     public void TurnONInteract()
     {
-        Debug.Log("Otwieram Lodówkę");
 
         PlayersDisabes();
         PlayAudioOn();
@@ -139,7 +133,6 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
 
     public void TurnOFFInteract()
     {
-        Debug.Log("Zamykam Lodówkę");
 
         _controller.OnExitRequested -= ExitMiniGame;
         _controller.OnGameFinished -= FinishMiniGame;
@@ -162,7 +155,6 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable
 
         TurnOFFInteract();
 
-        // 🔒 po ukończeniu znowu blokujemy (z pierwszego kodu)
         LockMiniGame();
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MiniGameBalanceCore : MonoBehaviour, IInteractable
+public class MiniGameBalanceCore : MonoBehaviour, IInteractable, IUnlockableMiniGame
 {
     [Header("Collision (optional)")]
     [SerializeField] private BoxCollider2D _boxCollider2D;
@@ -13,10 +13,19 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable
     [Header("Menu")]
     [SerializeField] private MiniGameBalanceMenuDual _menu;
 
+    [SerializeField] private string miniGameID;
+    [SerializeField] private GameObject questMark;
+
+    private bool isUnlocked = false;
+
     // flipflop
-    private bool _jestInterakcja = false;
-    private void SetJestInterakcja(bool isInterakcja) => _jestInterakcja = isInterakcja;
-    private bool IsInterakcja() => _jestInterakcja;
+    private bool m_jestInterakcja = false;
+    protected void SetJestInterakcja(bool isInteractja)
+    {
+        m_jestInterakcja = isInteractja;
+    }
+    protected bool IsInteractja() { return m_jestInterakcja; }
+
 
     [Header("Player")]
     [SerializeField] private GameObject _gracz;
@@ -80,11 +89,49 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable
         // Menu off na start
         if (_menu != null && _menu.GetMenuCanvas() != null)
             _menu.GetMenuCanvas().SetActive(false);
+        
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RegisterMiniGame(miniGameID, this);
+            EventManager.Instance.RegisterMiniGameTarget(miniGameID, transform);
+            EventManager.Instance.RegisterQuestMark(miniGameID, questMark);
+        }
+    }
+
+    public void UnlockMiniGame()
+    {
+        isUnlocked = true;
+        Debug.Log("Balance minigame odblokowana!");
+    }
+
+    public void LockMiniGame()
+    {
+        isUnlocked = false;
+        Debug.Log("Balance minigame zablokowana!");
+        EventManager.Instance.LockMiniGame(miniGameID);
     }
 
     public void Interact(GameObject gameObject,InteractorType interactor)
     {
-        if (IsInterakcja())
+        switch (interactor)
+        {
+            case InteractorType.Gracz:
+                InteractPlayer();
+                break;
+            case InteractorType.Npc:
+                InteractNpc();
+                break;
+        }
+    }
+
+    public void InteractPlayer()
+    {
+        if (!isUnlocked)
+        {
+            return;
+        }
+
+        if (IsInteractja())
         {
             TurnOFFInteract();
             SetJestInterakcja(false);
@@ -95,6 +142,12 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable
             SetJestInterakcja(true);
         }
     }
+
+    public void InteractNpc()
+    {
+        // na przyszłość
+    }
+
 
     public void TurnONInteract()
     {

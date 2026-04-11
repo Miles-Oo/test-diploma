@@ -230,9 +230,9 @@ public class DialogueManager : MonoBehaviour
 
     void ChooseOption(DialogueOption option)
     {
-        if (option.unlockMiniGame != null)
+        if (!string.IsNullOrEmpty(option.miniGameID))
         {
-            option.unlockMiniGame.UnlockMiniGame();
+            EventManager.Instance.UnlockMiniGame(option.miniGameID);
         }
         if (currentNPCObject != null)
         {
