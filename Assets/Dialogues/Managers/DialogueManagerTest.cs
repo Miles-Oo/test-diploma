@@ -242,13 +242,13 @@ public class DialogueManagerTest : MonoBehaviour
 
     void ChooseOption(DialogueOption option)
     {
-        ///if (option.unlockMiniGame != null)
-        ///{
-        ///    miniGameManager.UnlockMiniGame();
-        ///}
+        if (!string.IsNullOrEmpty(option.miniGameID))
+        {
+            EventManager.Instance.UnlockMiniGame(option.miniGameID);
+        }
         if (currentNPCObject != null)
         {
-            var npcDialogue = currentNPCObject.GetComponent<NPCDialogueTest>();
+            var npcDialogue = currentNPCObject.GetComponent<NPCDialogue>();
             if (npcDialogue != null && option.rememberNode)
             {
                 npcDialogue.lastNodeUsed = currentNode;
