@@ -12,7 +12,11 @@ public class QuestMark : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         transform.position = target.position + offset;
     }

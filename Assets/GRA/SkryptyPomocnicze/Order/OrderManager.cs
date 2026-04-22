@@ -4,22 +4,17 @@ using UnityEngine;
 public class OrderManager : MonoBehaviour
 {
     [SerializeField] private DeliveryManager deliveryManager;
-    [SerializeField] private List<OrderSlotUI> slots;
+    // [SerializeField] private List<OrderSlotUI> slots;
+    [SerializeField] private Transform slotContainer;
     [SerializeField] private OrderUI orderUI;
 
     public void OnOrderButtonClicked()
     {
-        if (deliveryManager == null)
-        {
+        if (deliveryManager == null || slotContainer == null)
             return;
-        }
-
-        if (slots == null || slots.Count == 0)
-        {
-            return;
-        }
 
         OrderData order = new OrderData();
+        var slots = slotContainer.GetComponentsInChildren<OrderSlotUI>();
 
         foreach (var slot in slots)
         {

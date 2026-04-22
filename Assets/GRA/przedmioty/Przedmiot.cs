@@ -8,6 +8,7 @@ public abstract class Przedmiot : ScriptableObject
        [SerializeField] private Sprite m_spriteNormal;
 
         [SerializeField] private int m_iloscWEQ;
+        [SerializeField] private TypPrzedmiotu m_typ;
     public string GetNazwa(){return m_nazwa;}
     public string GetOpis(){return m_opis;}
     public Sprite GetSpriteNormal(){return m_spriteNormal;}
@@ -18,6 +19,13 @@ public abstract class Przedmiot : ScriptableObject
     public void AddIloscWEQ(int ilosc){m_iloscWEQ+=ilosc;}
     public void SubIloscWEQ(int ilosc){m_iloscWEQ-=ilosc;}
 
+    public TypPrzedmiotu GetTyp() => m_typ;
     public abstract string GetText();
     public abstract void UsePrzedmiot();
+}
+public enum TypPrzedmiotu
+{
+    Jedzenie,
+    Ksiazka,
+    Ubranie
 }

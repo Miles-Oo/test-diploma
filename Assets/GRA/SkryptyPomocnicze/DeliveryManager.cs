@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
+    [SerializeField] private LodowkaCORE lodowka;
+    [SerializeField] private BiblioteczkaCORE biblioteczka;
+
     public GameObject courierPrefab;
     public Transform spawnPoint;
     public Transform doorPoint;
@@ -29,6 +32,8 @@ public class DeliveryManager : MonoBehaviour
         CourierBehaviour cb = courier.GetComponent<CourierBehaviour>();
 
         cb.SetOrder(order);
+
+        cb.SetTargets(lodowka, biblioteczka);//
 
         cb.Init(doorPoint, spawnPoint, OnCourierFinished);
     }

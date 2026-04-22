@@ -32,12 +32,12 @@ public class MiniGameBalanceMenu : MonoBehaviour
         _minigame.enabled = true;
 
         // opcjonalnie: co zrobić po wygranej
-        _minigame.OnWin = () =>
-        {
-            Debug.Log("WIN: stabilized!");
-            // jeśli chcesz automatycznie zamknąć po wygranej:
-            // StopGame();
-        };
+        // _minigame.OnWin = () =>
+        // {
+        //     Debug.Log("WIN: stabilized!");
+        //     // jeśli chcesz automatycznie zamknąć po wygranej:
+        //     // StopGame();
+        // };
     }
 
     public void StopGame()

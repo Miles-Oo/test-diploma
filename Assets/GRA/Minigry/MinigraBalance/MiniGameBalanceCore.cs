@@ -12,6 +12,7 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable, IUnlockableMini
 
     [Header("Menu")]
     [SerializeField] private MiniGameBalanceMenuDual _menu;
+    [SerializeField] private HoldToStabilizeMinigameDual _minigame;
 
     [SerializeField] private string miniGameID;
     [SerializeField] private GameObject questMark;
@@ -94,25 +95,32 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable, IUnlockableMini
         {
             EventManager.Instance.RegisterMiniGame(miniGameID, this);
             EventManager.Instance.RegisterMiniGameTarget(miniGameID, transform);
-            EventManager.Instance.RegisterQuestMark(miniGameID, questMark);
         }
+        if (_minigame != null)
+            _minigame.OnWin += FinishMiniGame;
+    }
+
+    private void OnDestroy()
+    {
+        if (_minigame != null)
+            _minigame.OnWin -= FinishMiniGame;
     }
 
     public void UnlockMiniGame()
     {
         isUnlocked = true;
-        Debug.Log("Balance minigame odblokowana!");
     }
 
     public void LockMiniGame()
     {
         isUnlocked = false;
-        Debug.Log("Balance minigame zablokowana!");
-        EventManager.Instance.LockMiniGame(miniGameID);
+        if (EventManager.Instance != null)
+            EventManager.Instance.LockMiniGame(miniGameID);
     }
 
     public void Interact(GameObject gameObject,InteractorType interactor)
     {
+        if (!isUnlocked) return;
         switch (interactor)
         {
             case InteractorType.Gracz:
@@ -196,5 +204,17 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable, IUnlockableMini
         // sprite normalny
         if (_targetRenderer != null)
             _targetRenderer.sprite = _normalSprite;
+    }
+
+    private void FinishMiniGame()
+    {
+        if (_minigame != null)
+            _minigame.OnWin -= FinishMiniGame;
+
+        TurnOFFInteract();
+        LockMiniGame();
+
+        if (questMark != null)
+            Destroy(questMark);
     }
 }

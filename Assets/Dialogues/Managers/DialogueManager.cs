@@ -182,7 +182,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        var npcs = FindObjectsOfType<NpcMovement>();
+        var npcs = FindObjectsOfType<NpcMovement>(); // do zmiany ale idk co z actions map
         foreach (var npc in npcs)
         {
             npc.m_canWalk = !freeze;

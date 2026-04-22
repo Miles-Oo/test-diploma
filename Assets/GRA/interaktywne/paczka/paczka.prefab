@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddf813a6c2965d258c213d43c634549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::paczka
-  _miejsceDodania: {fileID: 0}
   _przedmiotList:
   - {fileID: 11400000, guid: 4b6a1fe37a971b0f1bee8de8cceec6a1, type: 2}
   - {fileID: 11400000, guid: 2b9fdc45875dbdcccba481137854a49a, type: 2}
   - {fileID: 11400000, guid: 4b6a1fe37a971b0f1bee8de8cceec6a1, type: 2}
+  - {fileID: 11400000, guid: f0b1d94f50dfc38429b68cb7a84a7ac0, type: 2}

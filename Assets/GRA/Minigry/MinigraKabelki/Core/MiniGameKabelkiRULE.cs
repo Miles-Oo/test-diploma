@@ -23,6 +23,7 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
     public static readonly DiffConf[] m_DiffConf={new DiffConf(Difficulty.Low,0,3f,40,10),new DiffConf(Difficulty.Medium,3,1f,30,25),new DiffConf(Difficulty.High,7,0.6f,50,100),new DiffConf(Difficulty.Max,10,0.2f,100,300)};
     
     private DiffConf currDiffConf;
+    public event System.Action OnWin;
     public Difficulty GetDifficulty(){return currDiffConf.GetDifficulty();}
 
 
@@ -56,7 +57,9 @@ public class MiniGameKabelkiRULE : MonoBehaviour{
         if (m_currentLicznik >= m_licznikKabli){
 
             AfterWin();
-            ReBuild();
+            OnWin?.Invoke();//
+            StopALL(); //
+            // ReBuild();
         }
     }
     private void AfterWin()

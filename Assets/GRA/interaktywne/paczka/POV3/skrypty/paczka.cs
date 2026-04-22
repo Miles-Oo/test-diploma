@@ -5,13 +5,31 @@ public class paczka : MonoBehaviour, IInteractable
 {
     [SerializeField] private List<Przedmiot> _przedmiotList = new List<Przedmiot>();
 
-    private void Start()
-    {
-    }
+    // [Header("Inventory Targets")]
+    // [SerializeField] private MonoBehaviour lodowkaTarget;
+    // [SerializeField] private MonoBehaviour biblioteczkaTarget;
+    // [SerializeField] private MonoBehaviour szafaTarget;
+
+    private IInventoryTarget lodowka;
+    private IInventoryTarget biblioteczka;
+    // private IInventoryTarget szafa;
+
+    // private void Awake()
+    // {
+    //     lodowka = lodowkaTarget as IInventoryTarget;
+    //     biblioteczka = biblioteczkaTarget as IInventoryTarget;
+    //     // szafa = szafaTarget as IInventoryTarget;
+    // }
 
     public void SetItems(List<Przedmiot> items)
     {
         _przedmiotList = items;
+    }
+
+    public void SetTargets(IInventoryTarget lodowkaTarget, IInventoryTarget biblioteczkaTarget)
+    {
+        lodowka = lodowkaTarget;
+        biblioteczka = biblioteczkaTarget;
     }
 
     public void Interact(GameObject gameObject, InteractorType interactor)
@@ -25,22 +43,35 @@ public class paczka : MonoBehaviour, IInteractable
         if (_przedmiotList == null || _przedmiotList.Count == 0)
             return;
 
-        Core core = FindCoreFromInteractor();
-        if (core == null)
+        foreach (var item in _przedmiotList)
         {
-            return;
-        }
+            var target = GetTargetForItem(item);
 
-        Inventory inv = core.GetInventory();
+            if (target == null)
+            {
+                Debug.LogWarning("Brak targetu dla itemu: " + item.GetNazwa());
+                continue;
+            }
 
-        for (int i = 0; i < _przedmiotList.Count; i++)
-        {
-            inv.AddPrzedmiot(_przedmiotList[i]);
+            target.GetInventory().AddPrzedmiot(item);
         }
     }
 
-    private Core FindCoreFromInteractor()
+    private IInventoryTarget GetTargetForItem(Przedmiot item)
     {
-        return FindObjectOfType<LodowkaCORE>(); //placeholder na teraz poki dodaje tylko do lodowki
+        switch (item.GetTyp())
+        {
+            case TypPrzedmiotu.Jedzenie:
+                return lodowka;
+
+            case TypPrzedmiotu.Ksiazka:
+                return biblioteczka;
+
+            // case TypPrzedmiotu.Ubranie:
+            //     return szafa;
+
+            default:
+                return null;
+        }
     }
 }

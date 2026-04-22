@@ -14,6 +14,9 @@ public class CourierBehaviour : MonoBehaviour
 
     private OrderData order;
 
+    private IInventoryTarget lodowka;
+    private IInventoryTarget biblioteczka;
+
     private enum State
     {
         GoingToDoor,
@@ -32,6 +35,12 @@ public class CourierBehaviour : MonoBehaviour
     public void SetOrder(OrderData newOrder)
     {
         order = newOrder;
+    }
+
+    public void SetTargets(IInventoryTarget lod, IInventoryTarget bib)
+    {
+        lodowka = lod;
+        biblioteczka = bib;
     }
 
     public bool Init(Transform door, Transform exit, System.Action callback)
@@ -105,6 +114,8 @@ public class CourierBehaviour : MonoBehaviour
         }
 
         p.SetItems(order.items);
+
+        p.SetTargets(lodowka, biblioteczka);
 
     }
 

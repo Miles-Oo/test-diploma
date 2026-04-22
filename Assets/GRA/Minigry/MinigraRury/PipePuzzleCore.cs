@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class MiniGamePipesCore : MonoBehaviour, IInteractable
+public class MiniGamePipesCore : MonoBehaviour, IInteractable, IUnlockableMiniGame
 {
     [SerializeField] private GameObject _gracz;
+    [SerializeField] private PipePuzzleUIMinigame controller;
 
     [Header("Sprites (optional)")]
     [SerializeField] private SpriteRenderer _targetRenderer;
@@ -17,7 +18,11 @@ public class MiniGamePipesCore : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip openClip;
     [SerializeField] private AudioClip closeClip;
 
+    [SerializeField] private string miniGameID;
+
     private bool _isOpen;
+
+    private bool isUnlocked = false;
 
     private void Start()
     {
@@ -26,10 +31,20 @@ public class MiniGamePipesCore : MonoBehaviour, IInteractable
 
         if (_menu != null && _menu.GetMenuCanvas() != null)
             _menu.GetMenuCanvas().SetActive(false);
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RegisterMiniGame(miniGameID, this);
+            EventManager.Instance.RegisterMiniGameTarget(miniGameID, transform);
+        }
+
+        if (controller != null)
+            controller.OnWin += FinishMiniGame;
     }
 
     public void Interact(GameObject gameObject,InteractorType interactor)
     {
+        if (!isUnlocked)
+            return;
         if (_isOpen) Close();
         else Open();
         _isOpen = !_isOpen;
@@ -81,5 +96,30 @@ public class MiniGamePipesCore : MonoBehaviour, IInteractable
 
         var rot = _gracz.GetComponent<PlayerRotation>();
         if (rot != null) rot.enabled = true;
+    }
+
+    public void UnlockMiniGame()
+    {
+        isUnlocked = true;
+    }
+
+    public void LockMiniGame()
+    {
+        isUnlocked = false;
+        EventManager.Instance.LockMiniGame(miniGameID);
+    }
+
+    private void FinishMiniGame()
+    {
+        Debug.Log("FINISH MINI GAME CALLED");
+
+        if (controller != null)
+            controller.OnWin -= FinishMiniGame;
+
+        controller.StopRun();
+
+        Close();
+
+        LockMiniGame();
     }
 }

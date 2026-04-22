@@ -31,11 +31,11 @@ public class MiniGameBalanceMenuDual : MonoBehaviour
         _minigame.ResetRound();
         _minigame.enabled = true;
 
-        _minigame.OnWin = () =>
-        {
-            Debug.Log("WIN dual stabilize!");
-            // opcjonalnie: StopGame();
-        };
+        // _minigame.OnWin = () =>
+        // {
+        //     Debug.Log("WIN dual stabilize!");
+        //     // opcjonalnie: StopGame();
+        // };
     }
 
     public void StopGame()

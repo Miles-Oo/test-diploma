@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
+public class MiniGameKabelkiCore : MonoBehaviour,IInteractable, IUnlockableMiniGame
 {
 
     [SerializeField] private BoxCollider2D _boxCollider2D;
@@ -21,6 +21,10 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
    [SerializeField] private AudioClip openClip;
    [SerializeField] private AudioClip closeClip;
 
+   [SerializeField] private string miniGameID;
+   [SerializeField] private GameObject questMark;
+
+   private bool isUnlocked = false;
 
     protected void PlayAudioOn(){source.PlayOneShot(openClip);}
     protected void PlayAudioOff(){source.PlayOneShot(closeClip);}
@@ -52,6 +56,19 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
     {
         _menu.GetMenuCanvas().SetActive(false);
         m_normalSprite=GetComponentInParent<SpriteRenderer>().sprite;
+
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RegisterMiniGame(miniGameID, this);
+            EventManager.Instance.RegisterMiniGameTarget(miniGameID, transform);
+        }
+        if (_zasady != null)
+            _zasady.OnWin += FinishMiniGame;
+    }
+    private void OnDestroy()
+    {
+        if (_zasady != null)
+            _zasady.OnWin -= FinishMiniGame;
     }
     public void Interact(GameObject gameObject,InteractorType interactor)
     {
@@ -67,6 +84,8 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
     }
     public void InteractPlayer()
     {
+        if (!isUnlocked)
+            return;
         if (IsInteractja()){
            _zasady.StopALL();
             TurnOFFInteract();
@@ -110,5 +129,24 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable
     GetComponentInParent<SpriteRenderer>().sprite=m_normalSprite;
 
     _menu.UnSelect();
+    }
+
+    public void UnlockMiniGame()
+    {
+        isUnlocked = true;
+    }
+
+    public void LockMiniGame()
+    {
+        isUnlocked = false;
+        EventManager.Instance.LockMiniGame(miniGameID);
+    }
+    private void FinishMiniGame()
+    {
+        TurnOFFInteract();
+        LockMiniGame();
+
+        if (questMark != null)
+            Destroy(questMark);
     }
 }

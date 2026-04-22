@@ -311,6 +311,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b6a1fe37a971b0f1bee8de8cceec6a1, type: 2}
   - {fileID: 11400000, guid: 2b9fdc45875dbdcccba481137854a49a, type: 2}
   - {fileID: 11400000, guid: 7e8539dfab7c5b211b4d2155be6f3d01, type: 2}
+  - {fileID: 11400000, guid: bd38080b945995c46a393bf669058d53, type: 2}
   _lodowkaCORE: {fileID: 5979087097562911359}
   _lodowkaMenu: {fileID: 3850633849209806459}
 --- !u!114 &3850633849209806459

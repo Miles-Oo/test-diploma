@@ -64,7 +64,6 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable, IUnlockabl
         {
             EventManager.Instance.RegisterMiniGame(miniGameID, this);
             EventManager.Instance.RegisterMiniGameTarget(miniGameID, transform);
-            EventManager.Instance.RegisterQuestMark(miniGameID, questMark);
         }
     }
 
@@ -76,7 +75,11 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable, IUnlockabl
     public void LockMiniGame()
     {
         isUnlocked = false;
-        EventManager.Instance.LockMiniGame(miniGameID);
+
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveQuestMark(miniGameID);
+        }
     }
 
     public void Interact(GameObject gameObject, InteractorType interactor)

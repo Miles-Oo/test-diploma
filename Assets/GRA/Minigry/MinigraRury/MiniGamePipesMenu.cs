@@ -18,7 +18,7 @@ public class MiniGamePipesMenu : MonoBehaviour
     _menuCanvas.SetActive(true);
 
     // podpinamy reakcję na win
-    _minigame.OnWin = () =>
+    _minigame.OnWin += () =>
     {
         Debug.Log("WIN -> zamykam minigrę");
         StopGame(); // chowa canvas i zatrzymuje logikę
