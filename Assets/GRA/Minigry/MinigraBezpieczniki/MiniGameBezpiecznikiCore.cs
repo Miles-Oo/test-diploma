@@ -12,6 +12,7 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable, IUnlockabl
 
     [SerializeField] private string miniGameID;
     [SerializeField] private GameObject questMark;
+    [SerializeField] private float expReward = 50f;
 
     private bool isUnlocked = false;
 
@@ -155,7 +156,10 @@ public class MiniGameBezpiecznikiCore : MonoBehaviour, IInteractable, IUnlockabl
     private void FinishMiniGame()
     {
         _controller.OnGameFinished -= FinishMiniGame;
-
+        if (MiniGameRewardManager.Instance != null)
+        {
+            MiniGameRewardManager.Instance.GiveReward(miniGameID, expReward);
+        }        
         TurnOFFInteract();
 
         LockMiniGame();

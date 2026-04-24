@@ -5,9 +5,9 @@ using UnityEngine;
 public class MiniGameBezpiecznikiController : MonoBehaviour
 {
     [SerializeField] private List<MiniGameBezpiecznikiButton> bezpieczniki;
-    [SerializeField] private float startTimeToClick = 0.5f;
-    [SerializeField] private float minTimeToClick = 0.3f;
-    [SerializeField] private float speedUpPerSuccess = 0.01f;
+    [SerializeField] private float startTimeToClick = 1f;
+    [SerializeField] private float minTimeToClick = 0.5f;
+    [SerializeField] private float speedUpPerSuccess = 0.02f;
 
     private float currentTimeToClick;
 

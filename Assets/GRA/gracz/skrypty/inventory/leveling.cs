@@ -9,10 +9,12 @@ public class leveling:MonoBehaviour{
     private int m_currentExp=0;
     private int m_nextLvlExpCap=100;
     public event Action OnExpChange;
+    public event Action OnSkillPointsChanged;
 
     public void Start()
     {
         OnExpChange?.Invoke();
+        OnSkillPointsChanged?.Invoke();
     }
     public void toNextLvl(){
         //TUTAJ ZAMIENIĆ NA PLIK Z ZOGIKĄ NEXT LVL'i
@@ -20,7 +22,8 @@ public class leveling:MonoBehaviour{
         {
             m_currentExp-=m_nextLvlExpCap*m_lvl;
             m_lvl++;
-            m_skillPoints+=2;
+            m_skillPoints+=1;
+            OnSkillPointsChanged?.Invoke();
         }
     }
     //potem wywalić update, nie jest on do niczego potrzebny
@@ -37,7 +40,16 @@ public class leveling:MonoBehaviour{
         toNextLvl();
         OnExpChange?.Invoke();
     }
+    
+    public bool SpendSkillPoint(int amount)
+    {
+        if (m_skillPoints < amount)
+            return false;
 
+        m_skillPoints -= amount;
+        OnSkillPointsChanged?.Invoke();
+        return true;
+    }
     public int getLvl(){return m_lvl;}
     public int getSkillPoints(){return m_skillPoints;}
     public int getCurrentExp(){return m_currentExp;}

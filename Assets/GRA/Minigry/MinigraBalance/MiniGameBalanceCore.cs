@@ -13,7 +13,8 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable, IUnlockableMini
     [Header("Menu")]
     [SerializeField] private MiniGameBalanceMenuDual _menu;
     [SerializeField] private HoldToStabilizeMinigameDual _minigame;
-
+    [SerializeField] private float expReward = 50f;
+    
     [SerializeField] private string miniGameID;
     [SerializeField] private GameObject questMark;
 
@@ -210,6 +211,11 @@ public class MiniGameBalanceCore : MonoBehaviour, IInteractable, IUnlockableMini
     {
         if (_minigame != null)
             _minigame.OnWin -= FinishMiniGame;
+
+        if (MiniGameRewardManager.Instance != null)
+        {
+            MiniGameRewardManager.Instance.GiveReward(miniGameID, expReward);
+        }        TurnOFFInteract();
 
         TurnOFFInteract();
         LockMiniGame();

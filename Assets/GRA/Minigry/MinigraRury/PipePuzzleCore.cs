@@ -19,6 +19,8 @@ public class MiniGamePipesCore : MonoBehaviour, IInteractable, IUnlockableMiniGa
     [SerializeField] private AudioClip closeClip;
 
     [SerializeField] private string miniGameID;
+    [SerializeField] private float expReward = 50f;
+
 
     private bool _isOpen;
 
@@ -117,6 +119,10 @@ public class MiniGamePipesCore : MonoBehaviour, IInteractable, IUnlockableMiniGa
             controller.OnWin -= FinishMiniGame;
 
         controller.StopRun();
+        if (MiniGameRewardManager.Instance != null)
+        {
+            MiniGameRewardManager.Instance.GiveReward(miniGameID, expReward);
+        } 
 
         Close();
 

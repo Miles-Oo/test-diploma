@@ -23,6 +23,8 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable, IUnlockableMiniG
 
    [SerializeField] private string miniGameID;
    [SerializeField] private GameObject questMark;
+    [SerializeField] private float expReward = 50f;
+
 
    private bool isUnlocked = false;
 
@@ -143,6 +145,10 @@ public class MiniGameKabelkiCore : MonoBehaviour,IInteractable, IUnlockableMiniG
     }
     private void FinishMiniGame()
     {
+        if (MiniGameRewardManager.Instance != null)
+        {
+            MiniGameRewardManager.Instance.GiveReward(miniGameID, expReward);
+        } 
         TurnOFFInteract();
         LockMiniGame();
 
