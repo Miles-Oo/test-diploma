@@ -5,6 +5,8 @@ public class SkillNode : MonoBehaviour
 {
     [SerializeField] private SkillType skillType;
     [SerializeField] private int cost = 1;
+    [Header("Requirement")]
+    [SerializeField] private SkillType requiredSkill;
 
     [SerializeField] private Button button;
     [SerializeField] private leveling _leveling;
@@ -13,13 +15,9 @@ public class SkillNode : MonoBehaviour
 
     private void Start()
     {
-        if (button == null)
-            button = GetComponent<Button>();
-
         button.onClick.AddListener(UnlockSkill);
     }
 
-    // 👉 sterowanie tylko z SkillTreeUI
     public void SetState(int skillPoints)
     {
         if (isUnlocked)
@@ -28,7 +26,11 @@ public class SkillNode : MonoBehaviour
             return;
         }
 
-        button.interactable = skillPoints >= cost;
+        bool hasRequirement =
+            requiredSkill == skillType || PlayerSkills.Instance.Has(requiredSkill);
+
+        button.interactable =
+            skillPoints >= cost && hasRequirement;
     }
 
     private void UnlockSkill()

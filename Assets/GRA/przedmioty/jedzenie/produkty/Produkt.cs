@@ -15,7 +15,7 @@ public class Produkt:Przedmiot{
         int modified = GetModifiedHunger();
       string na="Nazwa: "+GetNazwa()+
                     "\nOpis: "+GetOpis()+
-                    "\nEnergia: "+getEnergia()+
+                    "\nEnergia: "+GetModifiedEnergy()+
                     "\nGłód: "+GetModifiedHunger();
       return na;
     }
@@ -26,14 +26,14 @@ public override void UsePrzedmiot()
         .GetCORE()
         .GetGracz();
 
+    int energyValue = GetModifiedEnergy();
     int hungerValue = m_glod;
 
     if (PlayerSkills.Instance != null)
         hungerValue = PlayerSkills.Instance.ModifyHungerGain(m_glod);
 
-    gracz.GetComponent<energy>().addEnergy(m_energia);
+    gracz.GetComponent<energy>().addEnergy(energyValue);
     gracz.GetComponent<hunger>().addHunger(hungerValue);
-        Debug.Log($"🍔 Zjedzono: {GetNazwa()} | Base hunger: {m_glod} | Final hunger: {hungerValue}");
 
     SubIloscWEQ(1);
 }
@@ -44,6 +44,14 @@ public override void UsePrzedmiot()
             return PlayerSkills.Instance.ModifyHungerGain(m_glod);
 
         return m_glod;
+    }
+
+        private int GetModifiedEnergy()
+    {
+        if (PlayerSkills.Instance != null)
+            return PlayerSkills.Instance.ModifyEnergyGain(m_energia);
+
+        return m_energia;
     }
 
 }

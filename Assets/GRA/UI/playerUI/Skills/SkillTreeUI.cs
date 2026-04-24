@@ -29,13 +29,20 @@ public class SkillTreeUI : MonoBehaviour
     {
         int points = _leveling.getSkillPoints();
 
-        skillButton.SetActive(points > 0 && !isOpen);
-
         foreach (var node in skillNodes)
         {
             if (node != null)
                 node.SetState(points);
         }
+
+        RefreshLevelUpButton();
+    }
+
+    private void RefreshLevelUpButton()
+    {
+        int points = _leveling.getSkillPoints();
+
+        skillButton.SetActive(points > 0 && !isOpen);
     }
 
     public void OpenSkillTree()
@@ -43,7 +50,7 @@ public class SkillTreeUI : MonoBehaviour
         isOpen = true;
         skillCanvas.SetActive(true);
 
-        UpdateUI();
+        RefreshLevelUpButton();
     }
 
     public void CloseSkillTree()
@@ -51,7 +58,7 @@ public class SkillTreeUI : MonoBehaviour
         isOpen = false;
         skillCanvas.SetActive(false);
 
-        UpdateUI();
+        RefreshLevelUpButton();
     }
 
     private void OnDestroy()
