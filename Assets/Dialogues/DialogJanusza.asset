@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bce59745f068e46babe0eecead9b60, type: 3}
+  m_Name: DialogJanusza
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  startNode:
+    npcText: "O, informatyk idzie. To mo\u017Ce pan mi od razu internet naprawi,
+      bo film mi si\u0119 zacina."
+    options:
+    - optionText: To raczej nie ja od tego.
+      nextNode:
+        npcText: "Jak nie pan, jak pan ca\u0142y dzie\u0144 przy kablach siedzi?"
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0

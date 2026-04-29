@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bce59745f068e46babe0eecead9b60, type: 3}
+  m_Name: NewDialogue 2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  startNode:
+    npcText: 
+    options:
+    - optionText: "Kto wy\u0142\u0105czy\u0142 zasilanie na pi\u0119trze?"
+      nextNode:
+        npcText: Ja, ale chwilowo.
+        options:
+        - optionText: Dlaczego?
+          nextNode:
+            npcText: "Bo \u015Bwiat\u0142o na klatce si\u0119 \u015Bwieci\u0142o
+              w dzie\u0144. To po co ma si\u0119 marnowa\u0107?"
+            options:
+            - optionText: "Wy\u0142\u0105czy\u0142 pan nie to, co trzeba."
+              nextNode:
+                npcText: "Szczeg\xF3\u0142y, panie. Pr\u0105d to pr\u0105d."
+                options: []
+              unlockMiniGame: {fileID: 0}
+              rememberNode: 0
+          unlockMiniGame: {fileID: 0}
+          rememberNode: 0
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0

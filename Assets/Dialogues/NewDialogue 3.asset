@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bce59745f068e46babe0eecead9b60, type: 3}
+  m_Name: NewDialogue 3
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  startNode:
+    npcText: "Panie, ja tylko na chwil\u0119 wy\u0142\u0105czy\u0142em, bo licznik
+      za szybko lecia\u0142."
+    options:
+    - optionText: "Nie mo\u017Cna tak po prostu wy\u0142\u0105cza\u0107 pr\u0105du."
+      nextNode:
+        npcText: "Oj tam, oj tam. Chcia\u0142em tylko sprawdzi\u0107, czy bez tego
+          te\u017C b\u0119dzie dzia\u0142a\u0107."
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
+    - optionText: "Genialny pomys\u0142. Mo\u017Ce jeszcze wod\u0119 pan zakr\u0119ci?"
+      nextNode:
+        npcText: "Niech pan si\u0119 nie m\u0105drzy, bo oszcz\u0119dno\u015B\u0107
+          trzeba szanowa\u0107."
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
+    - optionText: "Prosz\u0119 wi\u0119cej nie dotyka\u0107 skrzynki z bezpiecznikami"
+      nextNode:
+        npcText: "Dobra, dobra... ale jak rachunek przyjdzie wi\u0119kszy, to nie
+          do mnie."
+        options: []
+      unlockMiniGame: {fileID: 0}
+      rememberNode: 0
